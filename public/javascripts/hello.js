@@ -27,7 +27,9 @@ function createPlayer(_playerId) {
     soldier.anchor.setTo(0.5, 0.5);
     soldier.animations.add("r", [17, 18, 19, 20, 21, 22]);
     soldier.animations.play('r', 9, true);
-    //soldier.tween = game.add.tween(soldier);
+    soldier.health = game.add.text(0, 0, "100%", {font: "11px Arial", fill: "#ffffff"});
+    soldier.health.anchor.set(0.5);
+    //soldier.addChild(soldier.health)
     players[_playerId] = soldier;
     return soldier;
 }
@@ -52,11 +54,6 @@ function initGame(playerId) {
         score = game.add.text(600, 0, "100%", {font: "32px Arial", fill: "#ffffff"});
         score.fixedToCamera = true;
         let soldierself = createPlayer(playerId);
-        bitmap = this.game.add.bitmapData(1500, 1500);
-        bitmap.context.fillStyle = 'rgb(255, 255, 255)';
-        bitmap.context.strokeStyle = 'rgb(255, 255, 255)';
-        game.add.image(0, 0, bitmap);
-
         cursors = game.input.keyboard.createCursorKeys();
         fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         shift = game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
@@ -76,8 +73,16 @@ function initGame(playerId) {
                         Phaser.Easing.LINEAR,
                         true
                     );
-                    /*localPlayer.x = mtToPx(serverPlayer.posX);
-                     localPlayer.y = mtToPx(serverPlayer.posY);*/
+                    game.add.tween(localPlayer.health).to(
+                        {
+                            x: mtToPx(serverPlayer.posX),
+                            y: mtToPx(serverPlayer.posY) - localPlayer.height / 2
+                        },
+                        16,
+                        Phaser.Easing.LINEAR,
+                        true
+                    );
+                    localPlayer.health.text = serverPlayer.health + "%";
                     if (!serverPlayer.viewOr && localPlayer.scale.x > 0)
                         localPlayer.scale.x *= -1;
                     else if (serverPlayer.viewOr && localPlayer.scale.x < 0)

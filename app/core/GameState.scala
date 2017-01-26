@@ -50,10 +50,10 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
       override def preSolve(contact: Contact, oldManifold: Manifold): Unit = {}
     })
     //world size boundaries
-    val upperRtCorner = new Vec2(-1.0f, -1.0f)
-    val upperLfCorner = new Vec2(-1.0f, worldSizeY)
+    val upperRtCorner = new Vec2(0, 0)
+    val upperLfCorner = new Vec2(0, worldSizeY)
 
-    val lowerRtCorner = new Vec2(worldSizeX, -1.0f)
+    val lowerRtCorner = new Vec2(worldSizeX, 0)
     val lowerLfCorner = new Vec2(worldSizeX, worldSizeY)
     val boundaries = new BodyDef()
     boundaries.position.set(0, 0)
@@ -154,22 +154,35 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
   }
 
   def applyStateChange() {
-    players.foreach(player => {
+    players.par foreach (player => {
       player match {
         case player: PlayerState => {
           val body = pBodies.get(player.playerId).get
-          player.posX = if (body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0)
-            body._1.getPosition.x
+          val posX = if ((body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0) && player.health > 0)
+            body._1.getPosition.x -> false
           else {
-            body._1.setTransform(new Vec2(worldSizeX / 2, body._1.getPosition.y), body._1.getAngle)
-            body._1.getPosition.x
+            //body._1.setTransform(new Vec2(worldSizeX / 2, body._1.getPosition.y), body._1.getAngle)
+            body._1.getPosition.x -> true
           }
-          player.posY = if (body._1.getPosition.y < worldSizeY && body._1.getPosition.y > 0)
-            body._1.getPosition.y
+          val posY = if (body._1.getPosition.y < worldSizeY && body._1.getPosition.y > 0 && player.health > 0)
+            body._1.getPosition.y -> false
           else {
             body._1.setTransform(new Vec2(body._1.getPosition.x, worldSizeY / 2), body._1.getAngle)
-            body._1.getPosition.y
+            body._1.getPosition.y -> true
           }
+
+          //check if out of bounds or dead and reset back to middle of screen
+          if (posX._2 || posY._2) {
+            body._1.setTransform(new Vec2(worldSizeX / 2, worldSizeY / 2), body._1.getAngle)
+          } else {
+            //inbounds and alive , set position
+            player.posX = posX._1
+            player.posY = posY._1
+          }
+
+          if (player.health <= 0)
+            player.resetHealth
+
           body._1.setLinearVelocity(vel0)
         }
         case _ => {
@@ -182,11 +195,11 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
         body._1.getPosition.x < 0 || body._1.getPosition.y < 0
     })
     bBodies = keep
-    bBodies.foreach(body => {
+    bBodies.par foreach (body => {
       body._2.posX = body._1.getPosition.x
       body._2.posY = body._1.getPosition.y
     })
-    delete.foreach(body => {
+    delete.par foreach (body => {
       body._1.m_world.destroyBody(body._1)
       players remove (players indexOf body._2)
     })
@@ -229,6 +242,11 @@ object GameObject {
 case class PlayerState(playerId: String, var posX: Float, var posY: Float, var viewOr: Byte, var currWpn: Short, var health: Int)
   extends GameObject {
   var immune = false
+  val _healt = health
+
+  def resetHealth {
+    health = _healt
+  }
 
   override def collide(o1: GameObject): Unit = {
     o1 match {
