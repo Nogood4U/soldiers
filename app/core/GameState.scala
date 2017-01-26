@@ -70,7 +70,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     boundBody.createFixture(boundShape, 0)
     //end of boundaries
     pBodies = players.collect {
-      case player: PlayerState => {
+      case player: PlayerState =>
         val bd = new BodyDef()
         bd.position.set(5, 5)
         bd.`type` = BodyType.DYNAMIC
@@ -86,7 +86,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
         body.createFixture(fd)
         body.setBullet(true)
         body -> player
-      }
+
     }.foldLeft(Map.empty[String, (Body, PlayerState)]) { (i, body) =>
       i + (body._1.getUserData.asInstanceOf[(String, PlayerState)]._1 -> body)
     }
@@ -127,7 +127,11 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
 
   def createProyectile(playerBody: Body, playerState: PlayerState, speedX: Short, speedY: Short) = {
     val bd = new BodyDef()
-    bd.position.set(playerBody.getPosition.x + 0.5f, playerBody.getPosition.y)
+    val (x, y) = playerState.viewOr match {
+      case 1 => (playerBody.getPosition.x + 0.5f, playerBody.getPosition.y)
+      case _ => (playerBody.getPosition.x - 0.5f, playerBody.getPosition.y)
+    }
+    bd.position.set(x, y)
     bd.`type` = BodyType.KINEMATIC
     val ps = new PolygonShape()
     ps.setAsBox(0.01f, 0.01f)
@@ -140,7 +144,11 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     bd.userData = (bulletCounter, bullet)
     val body = world.createBody(bd)
     body.createFixture(fd)
-    body.setLinearVelocity(new Vec2(speedX, 0))
+
+    body.setLinearVelocity(playerState.viewOr match {
+      case 1 => new Vec2(speedX, 0)
+      case _ => new Vec2(-speedX, 0)
+    })
     bulletCounter += 1
     body -> bullet
   }
@@ -171,12 +179,12 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     })
     val (delete, keep) = bBodies.partition(body => {
       body._2.destroy || body._1.getPosition.x > worldSizeX || body._1.getPosition.y > worldSizeY
-    });
-    bBodies = keep;
+    })
+    bBodies = keep
     bBodies.foreach(body => {
       body._2.posX = body._1.getPosition.x
       body._2.posY = body._1.getPosition.y
-    });
+    })
     delete.foreach(body => {
       body._1.m_world.destroyBody(body._1)
       players remove (players indexOf body._2)
@@ -219,7 +227,7 @@ object GameObject {
 
 case class PlayerState(playerId: String, var posX: Float, var posY: Float, var viewOr: Byte, var currWpn: Short, var health: Int)
   extends GameObject {
-  var immune = false;
+  var immune = false
 
   override def collide(o1: GameObject): Unit = {
     o1 match {
@@ -231,19 +239,19 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
 
 case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int, ownerId: String)
   extends GameObject {
-  private var isDestroy = false;
+  private var isDestroy = false
 
   def destroy = isDestroy
 
   override def collide(o: GameObject): Unit = {
     o match {
-      case player: PlayerState if (player.playerId != this.ownerId) => {
-        this.isDestroy = true;
+      case player: PlayerState if player.playerId != this.ownerId =>
+        this.isDestroy = true
         //println(s"reducing ${player.health} health by ${this.damage}")
         player.health -= this.damage
         //println(s"new health ${player.health}")
         player.immune = true
-      }
+
       case _ =>
     }
   }

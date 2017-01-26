@@ -48,7 +48,7 @@ function initGame(playerId) {
         weapon.scale.setTo(3.125, 3.125);
         weapon.frame = 0;
         weapon.fixedToCamera = true;
-        score = game.add.text(600, 0, "100%",{ font: "32px Arial", fill: "#ffffff"});
+        score = game.add.text(600, 0, "100%", {font: "32px Arial", fill: "#ffffff"});
         score.fixedToCamera = true;
         let soldierself = createPlayer(playerId);
         bitmap = this.game.add.bitmapData(1500, 1500);
@@ -68,8 +68,13 @@ function initGame(playerId) {
                     }
                     localPlayer.x = mtToPx(serverPlayer.posX);
                     localPlayer.y = mtToPx(serverPlayer.posY);
-                    if(serverPlayer.playerId === playerId){
-                        score.text = serverPlayer.health +"%";
+                    if (!serverPlayer.viewOr && localPlayer.scale.x > 0)
+                        localPlayer.scale.x *= -1;
+                    else if (serverPlayer.viewOr && localPlayer.scale.x < 0)
+                        localPlayer.scale.x *= -1;
+
+                    if (serverPlayer.playerId === playerId) {
+                        score.text = serverPlayer.health + "%";
                         switch (serverPlayer.currWpn) {
                             case 1:
                                 weapon.frame = 0;
