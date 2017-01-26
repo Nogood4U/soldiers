@@ -205,7 +205,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
       body._2.posX = body._1.getPosition.x
       body._2.posY = body._1.getPosition.y
     })
-    delete.par foreach (body => {
+    delete foreach (body => {
       body._1.m_world.destroyBody(body._1)
       players remove (players indexOf body._2)
     })
@@ -239,7 +239,7 @@ object GameObject {
       override var posY: Float = _
 
       override def collide(o: GameObject): Unit = {
-        println("dummy called..")
+
       }
     }
   }
