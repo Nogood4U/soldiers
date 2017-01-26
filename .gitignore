@@ -1,12 +1,9 @@
 logs
 target
-sbtserver
-project
 /.idea
 /.idea_modules
 /.classpath
 /.project
 /.settings
 /.target
-/.sbtserver
 /RUNNING_PID

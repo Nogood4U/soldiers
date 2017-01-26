@@ -1,0 +1,898 @@
+New log file opened at Wed Jan 25 19:09:55 COT 2017 by 9248@DESKTOP-EUGFD9N
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,sbt server socket logs are in: D:\Development\soldiers\.sbtserver\connections\master.log))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,sbt general server logs are in: D:\Development\soldiers\.sbtserver\master.log))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,sbt client logs are in: D:\Development\soldiers\.sbtserver\connections\play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7.log))
+Reading next message from client.
+Got request: ListenToEvents()
+Reading next message from client.
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: BackgroundJobStarted(4,BackgroundJobInfo(1,backgroundRun,AttributeKey[sbt.BackgroundJobHandle]("backgroundRun") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: (3,ReceivedResponse())
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: ExecutionWaiting(18,{file:/D:/Development/soldiers/}root/compile:mainClass,ClientInfo(0ddea79f-57af-4af7-b368-0d326c22e4b5,activator,Activator,3,Vector()))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: ExecutionStarting(18)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,> {file:/D:/Development/soldiers/}root/compile:mainClass))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: ExecutionWaiting(19,{file:/D:/Development/soldiers/}root/compile:discoveredMainClasses,ClientInfo(0ddea79f-57af-4af7-b368-0d326c22e4b5,activator,Activator,3,Vector()))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,Evaluating tasks: compile:mainClass))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,Running task... Cancel: sbt.server.ServerTaskCancellation@7ceb9967, check cycles: false))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,cancel strategy start enabled=true lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(18),{file:/D:/Development/soldiers/}root/compile:mainClass,Set(LiveClient(activator 0ddea79f-57af-4af7-b368-0d326c22e4b5)),sbt.server.WorkCancellationStatus$$anon$1@20be6729)))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(18,2359,Some(AttributeKey[scala.Option[java.lang.String]]("mainClass") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(18,2359,Some(AttributeKey[scala.Option[java.lang.String]]("mainClass") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(18,2358,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(18,2358,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(18,2357,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(18,2357,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,cancel strategy finish enabled=false lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(18),{file:/D:/Development/soldiers/}root/compile:mainClass,Set(LiveClient(activator 0ddea79f-57af-4af7-b368-0d326c22e4b5)),sbt.server.WorkCancellationStatus$$anon$1@20be6729)))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogSuccess(Total time: 0 s, completed Jan 25, 2017 7:09:55 PM))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,> server-post-command-cleanup))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: ExecutionSuccess(18)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,> server-handle-next-server-request))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: ExecutionStarting(19)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,> {file:/D:/Development/soldiers/}root/compile:discoveredMainClasses))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,Evaluating tasks: compile:discoveredMainClasses))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,Running task... Cancel: sbt.server.ServerTaskCancellation@54f3511d, check cycles: false))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,cancel strategy start enabled=true lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(19),{file:/D:/Development/soldiers/}root/compile:discoveredMainClasses,Set(LiveClient(activator 0ddea79f-57af-4af7-b368-0d326c22e4b5)),sbt.server.WorkCancellationStatus$$anon$1@2f6ac5f)))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2369,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2377,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2379,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2391,Some(AttributeKey[scala.Option[scala.collection.Seq[sbt.Resolver]]]("bootResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2392,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("externalResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2394,Some(AttributeKey[scala.collection.Seq[sbt.Credentials]]("credentials") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2401,Some(AttributeKey[java.lang.String]("updateCacheName") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2402,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2405,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2406,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2407,Some(AttributeKey[boolean]("skip") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2409,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2421,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2423,Some(AttributeKey[scala.Function1[java.io.File,scala.Function1[java.lang.String,boolean]]]("definesClass") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2424,Some(AttributeKey[java.lang.String]("compileAnalysisFilename") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2427,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2428,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2432,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2433,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2435,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2439,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2442,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2446,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2456,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes"))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2457,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2462,Some(AttributeKey[sbt.SendEventService]("sendEventService") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2379,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2369,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2368,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2371,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2381,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2385,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2390,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2393,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2400,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2410,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2412,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2415,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2418,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2443,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2451,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2458,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2459,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2461,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2463,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2394,Some(AttributeKey[scala.collection.Seq[sbt.Credentials]]("credentials") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2391,Some(AttributeKey[scala.Option[scala.collection.Seq[sbt.Resolver]]]("bootResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2401,Some(AttributeKey[java.lang.String]("updateCacheName") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2402,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2377,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2376,Some(AttributeKey[sbt.BuildStructure]("buildStructure") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2403,Some(AttributeKey[java.io.File]("dependencyCacheDirectory") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2422,Some(AttributeKey[xsbti.compile.GlobalsCache]("compilerCache") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2405,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2406,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2404,Some(AttributeKey[scala.collection.Seq[sbt.UpdateReport]]("transitiveUpdate") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2407,Some(AttributeKey[boolean]("skip") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2409,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2392,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("externalResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2421,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2420,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2423,Some(AttributeKey[scala.Function1[java.io.File,scala.Function1[java.lang.String,boolean]]]("definesClass") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2424,Some(AttributeKey[java.lang.String]("compileAnalysisFilename") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2427,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2428,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2426,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2432,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2433,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2431,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2435,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2439,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2442,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2456,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes"))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2457,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2455,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes"))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2462,Some(AttributeKey[sbt.SendEventService]("sendEventService") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2368,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2371,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2390,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2381,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2385,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2446,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2445,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2393,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2400,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2399,Some(AttributeKey[scala.collection.immutable.Map[sbt.ModuleID,sbt.SourcePosition]]("dependencyPositions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2410,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2412,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2415,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2418,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2443,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2451,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2459,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2458,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2461,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2403,Some(AttributeKey[java.io.File]("dependencyCacheDirectory") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2463,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2376,Some(AttributeKey[sbt.BuildStructure]("buildStructure") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2375,Some(AttributeKey[sbt.Settings[sbt.Scope]]("settingsData") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2422,Some(AttributeKey[xsbti.compile.GlobalsCache]("compilerCache") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2404,Some(AttributeKey[scala.collection.Seq[sbt.UpdateReport]]("transitiveUpdate") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2420,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2426,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2431,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2438,Some(AttributeKey[java.lang.String]("twirlSourceEncoding") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2455,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes"))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2454,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2445,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2375,Some(AttributeKey[sbt.Settings[sbt.Scope]]("settingsData") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2389,Some(AttributeKey[scala.collection.immutable.Map[org.apache.ivy.core.module.id.ModuleRevisionId,org.apache.ivy.core.module.descriptor.ModuleDescriptor]]("projectDescriptors") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2397,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("projectDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2408,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2416,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2430,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2441,Some(AttributeKey[sbt.ScalaInstance]("scalaInstance") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2438,Some(AttributeKey[java.lang.String]("twirlSourceEncoding") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2437,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2450,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2454,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2453,Some(AttributeKey[scala.collection.Seq[play.routes.compiler.RoutesCompiler$RoutesCompilerTask]]("playRoutesTasks") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2399,Some(AttributeKey[scala.collection.immutable.Map[sbt.ModuleID,sbt.SourcePosition]]("dependencyPositions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2398,Some(AttributeKey[sbt.UnresolvedWarningConfiguration]("unresolvedWarningConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Task: AttributeKey[sbt.UpdateReport]("update"))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2465,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2397,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("projectDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2396,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("allDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2466,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2471,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2473,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2474,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2476,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2437,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2436,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2479,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2450,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2449,Some(AttributeKey[scala.collection.Seq[java.io.File]]("twirlCompileTemplates") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2398,Some(AttributeKey[sbt.UnresolvedWarningConfiguration]("unresolvedWarningConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Task: AttributeKey[sbt.UpdateReport]("update"))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2465,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2464,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2396,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("allDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2395,Some(AttributeKey[sbt.ModuleSettings]("moduleSettings") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2466,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2408,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2471,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2470,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2473,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2474,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2472,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2476,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2475,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2436,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2434,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2479,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2478,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2449,Some(AttributeKey[scala.collection.Seq[java.io.File]]("twirlCompileTemplates") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2464,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2389,Some(AttributeKey[scala.collection.immutable.Map[org.apache.ivy.core.module.id.ModuleRevisionId,org.apache.ivy.core.module.descriptor.ModuleDescriptor]]("projectDescriptors") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2388,Some(AttributeKey[sbt.Resolver]("projectResolver") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2395,Some(AttributeKey[sbt.ModuleSettings]("moduleSettings") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2480,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2475,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2430,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2472,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2434,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2478,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2453,Some(AttributeKey[scala.collection.Seq[play.routes.compiler.RoutesCompiler$RoutesCompilerTask]]("playRoutesTasks") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2452,Some(AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2388,Some(AttributeKey[sbt.Resolver]("projectResolver") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2387,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("fullResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2480,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2470,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2469,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2387,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("fullResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2386,Some(AttributeKey[sbt.IvyConfiguration]("ivyConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2469,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2468,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2468,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2467,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2386,Some(AttributeKey[sbt.IvyConfiguration]("ivyConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2384,Some(AttributeKey[sbt.IvySbt]("ivySbt") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2467,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2416,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2414,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2384,Some(AttributeKey[sbt.IvySbt]("ivySbt") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2383,Some(AttributeKey[sbt.IvySbt$Module]("ivyModule") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2414,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2383,Some(AttributeKey[sbt.IvySbt$Module]("ivyModule") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2382,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2452,Some(AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2448,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2448,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2447,Some(AttributeKey[scala.collection.Seq[java.io.File]]("managedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2447,Some(AttributeKey[scala.collection.Seq[java.io.File]]("managedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2444,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2444,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2382,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2380,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2380,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2378,Some(AttributeKey[sbt.Configuration]("classpathConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2429,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2477,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2378,Some(AttributeKey[sbt.Configuration]("classpathConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2374,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2419,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2477,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2441,Some(AttributeKey[sbt.ScalaInstance]("scalaInstance") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2440,Some(AttributeKey[sbt.Compiler$Compilers]("compilers") in Scope(Global)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2429,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2483,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2484,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2419,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2417,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("managedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2483,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2484,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2482,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2440,Some(AttributeKey[sbt.Compiler$Compilers]("compilers") in Scope(Global)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2482,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2481,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2481,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2374,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2373,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("internalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2373,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("internalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2417,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("managedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2413,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2413,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2411,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("externalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2411,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("externalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2372,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2372,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2370,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("dependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2370,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("dependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2367,Some(AttributeKey[sbt.Compiler$IncSetup]("incCompileSetup") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2367,Some(AttributeKey[sbt.Compiler$IncSetup]("incCompileSetup") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2366,Some(AttributeKey[sbt.Compiler$PreviousAnalysis]("readAnalysis") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2425,Some(AttributeKey[sbt.Compiler$Inputs]("compileInputs") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile"))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2366,Some(AttributeKey[sbt.Compiler$PreviousAnalysis]("readAnalysis") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2425,Some(AttributeKey[sbt.Compiler$Inputs]("compileInputs") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile"))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2460,Some(AttributeKey[scala.Option[xsbti.Reporter]]("compilerReporter") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile"))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2460,Some(AttributeKey[scala.Option[xsbti.Reporter]]("compilerReporter") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile"))),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2365,Some(AttributeKey[sbt.compiler.IC$Result]("compileIncremental") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskLogEvent(2365,LogMessage(debug,
+Initial source changes: 
+	removed:Set()
+	added: Set()
+	modified: Set()
+Removed products: Set()
+External API changes: API Changes: Set()
+Modified binary dependencies: Set()
+Initial directly invalidated sources: Set()
+
+Sources indirectly invalidated by:
+	product: Set()
+	binary dep: Set()
+	external source: Set()))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskLogEvent(2365,LogMessage(debug,All initially invalidated sources: Set()
+))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2365,Some(AttributeKey[sbt.compiler.IC$Result]("compileIncremental") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2364,Some(AttributeKey[sbt.compiler.IC$Result]("manipulateBytecode") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2364,Some(AttributeKey[sbt.compiler.IC$Result]("manipulateBytecode") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2363,Some(AttributeKey[sbt.inc.Analysis]("compile") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2363,Some(AttributeKey[sbt.inc.Analysis]("compile") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2362,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("discoveredMainClasses") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2362,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("discoveredMainClasses") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2361,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2361,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskStarted(19,2360,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: TaskFinished(19,2360,None,true,None)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,cancel strategy finish enabled=false lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(19),{file:/D:/Development/soldiers/}root/compile:discoveredMainClasses,Set(LiveClient(activator 0ddea79f-57af-4af7-b368-0d326c22e4b5)),sbt.server.WorkCancellationStatus$$anon$1@2f6ac5f)))))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogSuccess(Total time: 0 s, completed Jan 25, 2017 7:09:55 PM))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,> server-post-command-cleanup))
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: ExecutionSuccess(19)
+Sending msg to client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7: DetachedLogEvent(LogMessage(debug,> server-handle-next-server-request))
+Client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7 closed, java.net.SocketException: Software caused connection abort: recv failed, shutting down
+Stopping client.
+Client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7 thread exiting.
+Dropping message (0,ReceivedResponse()) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionWaiting(20,{file:/D:/Development/soldiers/}root/compile:mainClass,ClientInfo(10be59c8-ceb5-425f-9d46-9a3fe4f8d0fe,activator,Activator,3,Vector())) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionStarting(20) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> {file:/D:/Development/soldiers/}root/compile:mainClass)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionWaiting(21,{file:/D:/Development/soldiers/}root/compile:discoveredMainClasses,ClientInfo(10be59c8-ceb5-425f-9d46-9a3fe4f8d0fe,activator,Activator,3,Vector())) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,Evaluating tasks: compile:mainClass)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,Running task... Cancel: sbt.server.ServerTaskCancellation@36cccaaf, check cycles: false)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,cancel strategy start enabled=true lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(20),{file:/D:/Development/soldiers/}root/compile:mainClass,Set(LiveClient(activator 10be59c8-ceb5-425f-9d46-9a3fe4f8d0fe)),sbt.server.WorkCancellationStatus$$anon$1@26ccb116))))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(20,2487,Some(AttributeKey[scala.Option[java.lang.String]]("mainClass") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(20,2487,Some(AttributeKey[scala.Option[java.lang.String]]("mainClass") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(20,2486,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(20,2486,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(20,2485,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(20,2485,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,cancel strategy finish enabled=false lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(20),{file:/D:/Development/soldiers/}root/compile:mainClass,Set(LiveClient(activator 10be59c8-ceb5-425f-9d46-9a3fe4f8d0fe)),sbt.server.WorkCancellationStatus$$anon$1@26ccb116))))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogSuccess(Total time: 0 s, completed Jan 25, 2017 7:12:29 PM)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> server-post-command-cleanup)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionSuccess(20) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> server-handle-next-server-request)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionStarting(21) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> {file:/D:/Development/soldiers/}root/compile:discoveredMainClasses)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,Evaluating tasks: compile:discoveredMainClasses)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,Running task... Cancel: sbt.server.ServerTaskCancellation@49d2d91, check cycles: false)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,cancel strategy start enabled=true lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(21),{file:/D:/Development/soldiers/}root/compile:discoveredMainClasses,Set(LiveClient(activator 10be59c8-ceb5-425f-9d46-9a3fe4f8d0fe)),sbt.server.WorkCancellationStatus$$anon$1@58643bb0))))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2497,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2505,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2507,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2519,Some(AttributeKey[scala.Option[scala.collection.Seq[sbt.Resolver]]]("bootResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2520,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("externalResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2522,Some(AttributeKey[scala.collection.Seq[sbt.Credentials]]("credentials") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2529,Some(AttributeKey[java.lang.String]("updateCacheName") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2530,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2533,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2534,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2535,Some(AttributeKey[boolean]("skip") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2537,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2549,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2551,Some(AttributeKey[scala.Function1[java.io.File,scala.Function1[java.lang.String,boolean]]]("definesClass") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2552,Some(AttributeKey[java.lang.String]("compileAnalysisFilename") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2555,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2556,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2560,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2561,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2563,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2567,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2570,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2574,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2584,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2585,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2590,Some(AttributeKey[sbt.SendEventService]("sendEventService") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2497,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2496,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2499,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2509,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2513,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2518,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2521,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2528,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2538,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2540,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2543,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2546,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2571,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2579,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2586,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2587,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2589,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2591,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2505,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2504,Some(AttributeKey[sbt.BuildStructure]("buildStructure") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2531,Some(AttributeKey[java.io.File]("dependencyCacheDirectory") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2550,Some(AttributeKey[xsbti.compile.GlobalsCache]("compilerCache") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2507,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2529,Some(AttributeKey[java.lang.String]("updateCacheName") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2522,Some(AttributeKey[scala.collection.Seq[sbt.Credentials]]("credentials") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2530,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2533,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2534,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2532,Some(AttributeKey[scala.collection.Seq[sbt.UpdateReport]]("transitiveUpdate") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2535,Some(AttributeKey[boolean]("skip") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2537,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2549,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2548,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2519,Some(AttributeKey[scala.Option[scala.collection.Seq[sbt.Resolver]]]("bootResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2551,Some(AttributeKey[scala.Function1[java.io.File,scala.Function1[java.lang.String,boolean]]]("definesClass") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2552,Some(AttributeKey[java.lang.String]("compileAnalysisFilename") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2555,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2556,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2554,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2560,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2567,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2561,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2559,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2563,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2570,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2584,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2590,Some(AttributeKey[sbt.SendEventService]("sendEventService") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2496,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2520,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("externalResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2499,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2513,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2509,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2518,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2585,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2583,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2521,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2528,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2527,Some(AttributeKey[scala.collection.immutable.Map[sbt.ModuleID,sbt.SourcePosition]]("dependencyPositions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2538,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2540,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2543,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2546,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2571,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2579,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2586,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2574,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2573,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2587,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2589,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2591,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2504,Some(AttributeKey[sbt.BuildStructure]("buildStructure") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2503,Some(AttributeKey[sbt.Settings[sbt.Scope]]("settingsData") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2550,Some(AttributeKey[xsbti.compile.GlobalsCache]("compilerCache") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2532,Some(AttributeKey[scala.collection.Seq[sbt.UpdateReport]]("transitiveUpdate") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2548,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2554,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2531,Some(AttributeKey[java.io.File]("dependencyCacheDirectory") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2559,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2566,Some(AttributeKey[java.lang.String]("twirlSourceEncoding") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2583,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2582,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2573,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2527,Some(AttributeKey[scala.collection.immutable.Map[sbt.ModuleID,sbt.SourcePosition]]("dependencyPositions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2526,Some(AttributeKey[sbt.UnresolvedWarningConfiguration]("unresolvedWarningConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Task: AttributeKey[sbt.UpdateReport]("update")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2503,Some(AttributeKey[sbt.Settings[sbt.Scope]]("settingsData") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2517,Some(AttributeKey[scala.collection.immutable.Map[org.apache.ivy.core.module.id.ModuleRevisionId,org.apache.ivy.core.module.descriptor.ModuleDescriptor]]("projectDescriptors") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2525,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("projectDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2536,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2544,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2558,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2569,Some(AttributeKey[sbt.ScalaInstance]("scalaInstance") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2566,Some(AttributeKey[java.lang.String]("twirlSourceEncoding") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2565,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2578,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2582,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2581,Some(AttributeKey[scala.collection.Seq[play.routes.compiler.RoutesCompiler$RoutesCompilerTask]]("playRoutesTasks") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2526,Some(AttributeKey[sbt.UnresolvedWarningConfiguration]("unresolvedWarningConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Task: AttributeKey[sbt.UpdateReport]("update"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2593,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2525,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("projectDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2524,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("allDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2594,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2599,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2601,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2602,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2604,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2565,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2564,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2578,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2577,Some(AttributeKey[scala.collection.Seq[java.io.File]]("twirlCompileTemplates") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2607,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2593,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2592,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2524,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("allDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2523,Some(AttributeKey[sbt.ModuleSettings]("moduleSettings") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2594,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2536,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2599,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2598,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2601,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2602,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2600,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2604,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2603,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2564,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2562,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2577,Some(AttributeKey[scala.collection.Seq[java.io.File]]("twirlCompileTemplates") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2607,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2606,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2592,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2517,Some(AttributeKey[scala.collection.immutable.Map[org.apache.ivy.core.module.id.ModuleRevisionId,org.apache.ivy.core.module.descriptor.ModuleDescriptor]]("projectDescriptors") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2516,Some(AttributeKey[sbt.Resolver]("projectResolver") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2523,Some(AttributeKey[sbt.ModuleSettings]("moduleSettings") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2608,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2600,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2603,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2558,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2562,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2606,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2581,Some(AttributeKey[scala.collection.Seq[play.routes.compiler.RoutesCompiler$RoutesCompilerTask]]("playRoutesTasks") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2580,Some(AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2516,Some(AttributeKey[sbt.Resolver]("projectResolver") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2515,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("fullResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2608,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2598,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2597,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2515,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("fullResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2514,Some(AttributeKey[sbt.IvyConfiguration]("ivyConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2597,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2596,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2514,Some(AttributeKey[sbt.IvyConfiguration]("ivyConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2512,Some(AttributeKey[sbt.IvySbt]("ivySbt") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2580,Some(AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2576,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2596,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2595,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2512,Some(AttributeKey[sbt.IvySbt]("ivySbt") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2511,Some(AttributeKey[sbt.IvySbt$Module]("ivyModule") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2576,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2575,Some(AttributeKey[scala.collection.Seq[java.io.File]]("managedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2595,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2544,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2542,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2511,Some(AttributeKey[sbt.IvySbt$Module]("ivyModule") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2510,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2575,Some(AttributeKey[scala.collection.Seq[java.io.File]]("managedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2572,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2542,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2572,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2510,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2508,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2508,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2506,Some(AttributeKey[sbt.Configuration]("classpathConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2557,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2605,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2506,Some(AttributeKey[sbt.Configuration]("classpathConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2502,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2547,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2605,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2569,Some(AttributeKey[sbt.ScalaInstance]("scalaInstance") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2568,Some(AttributeKey[sbt.Compiler$Compilers]("compilers") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2557,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2611,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2612,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2547,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2545,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("managedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2568,Some(AttributeKey[sbt.Compiler$Compilers]("compilers") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2611,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2612,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2610,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2610,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2609,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2609,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2502,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2501,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("internalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2501,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("internalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2545,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("managedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2541,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2541,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2539,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("externalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2539,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("externalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2500,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2500,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2498,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("dependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2498,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("dependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2495,Some(AttributeKey[sbt.Compiler$IncSetup]("incCompileSetup") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2495,Some(AttributeKey[sbt.Compiler$IncSetup]("incCompileSetup") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2494,Some(AttributeKey[sbt.Compiler$PreviousAnalysis]("readAnalysis") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2553,Some(AttributeKey[sbt.Compiler$Inputs]("compileInputs") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2494,Some(AttributeKey[sbt.Compiler$PreviousAnalysis]("readAnalysis") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2553,Some(AttributeKey[sbt.Compiler$Inputs]("compileInputs") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2588,Some(AttributeKey[scala.Option[xsbti.Reporter]]("compilerReporter") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2588,Some(AttributeKey[scala.Option[xsbti.Reporter]]("compilerReporter") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2493,Some(AttributeKey[sbt.compiler.IC$Result]("compileIncremental") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskLogEvent(2493,LogMessage(debug,
+Initial source changes: 
+	removed:Set()
+	added: Set()
+	modified: Set()
+Removed products: Set()
+External API changes: API Changes: Set()
+Modified binary dependencies: Set()
+Initial directly invalidated sources: Set()
+
+Sources indirectly invalidated by:
+	product: Set()
+	binary dep: Set()
+	external source: Set())) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskLogEvent(2493,LogMessage(debug,All initially invalidated sources: Set()
+)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2493,Some(AttributeKey[sbt.compiler.IC$Result]("compileIncremental") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2492,Some(AttributeKey[sbt.compiler.IC$Result]("manipulateBytecode") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2492,Some(AttributeKey[sbt.compiler.IC$Result]("manipulateBytecode") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2491,Some(AttributeKey[sbt.inc.Analysis]("compile") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2491,Some(AttributeKey[sbt.inc.Analysis]("compile") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2490,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("discoveredMainClasses") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2490,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("discoveredMainClasses") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2489,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2489,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(21,2488,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(21,2488,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,cancel strategy finish enabled=false lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(21),{file:/D:/Development/soldiers/}root/compile:discoveredMainClasses,Set(LiveClient(activator 10be59c8-ceb5-425f-9d46-9a3fe4f8d0fe)),sbt.server.WorkCancellationStatus$$anon$1@58643bb0))))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogSuccess(Total time: 0 s, completed Jan 25, 2017 7:12:29 PM)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> server-post-command-cleanup)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionSuccess(21) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> server-handle-next-server-request)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message BackgroundJobLogEvent(1,LogMessage(info,dummy called..)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message BackgroundJobLogEvent(1,LogMessage(info,dummy called..)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message BackgroundJobLogEvent(1,LogMessage(info,dummy called..)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionWaiting(22,{file:/D:/Development/soldiers/}root/compile:mainClass,ClientInfo(3f799c6c-500a-42e0-9e94-4f4b1c3585b0,activator,Activator,3,Vector())) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionStarting(22) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> {file:/D:/Development/soldiers/}root/compile:mainClass)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionWaiting(23,{file:/D:/Development/soldiers/}root/compile:discoveredMainClasses,ClientInfo(3f799c6c-500a-42e0-9e94-4f4b1c3585b0,activator,Activator,3,Vector())) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,Evaluating tasks: compile:mainClass)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,Running task... Cancel: sbt.server.ServerTaskCancellation@53464e2e, check cycles: false)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,cancel strategy start enabled=true lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(22),{file:/D:/Development/soldiers/}root/compile:mainClass,Set(LiveClient(activator 3f799c6c-500a-42e0-9e94-4f4b1c3585b0)),sbt.server.WorkCancellationStatus$$anon$1@7f836d81))))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(22,2615,Some(AttributeKey[scala.Option[java.lang.String]]("mainClass") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(22,2615,Some(AttributeKey[scala.Option[java.lang.String]]("mainClass") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(22,2614,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(22,2614,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(22,2613,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(22,2613,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,cancel strategy finish enabled=false lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(22),{file:/D:/Development/soldiers/}root/compile:mainClass,Set(LiveClient(activator 3f799c6c-500a-42e0-9e94-4f4b1c3585b0)),sbt.server.WorkCancellationStatus$$anon$1@7f836d81))))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogSuccess(Total time: 0 s, completed Jan 25, 2017 7:42:24 PM)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> server-post-command-cleanup)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionSuccess(22) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> server-handle-next-server-request)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionStarting(23) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> {file:/D:/Development/soldiers/}root/compile:discoveredMainClasses)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,Evaluating tasks: compile:discoveredMainClasses)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,Running task... Cancel: sbt.server.ServerTaskCancellation@35c5a885, check cycles: false)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,cancel strategy start enabled=true lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(23),{file:/D:/Development/soldiers/}root/compile:discoveredMainClasses,Set(LiveClient(activator 3f799c6c-500a-42e0-9e94-4f4b1c3585b0)),sbt.server.WorkCancellationStatus$$anon$1@16847d46))))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2625,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2633,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2635,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2647,Some(AttributeKey[scala.Option[scala.collection.Seq[sbt.Resolver]]]("bootResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2648,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("externalResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2650,Some(AttributeKey[scala.collection.Seq[sbt.Credentials]]("credentials") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2657,Some(AttributeKey[java.lang.String]("updateCacheName") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2658,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2661,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2662,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2663,Some(AttributeKey[boolean]("skip") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2665,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2677,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2679,Some(AttributeKey[scala.Function1[java.io.File,scala.Function1[java.lang.String,boolean]]]("definesClass") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2680,Some(AttributeKey[java.lang.String]("compileAnalysisFilename") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2683,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2684,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2688,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2689,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2691,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2695,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2698,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2702,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2712,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2713,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2718,Some(AttributeKey[sbt.SendEventService]("sendEventService") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2635,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2647,Some(AttributeKey[scala.Option[scala.collection.Seq[sbt.Resolver]]]("bootResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2650,Some(AttributeKey[scala.collection.Seq[sbt.Credentials]]("credentials") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2633,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2632,Some(AttributeKey[sbt.BuildStructure]("buildStructure") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2659,Some(AttributeKey[java.io.File]("dependencyCacheDirectory") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2678,Some(AttributeKey[xsbti.compile.GlobalsCache]("compilerCache") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2657,Some(AttributeKey[java.lang.String]("updateCacheName") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2625,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2624,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2627,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2637,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2641,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2646,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2649,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2656,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2666,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2668,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2671,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2674,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2699,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2707,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2714,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2715,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2717,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2719,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2658,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2661,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2662,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2660,Some(AttributeKey[scala.collection.Seq[sbt.UpdateReport]]("transitiveUpdate") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2663,Some(AttributeKey[boolean]("skip") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2665,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2648,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("externalResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2677,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2676,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2679,Some(AttributeKey[scala.Function1[java.io.File,scala.Function1[java.lang.String,boolean]]]("definesClass") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2680,Some(AttributeKey[java.lang.String]("compileAnalysisFilename") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2683,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2684,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2682,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2688,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2689,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2687,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2691,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2695,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2698,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2712,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2713,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2711,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2718,Some(AttributeKey[sbt.SendEventService]("sendEventService") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2632,Some(AttributeKey[sbt.BuildStructure]("buildStructure") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2631,Some(AttributeKey[sbt.Settings[sbt.Scope]]("settingsData") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2678,Some(AttributeKey[xsbti.compile.GlobalsCache]("compilerCache") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2659,Some(AttributeKey[java.io.File]("dependencyCacheDirectory") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2624,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2627,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2637,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2641,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2646,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2649,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2656,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2655,Some(AttributeKey[scala.collection.immutable.Map[sbt.ModuleID,sbt.SourcePosition]]("dependencyPositions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2666,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2668,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2671,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2674,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2699,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2707,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2714,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2715,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2717,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2719,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2660,Some(AttributeKey[scala.collection.Seq[sbt.UpdateReport]]("transitiveUpdate") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2676,Some(AttributeKey[sbt.inc.IncOptions]("incOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2682,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("javacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2702,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2701,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2687,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2694,Some(AttributeKey[java.lang.String]("twirlSourceEncoding") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2711,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2710,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2631,Some(AttributeKey[sbt.Settings[sbt.Scope]]("settingsData") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2645,Some(AttributeKey[scala.collection.immutable.Map[org.apache.ivy.core.module.id.ModuleRevisionId,org.apache.ivy.core.module.descriptor.ModuleDescriptor]]("projectDescriptors") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2653,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("projectDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2664,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2672,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2686,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2697,Some(AttributeKey[sbt.ScalaInstance]("scalaInstance") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2701,Some(AttributeKey[scala.collection.Seq[java.io.File]]("unmanagedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2694,Some(AttributeKey[java.lang.String]("twirlSourceEncoding") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2693,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2706,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2710,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2709,Some(AttributeKey[scala.collection.Seq[play.routes.compiler.RoutesCompiler$RoutesCompilerTask]]("playRoutesTasks") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2721,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2653,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("projectDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2652,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("allDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2722,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2727,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2729,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2730,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2732,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2655,Some(AttributeKey[scala.collection.immutable.Map[sbt.ModuleID,sbt.SourcePosition]]("dependencyPositions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2654,Some(AttributeKey[sbt.UnresolvedWarningConfiguration]("unresolvedWarningConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Task: AttributeKey[sbt.UpdateReport]("update")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2693,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2692,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2735,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2721,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2720,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2652,Some(AttributeKey[scala.collection.Seq[sbt.ModuleID]]("allDependencies") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2651,Some(AttributeKey[sbt.ModuleSettings]("moduleSettings") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2722,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2664,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2727,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2726,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2729,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2730,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2728,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2732,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2731,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2654,Some(AttributeKey[sbt.UnresolvedWarningConfiguration]("unresolvedWarningConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Task: AttributeKey[sbt.UpdateReport]("update"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2692,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2690,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2735,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2734,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2720,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2645,Some(AttributeKey[scala.collection.immutable.Map[org.apache.ivy.core.module.id.ModuleRevisionId,org.apache.ivy.core.module.descriptor.ModuleDescriptor]]("projectDescriptors") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2644,Some(AttributeKey[sbt.Resolver]("projectResolver") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2651,Some(AttributeKey[sbt.ModuleSettings]("moduleSettings") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2736,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2728,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2731,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2686,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2690,Some(AttributeKey[scala.collection.Seq[scala.Function1[xsbti.Position,scala.Option[xsbti.Position]]]]("sourcePositionMappers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2734,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2709,Some(AttributeKey[scala.collection.Seq[play.routes.compiler.RoutesCompiler$RoutesCompilerTask]]("playRoutesTasks") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2708,Some(AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2644,Some(AttributeKey[sbt.Resolver]("projectResolver") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2643,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("fullResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2736,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2726,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2725,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2643,Some(AttributeKey[scala.collection.Seq[sbt.Resolver]]("fullResolvers") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2642,Some(AttributeKey[sbt.IvyConfiguration]("ivyConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2725,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedJars") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2724,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2706,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2705,Some(AttributeKey[scala.collection.Seq[java.io.File]]("twirlCompileTemplates") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2642,Some(AttributeKey[sbt.IvyConfiguration]("ivyConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2640,Some(AttributeKey[sbt.IvySbt]("ivySbt") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2724,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2723,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2705,Some(AttributeKey[scala.collection.Seq[java.io.File]]("twirlCompileTemplates") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2640,Some(AttributeKey[sbt.IvySbt]("ivySbt") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2639,Some(AttributeKey[sbt.IvySbt$Module]("ivyModule") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2723,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2672,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2670,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2639,Some(AttributeKey[sbt.IvySbt$Module]("ivyModule") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2638,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2670,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("unmanagedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2708,Some(AttributeKey[scala.collection.Seq[java.io.File]]("playRoutes") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2704,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2704,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2703,Some(AttributeKey[scala.collection.Seq[java.io.File]]("managedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2703,Some(AttributeKey[scala.collection.Seq[java.io.File]]("managedSources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2700,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2700,Some(AttributeKey[scala.collection.Seq[java.io.File]]("sources") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2638,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2636,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root)))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2636,Some(AttributeKey[sbt.UpdateReport]("update") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2634,Some(AttributeKey[sbt.Configuration]("classpathConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2685,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2733,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2634,Some(AttributeKey[sbt.Configuration]("classpathConfiguration") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2630,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2675,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2685,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("scalacOptions") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2733,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2697,Some(AttributeKey[sbt.ScalaInstance]("scalaInstance") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2696,Some(AttributeKey[sbt.Compiler$Compilers]("compilers") in Scope(Global))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2739,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2740,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2675,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2673,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("managedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2739,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2740,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2738,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2696,Some(AttributeKey[sbt.Compiler$Compilers]("compilers") in Scope(Global)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2738,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2737,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2737,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2630,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2629,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("internalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2629,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("internalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2673,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("managedClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2669,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2669,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2667,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("externalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2667,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("externalDependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2628,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2628,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2626,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("dependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2626,Some(AttributeKey[scala.collection.Seq[sbt.Attributed[java.io.File]]]("dependencyClasspath") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2623,Some(AttributeKey[sbt.Compiler$IncSetup]("incCompileSetup") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2623,Some(AttributeKey[sbt.Compiler$IncSetup]("incCompileSetup") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2622,Some(AttributeKey[sbt.Compiler$PreviousAnalysis]("readAnalysis") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2681,Some(AttributeKey[sbt.Compiler$Inputs]("compileInputs") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2622,Some(AttributeKey[sbt.Compiler$PreviousAnalysis]("readAnalysis") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2681,Some(AttributeKey[sbt.Compiler$Inputs]("compileInputs") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2716,Some(AttributeKey[scala.Option[xsbti.Reporter]]("compilerReporter") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile")))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2716,Some(AttributeKey[scala.Option[xsbti.Reporter]]("compilerReporter") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile, Task: AttributeKey[sbt.inc.Analysis]("compile"))),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2621,Some(AttributeKey[sbt.compiler.IC$Result]("compileIncremental") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskLogEvent(2621,LogMessage(debug,
+Initial source changes: 
+	removed:Set()
+	added: Set()
+	modified: Set()
+Removed products: Set()
+External API changes: API Changes: Set()
+Modified binary dependencies: Set()
+Initial directly invalidated sources: Set()
+
+Sources indirectly invalidated by:
+	product: Set()
+	binary dep: Set()
+	external source: Set())) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskLogEvent(2621,LogMessage(debug,All initially invalidated sources: Set()
+)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2621,Some(AttributeKey[sbt.compiler.IC$Result]("compileIncremental") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2620,Some(AttributeKey[sbt.compiler.IC$Result]("manipulateBytecode") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2620,Some(AttributeKey[sbt.compiler.IC$Result]("manipulateBytecode") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2619,Some(AttributeKey[sbt.inc.Analysis]("compile") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2619,Some(AttributeKey[sbt.inc.Analysis]("compile") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2618,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("discoveredMainClasses") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2618,Some(AttributeKey[scala.collection.Seq[java.lang.String]]("discoveredMainClasses") in Scope(Build: file:/D:/Development/soldiers/, , Project: ProjectReference(file:/D:/Development/soldiers/,root), Config: compile)),true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2617,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2617,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskStarted(23,2616,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message TaskFinished(23,2616,None,true,None) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,cancel strategy finish enabled=false lastCommand=Some(LastCommand(CommandExecutionWork(ExecutionId(23),{file:/D:/Development/soldiers/}root/compile:discoveredMainClasses,Set(LiveClient(activator 3f799c6c-500a-42e0-9e94-4f4b1c3585b0)),sbt.server.WorkCancellationStatus$$anon$1@16847d46))))) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogSuccess(Total time: 0 s, completed Jan 25, 2017 7:42:25 PM)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> server-post-command-cleanup)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message ExecutionSuccess(23) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
+Dropping message DetachedLogEvent(LogMessage(debug,> server-handle-next-server-request)) to dead client play-fork-run-12cc68f5-faf9-460d-b257-d608b79726c7
