@@ -18,17 +18,24 @@ class GameRoom(name: String, maxPlayer: Short) extends Actor {
 
   override def receive = {
 
-    case msg@JoinGame(_, playerId, player) => {
-      players += playerId -> player
-      player ! msg
-      sender ! true
-    }
+    case msg@JoinGame(_, playerId, player) =>
+      if (started) {
+        players += playerId -> player
+        timer ! JoinInProgress(playerId, PlayerState(playerId, 0, 0, 1, 1, 100), player)
+        player ! msg
+        sender ! true
+      } else {
+        players += playerId -> player
+        player ! msg
+        sender ! true
+      }
+
 
     case cmd: PlayerCmd => timer ! cmd //maybe extra processing here ? not likely
 
     case StartRoom => if (!started) {
       timer = context.actorOf(Props(new GameTimer))
-      timer ! StartTimer(players.toList, 50, GameState(0, players.map(pl => PlayerState(pl._1, 0, 0, 1, 1,100))))
+      timer ! StartTimer(players.toList, 50, GameState(0, players.map(pl => PlayerState(pl._1, 0, 0, 1, 1, 100))))
       context.system.scheduler.schedule(4 seconds, 50 millis, timer, Update)
       started = !started
     }

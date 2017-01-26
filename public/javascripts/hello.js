@@ -105,13 +105,22 @@ function initGame(playerId) {
                 }
                 if (serverPlayer.ownerId) {
                     if (bulletsMap[serverPlayer.bulletNum]) {
-                        bulletsMap[serverPlayer.bulletNum].x = mtToPx(serverPlayer.posX);
-                        bulletsMap[serverPlayer.bulletNum].y = mtToPx(serverPlayer.posY);
+                        game.add.tween(bulletsMap[serverPlayer.bulletNum]).to(
+                            {
+                                x: mtToPx(serverPlayer.posX),
+                                y: mtToPx(serverPlayer.posY)
+                            },
+                            16,
+                            Phaser.Easing.LINEAR,
+                            true
+                        )
+                        /* bulletsMap[serverPlayer.bulletNum].x = mtToPx(serverPlayer.posX);
+                         bulletsMap[serverPlayer.bulletNum].y = mtToPx(serverPlayer.posY);*/
                     } else {
                         let bullet = bullets.getFirstExists(false);
                         if (bullet) {
                             //  Grab the first bullet we can from the pool
-                            bullet.reset(mtToPx(serverPlayer.posX), mtToPx(serverPlayer.posY) + 8);
+                            bullet.reset(mtToPx(serverPlayer.posX), mtToPx(serverPlayer.posY));
                             bullet.x = mtToPx(serverPlayer.posX);
                             bullet.y = mtToPx(serverPlayer.posY);
                             bulletsMap[serverPlayer.bulletNum] = bullet;

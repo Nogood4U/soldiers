@@ -3,18 +3,19 @@ package controllers
 import javax.inject._
 
 import actors._
+import akka.actor.Status.Failure
 import akka.actor.{ActorRef, ActorSystem}
 import play.api.mvc._
 
 import scala.concurrent.duration._
-import akka.pattern.ask
+import akka.pattern.{AskTimeoutException, ask}
 import akka.stream.{Materializer, OverflowStrategy}
 import akka.stream.scaladsl.{Flow, Keep, Sink, Source}
 import akka.util.Timeout
 import core.AppState
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ExecutionContext, Future}
 
 /**
   * This controller creates an `Action` to handle HTTP requests to the
@@ -48,11 +49,17 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
   }
 
   def joinGame(serverId: String, playerId: String, gameId: String) = Action.async {
-    for {
+    (for {
       server <- system.actorSelection("/user/" + s"$serverId").resolveOne()
-      player <- server ? GetPlayer(playerId)
-      resp <- server ? JoinGame(gameId, playerId,player.asInstanceOf[ActorRef])
-    } yield Created(resp.asInstanceOf[Boolean].toString)
+      player <- (server ? GetPlayer(playerId)).mapTo[ActorRef]
+      resp <- server ? JoinGame(gameId, playerId, player)
+    } yield {
+      resp match {
+        case e: Boolean => Ok(e.toString)
+      }
+    }) recover {
+      case e => Ok("false err")
+    }
   }
 
   def startGame(serverId: String, gameId: String) = Action.async {
@@ -85,7 +92,7 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
             case _ =>
           }
       }
-      Either.cond(true, Flow.fromSinkAndSource(in, Source.fromPublisher(actor._2)), Forbidden)
+      Either.cond(test = true, Flow.fromSinkAndSource(in, Source.fromPublisher(actor._2)), Forbidden)
     }
 
 

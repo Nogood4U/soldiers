@@ -51,7 +51,7 @@ class GameServer extends Actor {
         elm._2 forward msg
       }
       case None => {
-        sender ! null
+        sender ! false
       }
     }
   }

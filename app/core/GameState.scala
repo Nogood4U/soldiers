@@ -9,6 +9,7 @@ import org.jbox2d.dynamics._
 import org.jbox2d.dynamics.contacts.Contact
 import play.api.libs.json.{JsValue, Json, Writes}
 
+import scala.collection.mutable.HashMap
 import scala.collection.mutable.ListBuffer
 
 /**
@@ -20,7 +21,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
   val world = new World(gravity)
   val velocityIterations = 6
   val positionIterations = 2
-  var pBodies: Map[String, (Body, PlayerState)] = Map.empty
+  var pBodies: HashMap[String, (Body, PlayerState)] = HashMap.empty
   var bBodies: ListBuffer[(Body, Bullet)] = ListBuffer.empty
   val worldSizeX = 20
   val worldSizeY = 15
@@ -33,8 +34,8 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
       override def endContact(contact: Contact): Unit = {}
 
       override def beginContact(contact: Contact): Unit = {
-        val object1 = exctractGameObject(contact.getFixtureA.getBody.getUserData())
-        val object2 = exctractGameObject(contact.getFixtureB.getBody.getUserData())
+        val object1 = exctractGameObject(contact.getFixtureA.getBody.getUserData)
+        val object2 = exctractGameObject(contact.getFixtureB.getBody.getUserData)
         object1.collide(object2)
         //  println(s"object ${contact.getFixtureA.getBody.getUserData} colided with ${contact.getFixtureB.getBody.getUserData}")
       }
@@ -71,29 +72,39 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     //end of boundaries
     pBodies = players.collect {
       case player: PlayerState =>
-        val bd = new BodyDef()
-        bd.position.set(5, 5)
-        bd.`type` = BodyType.DYNAMIC
-        bd.userData = (player.playerId, player)
-        val ps = new PolygonShape()
-        ps.setAsBox(0.5f, 0.5f)
-        val fd = new FixtureDef()
-        fd.shape = ps
-        fd.density = 0.0f
-        fd.friction = 0.0f
-        fd.restitution = 0.0f
-        val body = world.createBody(bd)
-        body.createFixture(fd)
-        body.setBullet(true)
-        body -> player
-
-    }.foldLeft(Map.empty[String, (Body, PlayerState)]) { (i, body) =>
-      i + (body._1.getUserData.asInstanceOf[(String, PlayerState)]._1 -> body)
+        createPlayer(player)
+    }.foldLeft(HashMap.empty[String, (Body, PlayerState)]) { (i, body) =>
+      i += (body._1.getUserData.asInstanceOf[(String, PlayerState)]._1 -> body)
     }
   }
 
+  def createPlayer(playerState: PlayerState): (Body, PlayerState) = {
+    val bd = new BodyDef()
+    bd.position.set(5, 5)
+    bd.`type` = BodyType.DYNAMIC
+    bd.userData = (playerState.playerId, playerState)
+    val ps = new PolygonShape()
+    ps.setAsBox(0.5f, 0.5f)
+    val fd = new FixtureDef()
+    fd.shape = ps
+    fd.density = 0.0f
+    fd.friction = 0.0f
+    fd.restitution = 0.0f
+    val body = world.createBody(bd)
+    body.createFixture(fd)
+    body.setBullet(true)
+    body -> playerState
+  }
+
+  def createPlayer(playerState: PlayerState, jip: Boolean): (Body, PlayerState) = {
+    val (body, _) = createPlayer(playerState)
+    if (jip) this.players += playerState
+    if (jip) pBodies += playerState.playerId -> (body, playerState)
+    body -> playerState
+  }
+
   def applyCommand(playerCmd: PlayerCmd) {
-    //aply movement
+    //apply movement
     val vec = new Vec2(playerCmd.cmd.xMv, playerCmd.cmd.yMv)
     val body = pBodies.get(playerCmd.playerId).get
     body._1.applyLinearImpulse(vec, body._1.getLocalCenter)
@@ -111,7 +122,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
         }
       }
       if (btn.equals("fire")) {
-        val bullet = createProyectile(body._1, body._2, 60, 0)
+        val bullet = createProjectile(body._1, body._2, 60, 0)
         bBodies += bullet
         players += bullet._2
       }
@@ -125,7 +136,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     applyStateChange()
   }
 
-  def createProyectile(playerBody: Body, playerState: PlayerState, speedX: Short, speedY: Short) = {
+  def createProjectile(playerBody: Body, playerState: PlayerState, speedX: Short, speedY: Short): (Body, Bullet) = {
     val bd = new BodyDef()
     val (x, y) = playerState.viewOr match {
       case 1 => (playerBody.getPosition.x + 0.5f, playerBody.getPosition.y)
@@ -154,46 +165,41 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
   }
 
   def applyStateChange() {
-    players.par foreach (player => {
-      player match {
-        case player: PlayerState => {
-          val body = pBodies.get(player.playerId).get
-          val posX = if ((body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0) && player.health > 0)
-            body._1.getPosition.x -> false
-          else {
-            //body._1.setTransform(new Vec2(worldSizeX / 2, body._1.getPosition.y), body._1.getAngle)
-            body._1.getPosition.x -> true
-          }
-          val posY = if (body._1.getPosition.y < worldSizeY && body._1.getPosition.y > 0 && player.health > 0)
-            body._1.getPosition.y -> false
-          else {
-            body._1.setTransform(new Vec2(body._1.getPosition.x, worldSizeY / 2), body._1.getAngle)
-            body._1.getPosition.y -> true
-          }
-
-          //check if out of bounds or dead and reset back to middle of screen
-          if (posX._2 || posY._2) {
-            body._1.setTransform(new Vec2(worldSizeX / 2, worldSizeY / 2), body._1.getAngle)
-          } else {
-            //inbounds and alive , set position
-            player.posX = posX._1
-            player.posY = posY._1
-          }
-
-          if (player.health <= 0)
-            player.resetHealth
-
-          body._1.setLinearVelocity(vel0)
+    players.par foreach {
+      case player: PlayerState =>
+        val body = pBodies.get(player.playerId).get
+        val posX = if ((body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0) && player.health > 0)
+          body._1.getPosition.x -> false
+        else {
+          //body._1.setTransform(new Vec2(worldSizeX / 2, body._1.getPosition.y), body._1.getAngle)
+          body._1.getPosition.x -> true
         }
-        case _ => {
+        val posY = if (body._1.getPosition.y < worldSizeY && body._1.getPosition.y > 0 && player.health > 0)
+          body._1.getPosition.y -> false
+        else {
+          body._1.setTransform(new Vec2(body._1.getPosition.x, worldSizeY / 2), body._1.getAngle)
+          body._1.getPosition.y -> true
         }
-      }
+        //check if out of bounds or dead and reset back to middle of screen
+        if (posX._2 || posY._2) {
+          body._1.setTransform(new Vec2(worldSizeX / 2, worldSizeY / 2), body._1.getAngle)
+        } else {
+          //inbounds and alive , set position
+          player.posX = posX._1
+          player.posY = posY._1
+        }
 
-    })
-    val (delete, keep) = bBodies.partition(body => {
+        if (player.health <= 0)
+          player.resetHealth()
+
+        body._1.setLinearVelocity(vel0)
+
+      case _ =>
+    }
+    val (delete, keep) = bBodies.partition(body =>
       body._2.destroy || body._1.getPosition.x > worldSizeX || body._1.getPosition.y > worldSizeY ||
         body._1.getPosition.x < 0 || body._1.getPosition.y < 0
-    })
+    )
     bBodies = keep
     bBodies.par foreach (body => {
       body._2.posX = body._1.getPosition.x
@@ -244,7 +250,7 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
   var immune = false
   val _healt = health
 
-  def resetHealth {
+  def resetHealth() {
     health = _healt
   }
 
@@ -260,7 +266,7 @@ case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int,
   extends GameObject {
   private var isDestroy = false
 
-  def destroy = isDestroy
+  def destroy(): Boolean = isDestroy
 
   override def collide(o: GameObject): Unit = {
     o match {
