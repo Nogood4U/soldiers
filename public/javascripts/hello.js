@@ -27,6 +27,7 @@ function createPlayer(_playerId) {
     soldier.anchor.setTo(0.5, 0.5);
     soldier.animations.add("r", [17, 18, 19, 20, 21, 22]);
     soldier.animations.play('r', 9, true);
+    //soldier.tween = game.add.tween(soldier);
     players[_playerId] = soldier;
     return soldier;
 }
@@ -66,8 +67,17 @@ function initGame(playerId) {
                     if (!localPlayer) {
                         localPlayer = createPlayer(serverPlayer.playerId);
                     }
-                    localPlayer.x = mtToPx(serverPlayer.posX);
-                    localPlayer.y = mtToPx(serverPlayer.posY);
+                    game.add.tween(localPlayer).to(
+                        {
+                            x: mtToPx(serverPlayer.posX),
+                            y: mtToPx(serverPlayer.posY)
+                        },
+                        16,
+                        Phaser.Easing.LINEAR,
+                        true
+                    );
+                    /*localPlayer.x = mtToPx(serverPlayer.posX);
+                     localPlayer.y = mtToPx(serverPlayer.posY);*/
                     if (!serverPlayer.viewOr && localPlayer.scale.x > 0)
                         localPlayer.scale.x *= -1;
                     else if (serverPlayer.viewOr && localPlayer.scale.x < 0)
@@ -89,8 +99,6 @@ function initGame(playerId) {
                     }
                 }
                 if (serverPlayer.ownerId) {
-
-
                     if (bulletsMap[serverPlayer.bulletNum]) {
                         bulletsMap[serverPlayer.bulletNum].x = mtToPx(serverPlayer.posX);
                         bulletsMap[serverPlayer.bulletNum].y = mtToPx(serverPlayer.posY);
@@ -148,9 +156,7 @@ function initGame(playerId) {
         bullets.setAll('anchor.y', 1);
         bullets.setAll('outOfBoundsKill', true);
         bullets.setAll('checkWorldBounds', true);
-
     };
-
 
     let update = function () {
         let btns = [];
@@ -169,7 +175,6 @@ function initGame(playerId) {
             commands.yMv = 10;
             send = true;
         }
-
         if (cursors.left.isDown) {
             commands.xMv = -10;
             send = true;
@@ -178,26 +183,9 @@ function initGame(playerId) {
             commands.xMv = 10;
             send = true;
         }
-
-
-        if (fireButton.isDown) {
-            send = true;
-            bitmap.context.clearRect(0, 0, 1500, 1500);
-            bitmap.context.globalAlpha = 0.3;
-            bitmap.context.fillStyle = 'rgba(255, 255, 255, 0.5)';
-            for (var i = 0; i < 700; i++) {
-                bitmap.context.fillRect(players[playerId].x + players[playerId].width / 2 + i + 15, players[playerId].y, 3, 3);
-            }
-
-            bitmap.dirty = true;
-        } else {
-            bitmap.context.clearRect(0, 0, 1500, 1500);
-            bitmap.dirty = true;
-        }
         commands.btns = btns;
         if (_server.ws.readyState === 1 && send)
             _server.ws.send(JSON.stringify(commands));
-
         // game.debug.cameraInfo(game.camera, 32, 32);
         game.debug.spriteInfo(players[playerId], 32, 32);
         game.debug.text(game.time.fps || '--', 13, 200, "#00ff00");

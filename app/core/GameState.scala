@@ -158,13 +158,13 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
       player match {
         case player: PlayerState => {
           val body = pBodies.get(player.playerId).get
-          player.posX = if (body._1.getPosition.x < worldSizeX)
+          player.posX = if (body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0)
             body._1.getPosition.x
           else {
             body._1.setTransform(new Vec2(worldSizeX / 2, body._1.getPosition.y), body._1.getAngle)
             body._1.getPosition.x
           }
-          player.posY = if (body._1.getPosition.y < worldSizeY)
+          player.posY = if (body._1.getPosition.y < worldSizeY && body._1.getPosition.y > 0)
             body._1.getPosition.y
           else {
             body._1.setTransform(new Vec2(body._1.getPosition.x, worldSizeY / 2), body._1.getAngle)
@@ -178,7 +178,8 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
 
     })
     val (delete, keep) = bBodies.partition(body => {
-      body._2.destroy || body._1.getPosition.x > worldSizeX || body._1.getPosition.y > worldSizeY
+      body._2.destroy || body._1.getPosition.x > worldSizeX || body._1.getPosition.y > worldSizeY ||
+        body._1.getPosition.x < 0 || body._1.getPosition.y < 0
     })
     bBodies = keep
     bBodies.foreach(body => {
