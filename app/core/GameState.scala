@@ -164,7 +164,10 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     body -> bullet
   }
 
-  def applyStateChange() {
+  def applyStateChange() {/*
+  this should return events , such as , playerA just died , playerB killed PlayerA
+  ,with some statistic data ioe:5 bullets fire by playerA, power up picked up by playerB
+  */
     players.par foreach {
       case player: PlayerState =>
         val body = pBodies.get(player.playerId).get
@@ -237,7 +240,6 @@ object GameObject {
     new GameObject {
       override var posX: Float = _
       override var posY: Float = _
-
       override def collide(o: GameObject): Unit = {
 
       }

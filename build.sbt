@@ -1,3 +1,12 @@
+import play.sbt.PlayScala
+import sbtprotobuf.{ProtobufPlugin => PB}
+
+PB.protobufSettings
+
+sourceDirectory in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core" / "proto").value
+unmanagedResourceDirectories in Compile += (sourceDirectory in PB.protobufConfig).value
+javaSource in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core" / "generated").value
+cleanFiles += (javaSource in PB.protobufConfig).value
 name := """soldiers"""
 
 version := "1.0"
@@ -15,6 +24,11 @@ libraryDependencies ++= Seq(
 
 // https://mvnrepository.com/artifact/org.jbox2d/jbox2d-library
 libraryDependencies += "org.jbox2d" % "jbox2d-library" % "2.2.1.1"
+libraryDependencies += "com.google.protobuf" % "protobuf-java" % (version in PB.protobufConfig).value
+
 
 
 fork in run := true
+
+
+
