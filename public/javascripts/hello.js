@@ -40,6 +40,7 @@ function initGame(playerId) {
         game.load.spritesheet('weapons', '/assets/images/sprites/weapons.png', 24, 24);
         game.load.spritesheet('bullet', '/assets/images/sprites/bullet.png', 19, 19);
         game.load.image('background', '/assets/images/background/bg.jpg');
+        game.load.audio('map', ['assets/music/Mercury.mp3', 'assets/audio/Mercury.ogg']);
 
         _server = server("server", playerId);
 
@@ -167,9 +168,9 @@ function initGame(playerId) {
         bullets = game.add.group();
         bullets.createMultiple(50, 'bullet');
         bullets.setAll('anchor.x', 0.5);
-        bullets.setAll('anchor.y', 1);
-        bullets.setAll('outOfBoundsKill', true);
-        bullets.setAll('checkWorldBounds', true);
+        bullets.setAll('anchor.y', 0.5);
+        music = game.add.audio('map');
+        music.play();
     };
 
     let update = function () {
