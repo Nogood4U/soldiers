@@ -12,9 +12,10 @@ import akka.pattern.{AskTimeoutException, ask}
 import akka.stream.{Materializer, OverflowStrategy}
 import akka.stream.scaladsl.{Flow, Keep, Sink, Source}
 import akka.util.Timeout
-import core.AppState
+import core.{AppState, Bullet, GameState, PlayerState}
+import game.core.ProtoGameState
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
-
+import collection.JavaConverters._
 import scala.concurrent.{ExecutionContext, Future}
 
 /**
@@ -37,7 +38,7 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
     Ok(views.html.index("Your new application is ready."))
   }
 
-  def socket(serverId: String, gameId: String) = WebSocket.acceptOrResult[JsValue, JsValue] { request =>
+  def socket(serverId: String, gameId: String) = WebSocket.acceptOrResult[JsValue, Array[Byte]] { request =>
     createSocket(serverId, gameId)
   }
 
@@ -78,8 +79,8 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
       resp <- server ? GetPlayer(playerId)
     } yield {
       val player = resp.asInstanceOf[ActorRef]
-      val source = Source.actorRef(100, OverflowStrategy.dropTail)
-      val sink = Sink.asPublisher(false)
+      val source = Source.actorRef[GameState](100, OverflowStrategy.dropTail)
+      val sink = Sink.asPublisher[GameState](false)
 
       val actor = source.toMat(sink)(Keep.both) run
 
@@ -92,7 +93,38 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
             case _ =>
           }
       }
-      Either.cond(test = true, Flow.fromSinkAndSource(in, Source.fromPublisher(actor._2)), Forbidden)
+      val protobuffedSource = Source.fromPublisher(actor._2).map {
+        _ match {
+          case state@GameState(stateTime, players) =>
+            val stateBuilder = ProtoGameState.State
+              .newBuilder()
+              .setStateTime(stateTime);
+            val (playerStates, bullets) = players.partition {
+              case e: PlayerState => true
+              case e: Bullet => false
+            }
+            stateBuilder.addAllPlayers(playerStates.map(_.asInstanceOf[PlayerState]).map(ps => {
+              ProtoGameState.State.Player.newBuilder()
+                .setPlayerId(ps.playerId)
+                .setPosX(ps.posX)
+                .setPosY(ps.posY)
+                .setViewOr(ps.viewOr)
+                .setCurrWpn(ps.currWpn)
+                .setHealth(ps.health).build()
+            }).asJava)
+            stateBuilder.addAllBullets(bullets.map(_.asInstanceOf[Bullet]).map(bs => {
+              ProtoGameState.State.Bullet.newBuilder()
+                .setOwnerId(bs.ownerId)
+                .setPosX(bs.posX)
+                .setPosY(bs.posY)
+                .setDamage(bs.damage)
+                .setBulletNum(bs.bulletNum)
+                .build()
+            }).asJava)
+            stateBuilder.build().toByteArray
+        }
+      }
+      Either.cond(test = true, Flow.fromSinkAndSource(in, protobuffedSource), Forbidden)
     }
 
 

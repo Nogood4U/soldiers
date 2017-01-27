@@ -994,14 +994,9 @@ public final class ProtoGameState {
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>optional string bulletNum = 1;</code>
+       * <code>optional int32 bulletNum = 1;</code>
        */
-      java.lang.String getBulletNum();
-      /**
-       * <code>optional string bulletNum = 1;</code>
-       */
-      com.google.protobuf.ByteString
-          getBulletNumBytes();
+      int getBulletNum();
 
       /**
        * <code>optional float posX = 2;</code>
@@ -1040,7 +1035,7 @@ public final class ProtoGameState {
         super(builder);
       }
       private Bullet() {
-        bulletNum_ = "";
+        bulletNum_ = 0;
         posX_ = 0F;
         posY_ = 0F;
         damage_ = 0;
@@ -1072,10 +1067,9 @@ public final class ProtoGameState {
                 }
                 break;
               }
-              case 10: {
-                java.lang.String s = input.readStringRequireUtf8();
+              case 8: {
 
-                bulletNum_ = s;
+                bulletNum_ = input.readInt32();
                 break;
               }
               case 21: {
@@ -1123,37 +1117,12 @@ public final class ProtoGameState {
       }
 
       public static final int BULLETNUM_FIELD_NUMBER = 1;
-      private volatile java.lang.Object bulletNum_;
+      private int bulletNum_;
       /**
-       * <code>optional string bulletNum = 1;</code>
+       * <code>optional int32 bulletNum = 1;</code>
        */
-      public java.lang.String getBulletNum() {
-        java.lang.Object ref = bulletNum_;
-        if (ref instanceof java.lang.String) {
-          return (java.lang.String) ref;
-        } else {
-          com.google.protobuf.ByteString bs = 
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          bulletNum_ = s;
-          return s;
-        }
-      }
-      /**
-       * <code>optional string bulletNum = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getBulletNumBytes() {
-        java.lang.Object ref = bulletNum_;
-        if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          bulletNum_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
+      public int getBulletNum() {
+        return bulletNum_;
       }
 
       public static final int POSX_FIELD_NUMBER = 2;
@@ -1229,8 +1198,8 @@ public final class ProtoGameState {
 
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        if (!getBulletNumBytes().isEmpty()) {
-          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, bulletNum_);
+        if (bulletNum_ != 0) {
+          output.writeInt32(1, bulletNum_);
         }
         if (posX_ != 0F) {
           output.writeFloat(2, posX_);
@@ -1251,8 +1220,9 @@ public final class ProtoGameState {
         if (size != -1) return size;
 
         size = 0;
-        if (!getBulletNumBytes().isEmpty()) {
-          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, bulletNum_);
+        if (bulletNum_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(1, bulletNum_);
         }
         if (posX_ != 0F) {
           size += com.google.protobuf.CodedOutputStream
@@ -1285,8 +1255,8 @@ public final class ProtoGameState {
         game.core.ProtoGameState.State.Bullet other = (game.core.ProtoGameState.State.Bullet) obj;
 
         boolean result = true;
-        result = result && getBulletNum()
-            .equals(other.getBulletNum());
+        result = result && (getBulletNum()
+            == other.getBulletNum());
         result = result && (
             java.lang.Float.floatToIntBits(getPosX())
             == java.lang.Float.floatToIntBits(
@@ -1310,7 +1280,7 @@ public final class ProtoGameState {
         int hash = 41;
         hash = (19 * hash) + getDescriptorForType().hashCode();
         hash = (37 * hash) + BULLETNUM_FIELD_NUMBER;
-        hash = (53 * hash) + getBulletNum().hashCode();
+        hash = (53 * hash) + getBulletNum();
         hash = (37 * hash) + POSX_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getPosX());
@@ -1439,7 +1409,7 @@ public final class ProtoGameState {
         }
         public Builder clear() {
           super.clear();
-          bulletNum_ = "";
+          bulletNum_ = 0;
 
           posX_ = 0F;
 
@@ -1517,9 +1487,8 @@ public final class ProtoGameState {
 
         public Builder mergeFrom(game.core.ProtoGameState.State.Bullet other) {
           if (other == game.core.ProtoGameState.State.Bullet.getDefaultInstance()) return this;
-          if (!other.getBulletNum().isEmpty()) {
-            bulletNum_ = other.bulletNum_;
-            onChanged();
+          if (other.getBulletNum() != 0) {
+            setBulletNum(other.getBulletNum());
           }
           if (other.getPosX() != 0F) {
             setPosX(other.getPosX());
@@ -1560,71 +1529,28 @@ public final class ProtoGameState {
           return this;
         }
 
-        private java.lang.Object bulletNum_ = "";
+        private int bulletNum_ ;
         /**
-         * <code>optional string bulletNum = 1;</code>
+         * <code>optional int32 bulletNum = 1;</code>
          */
-        public java.lang.String getBulletNum() {
-          java.lang.Object ref = bulletNum_;
-          if (!(ref instanceof java.lang.String)) {
-            com.google.protobuf.ByteString bs =
-                (com.google.protobuf.ByteString) ref;
-            java.lang.String s = bs.toStringUtf8();
-            bulletNum_ = s;
-            return s;
-          } else {
-            return (java.lang.String) ref;
-          }
+        public int getBulletNum() {
+          return bulletNum_;
         }
         /**
-         * <code>optional string bulletNum = 1;</code>
+         * <code>optional int32 bulletNum = 1;</code>
          */
-        public com.google.protobuf.ByteString
-            getBulletNumBytes() {
-          java.lang.Object ref = bulletNum_;
-          if (ref instanceof String) {
-            com.google.protobuf.ByteString b = 
-                com.google.protobuf.ByteString.copyFromUtf8(
-                    (java.lang.String) ref);
-            bulletNum_ = b;
-            return b;
-          } else {
-            return (com.google.protobuf.ByteString) ref;
-          }
-        }
-        /**
-         * <code>optional string bulletNum = 1;</code>
-         */
-        public Builder setBulletNum(
-            java.lang.String value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  
+        public Builder setBulletNum(int value) {
+          
           bulletNum_ = value;
           onChanged();
           return this;
         }
         /**
-         * <code>optional string bulletNum = 1;</code>
+         * <code>optional int32 bulletNum = 1;</code>
          */
         public Builder clearBulletNum() {
           
-          bulletNum_ = getDefaultInstance().getBulletNum();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional string bulletNum = 1;</code>
-         */
-        public Builder setBulletNumBytes(
-            com.google.protobuf.ByteString value) {
-          if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-          
-          bulletNum_ = value;
+          bulletNum_ = 0;
           onChanged();
           return this;
         }
@@ -2871,7 +2797,7 @@ public final class ProtoGameState {
       "core.State.Bullet\032g\n\006Player\022\020\n\010playerId\030" +
       "\001 \001(\t\022\014\n\004posX\030\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022\016\n\006vie" +
       "wOr\030\004 \001(\005\022\017\n\007currWpn\030\005 \001(\005\022\016\n\006health\030\006 \001" +
-      "(\005\032X\n\006Bullet\022\021\n\tbulletNum\030\001 \001(\t\022\014\n\004posX\030" +
+      "(\005\032X\n\006Bullet\022\021\n\tbulletNum\030\001 \001(\005\022\014\n\004posX\030" +
       "\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022\016\n\006damage\030\004 \001(\005\022\017\n\007o" +
       "wnerId\030\007 \001(\tB\020B\016ProtoGameStateb\006proto3"
     };

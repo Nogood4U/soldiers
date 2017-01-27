@@ -29,6 +29,8 @@ function createPlayer(_playerId) {
     soldier.animations.play('r', 9, true);
     soldier.health = game.add.text(0, 0, "100%", {font: "11px Arial", fill: "#ffffff"});
     soldier.health.anchor.set(0.5);
+    soldier.nameTag = game.add.text(0, 0, _playerId, {font: "15px Arial", fill: "#ffffff"});
+    soldier.nameTag.anchor.set(0.5);
     //soldier.addChild(soldier.health)
     players[_playerId] = soldier;
     return soldier;
@@ -39,9 +41,9 @@ function initGame(playerId) {
         game.load.spritesheet('soldierSelf', '/assets/images/sprites/soldierGun.png', 16, 16);
         game.load.spritesheet('weapons', '/assets/images/sprites/weapons.png', 24, 24);
         game.load.spritesheet('bullet', '/assets/images/sprites/bullet.png', 19, 19);
-        game.load.image('background', '/assets/images/background/bg.jpg');
+        game.load.image('background', '/assets/images/background/back_3.png');
         game.load.audio('map', ['assets/music/Mercury.mp3', 'assets/audio/Mercury.ogg']);
-
+        game.load.audio('fire', ['assets/music/laser.mp3', 'assets/audio/laser.ogg']);
         _server = server("server", playerId);
 
     };
@@ -83,6 +85,15 @@ function initGame(playerId) {
                         Phaser.Easing.LINEAR,
                         true
                     );
+                    game.add.tween(localPlayer.nameTag).to(
+                        {
+                            x: mtToPx(serverPlayer.posX),
+                            y: mtToPx(serverPlayer.posY) - localPlayer.height / 2 - 15
+                        },
+                        16,
+                        Phaser.Easing.LINEAR,
+                        true
+                    );
                     localPlayer.health.text = serverPlayer.health + "%";
                     if (!serverPlayer.viewOr && localPlayer.scale.x > 0)
                         localPlayer.scale.x *= -1;
@@ -114,7 +125,7 @@ function initGame(playerId) {
                             16,
                             Phaser.Easing.LINEAR,
                             true
-                        )
+                        );
                         /* bulletsMap[serverPlayer.bulletNum].x = mtToPx(serverPlayer.posX);
                          bulletsMap[serverPlayer.bulletNum].y = mtToPx(serverPlayer.posY);*/
                     } else {
@@ -159,6 +170,7 @@ function initGame(playerId) {
             if (game.input.keyboard.event.keyCode == Phaser.Keyboard.SPACEBAR) {
                 btns.push("fire");
                 send = true;
+                gunFire.play();
             }
             commands.btns = btns;
             if (_server.ws.readyState === 1 && send)
@@ -170,7 +182,9 @@ function initGame(playerId) {
         bullets.setAll('anchor.x', 0.5);
         bullets.setAll('anchor.y', 0.5);
         music = game.add.audio('map');
-        music.play();
+        gunFire = game.add.audio('fire');
+        gunFire.volume = 0.3;
+        music.loopFull(0.9);
     };
 
     let update = function () {

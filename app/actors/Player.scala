@@ -26,7 +26,7 @@ class Player(id: String) extends Actor {
     case SocketActor(sa) => {
       socketActor = sa
     }
-    case msg@GameUpdate(state) => if (socketActor != null) socketActor ! Json.toJson[GameState](state)
+    case msg@GameUpdate(state) => if (socketActor != null) socketActor ! state
   }
 }
 

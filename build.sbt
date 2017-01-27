@@ -7,6 +7,10 @@ sourceDirectory in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core"
 unmanagedResourceDirectories in Compile += (sourceDirectory in PB.protobufConfig).value
 javaSource in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core" / "generated").value
 cleanFiles += (javaSource in PB.protobufConfig).value
+
+
+val cleanAllProtoCompiled = sbt.Defaults.doClean(Seq((javaSource in PB.protobufConfig).value), Seq())
+
 name := """soldiers"""
 
 version := "1.0"

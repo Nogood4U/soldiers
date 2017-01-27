@@ -17,7 +17,7 @@ message State {
     }
     repeated Player players = 7;
     message Bullet {
-        string bulletNum = 1;
+        int32 bulletNum = 1;
         float posX = 2;
         float posY = 3;
         int32 damage = 4;
