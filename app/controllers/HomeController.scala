@@ -15,8 +15,10 @@ import akka.util.Timeout
 import core.{AppState, Bullet, GameState, PlayerState}
 import game.core.ProtoGameState
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
-import collection.JavaConverters._
 import scala.concurrent.{ExecutionContext, Future}
+import play.api.mvc.WebSocket.MessageFlowTransformer
+import scala.collection.JavaConverters._
+
 
 /**
   * This controller creates an `Action` to handle HTTP requests to the
@@ -27,6 +29,7 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
 
   implicit val timeout = Timeout(2 seconds)
   implicit val cmdReads = Json.reads[Command]
+  implicit val messageFlowTransformer = MessageFlowTransformer.jsonMessageFlowTransformer[JsValue, Array[Byte]]
 
   /**
     * Create an Action to render an HTML page with a welcome message.

@@ -10,10 +10,6 @@ import play.api.libs.json.{JsValue, Json}
   */
 class Player(id: String) extends Actor {
 
-  implicit val cmdReads = Json.writes[Command]
-  implicit val playerCmdWrites = Json.writes[PlayerCmd]
-  implicit val gameStWrites = Json.writes[GameState]
-
   var socketActor: ActorRef = _
   var roomActor: ActorRef = _
 

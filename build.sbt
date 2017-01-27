@@ -1,15 +1,18 @@
-import play.sbt.PlayScala
+import play.sbt.{PlayCommands, PlayScala}
 import sbtprotobuf.{ProtobufPlugin => PB}
 
 PB.protobufSettings
 
 sourceDirectory in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core" / "proto").value
 unmanagedResourceDirectories in Compile += (sourceDirectory in PB.protobufConfig).value
-javaSource in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core" / "generated").value
-cleanFiles += (javaSource in PB.protobufConfig).value
+//javaSource in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core" / "generated").value
+//cleanFiles += (javaSource in PB.protobufConfig).value
 
+val cleanAllProtoCompiled = TaskKey[Unit]("clean", "Deletes files produced by the build, such as generated sources, compiled classes, and task caches.")
+cleanAllProtoCompiled := sbt.Defaults.doClean(Seq((javaSource in PB.protobufConfig).value), Seq())
 
-val cleanAllProtoCompiled = sbt.Defaults.doClean(Seq((javaSource in PB.protobufConfig).value), Seq())
+//playReloadTask in PlayCommands := "hello"
+//compile in Compile <<= (compile in Compile) dependsOn cleanAllProtoCompiled
 
 name := """soldiers"""
 
