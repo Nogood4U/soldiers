@@ -60,7 +60,7 @@ function initGame(playerId) {
         cursors = game.input.keyboard.createCursorKeys();
         fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         shift = game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
-        _server.stream.subscribe((val) => {
+        _server.then(obj => obj.stream.subscribe((val) => {
             val.players.forEach((serverPlayer) => {
                 if (serverPlayer.playerId) {
                     let localPlayer = players[serverPlayer.playerId];
@@ -115,6 +115,8 @@ function initGame(playerId) {
                         }
                     }
                 }
+            });
+            val.bullets.forEach((serverPlayer) => {
                 if (serverPlayer.ownerId) {
                     if (bulletsMap[serverPlayer.bulletNum]) {
                         game.add.tween(bulletsMap[serverPlayer.bulletNum]).to(
@@ -149,7 +151,7 @@ function initGame(playerId) {
                     bullet.updated = false;
                 }
             });
-        });
+        }));
         game.world.setBounds(0, 0, 1500, 1500);
         game.camera.follow(soldierself);
         game.time.advancedTiming = true;
@@ -173,18 +175,20 @@ function initGame(playerId) {
                 gunFire.play();
             }
             commands.btns = btns;
-            if (_server.ws.readyState === 1 && send)
-                _server.ws.send(JSON.stringify(commands));
+            _server.then(obj => {
+                if (obj.ws.readyState === 1 && send)
+                    obj.ws.sendX(JSON.stringify(commands));
+            });
         };
         //  Our bullet group
         bullets = game.add.group();
-        bullets.createMultiple(50, 'bullet');
+        bullets.createMultiple(100, 'bullet');
         bullets.setAll('anchor.x', 0.5);
         bullets.setAll('anchor.y', 0.5);
         music = game.add.audio('map');
         gunFire = game.add.audio('fire');
         gunFire.volume = 0.3;
-        music.loopFull(0.9);
+        music.loopFull(0.1);
     };
 
     let update = function () {
@@ -213,8 +217,10 @@ function initGame(playerId) {
             send = true;
         }
         commands.btns = btns;
-        if (_server.ws.readyState === 1 && send)
-            _server.ws.send(JSON.stringify(commands));
+        _server.then(obj => {
+            if (obj.ws.readyState === 1 && send)
+                obj.ws.sendX(JSON.stringify(commands));
+        });
         // game.debug.cameraInfo(game.camera, 32, 32);
         game.debug.spriteInfo(players[playerId], 32, 32);
         game.debug.text(game.time.fps || '--', 13, 200, "#00ff00");

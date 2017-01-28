@@ -1,5 +1,6 @@
 package controllers
 
+import java.io.ByteArrayInputStream
 import javax.inject._
 
 import actors._
@@ -11,12 +12,14 @@ import scala.concurrent.duration._
 import akka.pattern.{AskTimeoutException, ask}
 import akka.stream.{Materializer, OverflowStrategy}
 import akka.stream.scaladsl.{Flow, Keep, Sink, Source}
-import akka.util.Timeout
+import akka.util.{ByteString, Timeout}
 import core.{AppState, Bullet, GameState, PlayerState}
 import game.core.ProtoGameState
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
+
 import scala.concurrent.{ExecutionContext, Future}
 import play.api.mvc.WebSocket.MessageFlowTransformer
+
 import scala.collection.JavaConverters._
 
 
@@ -29,7 +32,7 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
 
   implicit val timeout = Timeout(2 seconds)
   implicit val cmdReads = Json.reads[Command]
-  implicit val messageFlowTransformer = MessageFlowTransformer.jsonMessageFlowTransformer[JsValue, Array[Byte]]
+  implicit val messageFlowTransformer = MessageFlowTransformer.byteArrayMessageFlowTransformer
 
   /**
     * Create an Action to render an HTML page with a welcome message.
@@ -41,7 +44,7 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
     Ok(views.html.index("Your new application is ready."))
   }
 
-  def socket(serverId: String, gameId: String) = WebSocket.acceptOrResult[JsValue, Array[Byte]] { request =>
+  def socket(serverId: String, gameId: String) = WebSocket.acceptOrResult[Array[Byte], Array[Byte]] { request =>
     createSocket(serverId, gameId)
   }
 
@@ -89,43 +92,44 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
 
       player ! SocketActor(actor._1)
 
-      val in = Sink.foreach[JsValue] {
+      val in = Sink.foreach[Array[Byte]] {
         msg =>
-          Json.fromJson[Command](msg) match {
-            case JsSuccess(cmd, _) => player ! PlayerCmd(playerId, cmd)
+          Json.parse(msg) match {
+            case cmd: JsValue => Json.fromJson[Command](cmd) match {
+              case JsSuccess(_cmd, _) => player ! PlayerCmd(playerId, _cmd)
+              case _ => println("invalid command")
+            }
             case _ =>
           }
       }
       val protobuffedSource = Source.fromPublisher(actor._2).map {
-        _ match {
-          case state@GameState(stateTime, players) =>
-            val stateBuilder = ProtoGameState.State
-              .newBuilder()
-              .setStateTime(stateTime);
-            val (playerStates, bullets) = players.partition {
-              case e: PlayerState => true
-              case e: Bullet => false
-            }
-            stateBuilder.addAllPlayers(playerStates.map(_.asInstanceOf[PlayerState]).map(ps => {
-              ProtoGameState.State.Player.newBuilder()
-                .setPlayerId(ps.playerId)
-                .setPosX(ps.posX)
-                .setPosY(ps.posY)
-                .setViewOr(ps.viewOr)
-                .setCurrWpn(ps.currWpn)
-                .setHealth(ps.health).build()
-            }).asJava)
-            stateBuilder.addAllBullets(bullets.map(_.asInstanceOf[Bullet]).map(bs => {
-              ProtoGameState.State.Bullet.newBuilder()
-                .setOwnerId(bs.ownerId)
-                .setPosX(bs.posX)
-                .setPosY(bs.posY)
-                .setDamage(bs.damage)
-                .setBulletNum(bs.bulletNum)
-                .build()
-            }).asJava)
-            stateBuilder.build().toByteArray
-        }
+        case state@GameState(stateTime, players) =>
+          val stateBuilder = ProtoGameState.State
+            .newBuilder()
+            .setStateTime(stateTime);
+          val (playerStates, bullets) = players.partition {
+            case e: PlayerState => true
+            case e: Bullet => false
+          }
+          stateBuilder.addAllPlayers(playerStates.map(_.asInstanceOf[PlayerState]).map(ps => {
+            ProtoGameState.State.Player.newBuilder()
+              .setPlayerId(ps.playerId)
+              .setPosX(ps.posX)
+              .setPosY(ps.posY)
+              .setViewOr(ps.viewOr)
+              .setCurrWpn(ps.currWpn)
+              .setHealth(ps.health).build()
+          }).asJava)
+          stateBuilder.addAllBullets(bullets.map(_.asInstanceOf[Bullet]).map(bs => {
+            ProtoGameState.State.Bullet.newBuilder()
+              .setOwnerId(bs.ownerId)
+              .setPosX(bs.posX)
+              .setPosY(bs.posY)
+              .setDamage(bs.damage)
+              .setBulletNum(bs.bulletNum)
+              .build()
+          }).asJava)
+          stateBuilder.build().toByteArray
       }
       Either.cond(test = true, Flow.fromSinkAndSource(in, protobuffedSource), Forbidden)
     }

@@ -1,0 +1,27 @@
+syntax = "proto3";
+package game.core;
+
+
+option java_outer_classname = "ProtoGameState";
+
+message State {
+    int32 stateTime = 1;
+
+    message Player {
+        string playerId = 1;
+        float posX = 2;
+        float posY = 3;
+        int32 viewOr = 4;
+        int32 currWpn = 5;
+        int32 health = 6;
+    }
+    repeated Player players = 7;
+    message Bullet {
+        int32 bulletNum = 1;
+        float posX = 2;
+        float posY = 3;
+        int32 damage = 4;
+        string ownerId = 7;
+    }
+    repeated Bullet bullets = 8;
+}

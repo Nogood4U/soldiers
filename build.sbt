@@ -14,6 +14,16 @@ cleanAllProtoCompiled := sbt.Defaults.doClean(Seq((javaSource in PB.protobufConf
 //playReloadTask in PlayCommands := "hello"
 //compile in Compile <<= (compile in Compile) dependsOn cleanAllProtoCompiled
 
+val copyProto = Def.task {
+  val protoDir = (sourceDirectory in Compile) (_ / "core" / "proto").value
+  val assetDir = (baseDirectory in Compile) (_ / "public" / "proto").value
+  println(s"copying file to ${assetDir}")
+  IO.copyDirectory(protoDir, assetDir, true)
+  Seq.empty[File]
+}
+resourceGenerators in Compile += copyProto.taskValue
+//sourceGenerators in Runtime += copyProto.taskValue
+
 name := """soldiers"""
 
 version := "1.0"
@@ -39,3 +49,6 @@ fork in run := true
 
 
 
+
+
+fork in run := true
