@@ -32,13 +32,12 @@ function createPlayer(_playerId) {
     soldier.health.anchor.set(0.5);
     soldier.nameTag = game.add.text(0, 0, _playerId, {font: "15px Arial", fill: "#ffffff"});
     soldier.nameTag.anchor.set(0.5);
-    soldier.hitEffect = function (isHit, inmune) {
+    soldier.hitEffect = function (isHit, immune) {
         //play hit sound
         if (isHit) {
-            var randomnumber = Math.floor(Math.random() * (5 - 0 + 0)) + 0;
-            hitEffects[randomnumber].play();
+            hitEffects[Math.floor(Math.random() * 5)].play();
         }
-        if (isHit || inmune) {
+        if (isHit || immune) {
             if (!soldier.hitTween) {
                 soldier.hitTween = game.add.tween(soldier).to(
                     {
@@ -54,7 +53,6 @@ function createPlayer(_playerId) {
                 // soldier.hitTween.yoyo(true, 0.32);
             }
         } else {
-
             soldier.tint = "0xffffff";
             if (soldier.hitTween) {
                 soldier.hitTween.stop(true);
