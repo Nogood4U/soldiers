@@ -1,7 +1,7 @@
 import play.sbt.{PlayCommands, PlayScala}
 import sbtprotobuf.{ProtobufPlugin => PB}
 
-PB.protobufSettings
+/*PB.protobufSettings
 
 sourceDirectory in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core" / "proto").value
 unmanagedResourceDirectories in Compile += (sourceDirectory in PB.protobufConfig).value
@@ -23,7 +23,7 @@ val copyProto = Def.task {
 }
 resourceGenerators in Compile += copyProto.taskValue
 //sourceGenerators in Runtime += copyProto.taskValue
-
+*/
 name := """soldiers"""
 
 version := "1.0"
