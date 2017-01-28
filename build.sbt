@@ -1,28 +1,39 @@
 import play.sbt.{PlayCommands, PlayScala}
 import sbtprotobuf.{ProtobufPlugin => PB}
-
-/*PB.protobufSettings
+/*
+PB.protobufSettings
 
 sourceDirectory in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core" / "proto").value
-unmanagedResourceDirectories in Compile += (sourceDirectory in PB.protobufConfig).value
+//unmanagedResourceDirectories in Compile += (sourceDirectory in PB.protobufConfig).value
 //javaSource in PB.protobufConfig := (sourceDirectory in Compile) (_ / "core" / "generated").value
 //cleanFiles += (javaSource in PB.protobufConfig).value
 
-val cleanAllProtoCompiled = TaskKey[Unit]("clean", "Deletes files produced by the build, such as generated sources, compiled classes, and task caches.")
+val cleanAllProtoCompiled = TaskKey[Unit]("cleanProto", "Deletes files produced by the build, such as generated sources, compiled classes, and task caches.")
 cleanAllProtoCompiled := sbt.Defaults.doClean(Seq((javaSource in PB.protobufConfig).value), Seq())
 
-//playReloadTask in PlayCommands := "hello"
-//compile in Compile <<= (compile in Compile) dependsOn cleanAllProtoCompiled
+compile in Compile <<= (compile in Compile) dependsOn cleanAllProtoCompiled
+
+
 */
 val copyProto = Def.task {
+
   val protoDir = (sourceDirectory in Compile) (_ / "core" / "proto").value
   val assetDir = (baseDirectory in Compile) (_ / "public" / "proto").value
   IO.copyDirectory(protoDir, assetDir, true)
+
+  val protoCompDir = (sourceManaged in Compile) (_ / "compiled_protobuf" / "game" / "core").value
+  println(protoCompDir)
+  val protoSrc = (sourceDirectory in Compile) (_ / "game" / "core").value
+  IO.createDirectory(protoSrc)
+  IO.copyDirectory(protoCompDir, protoSrc, true)
+  IO.delete(protoCompDir)
+  println(protoSrc)
+
   Seq.empty[File]
 }
-resourceGenerators in Compile += copyProto.taskValue
-//sourceGenerators in Runtime += copyProto.taskValue
 
+//sourceGenerators in Runtime += copyProto.taskValue
+//sourceGenerators in Compile += copyProto.taskValue
 name := """soldiers"""
 
 version := "1.0"
@@ -49,6 +60,8 @@ fork in run := true
 
 
 
+
+fork in run := true
 
 fork in run := true
 

@@ -2,6 +2,7 @@ var _server = {};
 var players = {};
 var bg;
 var bulletsMap = {}
+var hitEffects = [];
 /*xMeters = 0.02f * xPixels;
  yMeters = 0.02f * yPixels;
 
@@ -31,6 +32,36 @@ function createPlayer(_playerId) {
     soldier.health.anchor.set(0.5);
     soldier.nameTag = game.add.text(0, 0, _playerId, {font: "15px Arial", fill: "#ffffff"});
     soldier.nameTag.anchor.set(0.5);
+    soldier.hitEffect = function (isHit, inmune) {
+        //play hit sound
+        if (isHit) {
+            var randomnumber = Math.floor(Math.random() * (5 - 0 + 0)) + 0;
+            hitEffects[randomnumber].play();
+        }
+        if (isHit || inmune) {
+            if (!soldier.hitTween) {
+                soldier.hitTween = game.add.tween(soldier).to(
+                    {
+                        tint: 0xff0000
+                    },
+                    45,
+                    Phaser.Easing.LINEAR,
+                    true,
+                    0,
+                    -1,
+                    true
+                );
+                // soldier.hitTween.yoyo(true, 0.32);
+            }
+        } else {
+
+            soldier.tint = "0xffffff";
+            if (soldier.hitTween) {
+                soldier.hitTween.stop(true);
+                soldier.hitTween = undefined;
+            }
+        }
+    };
     //soldier.addChild(soldier.health)
     players[_playerId] = soldier;
     return soldier;
@@ -43,7 +74,12 @@ function initGame(playerId) {
         game.load.spritesheet('bullet', '/assets/images/sprites/bullet.png', 19, 19);
         game.load.image('background', '/assets/images/background/back_3.png');
         game.load.audio('map', ['assets/music/Mercury.mp3', 'assets/audio/Mercury.ogg']);
-        game.load.audio('fire', ['assets/music/laser.mp3', 'assets/audio/laser.ogg']);
+        game.load.audio('fire', ['assets/sounds/guns/laser.mp3', 'assets/sounds/guns/laser.ogg']);
+
+        for (var i = 1; i < 7; i++) {
+            game.load.audio('hit' + i, ['assets/sounds/hit/pain' + i + '.mp3', 'assets/sounds/hit/pain0' + i + '.ogg']);
+        }
+
         _server = server("server", playerId);
 
     };
@@ -95,12 +131,15 @@ function initGame(playerId) {
                         Phaser.Easing.LINEAR,
                         true
                     );
+                    //health Text
                     localPlayer.health.text = serverPlayer.health + "%";
+
+                    //setPlayerorientation
                     if (!serverPlayer.viewOr && localPlayer.scale.x > 0)
                         localPlayer.scale.x *= -1;
                     else if (serverPlayer.viewOr && localPlayer.scale.x < 0)
                         localPlayer.scale.x *= -1;
-
+                    //Set Player Weapon
                     if (serverPlayer.playerId === playerId) {
                         score.text = serverPlayer.health + "%";
                         switch (serverPlayer.currWpn) {
@@ -115,6 +154,9 @@ function initGame(playerId) {
                                 break;
                         }
                     }
+
+                    //Set Player visual and sound if hit
+                    localPlayer.hitEffect(serverPlayer.hit, serverPlayer.hitImmune);
                 }
             });
             val.bullets.forEach((serverPlayer) => {
@@ -198,6 +240,9 @@ function initGame(playerId) {
         gunFire = game.add.audio('fire');
         gunFire.volume = 0.3;
         music.loopFull(0.1);
+        for (var i = 1; i < 7; i++) {
+            hitEffects.push(game.add.audio('hit' + i));
+        }
     };
 
     let update = function () {

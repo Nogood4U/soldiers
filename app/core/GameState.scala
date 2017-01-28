@@ -37,7 +37,6 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
         val object1 = exctractGameObject(contact.getFixtureA.getBody.getUserData)
         val object2 = exctractGameObject(contact.getFixtureB.getBody.getUserData)
         object1.collide(object2)
-        //  println(s"object ${contact.getFixtureA.getBody.getUserData} colided with ${contact.getFixtureB.getBody.getUserData}")
       }
 
       def exctractGameObject(value: AnyRef): GameObject = {
@@ -121,6 +120,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
         //apply view orientation
         body._2.viewOr = if (playerCmd.cmd.xMv > 0) 1 else if (playerCmd.cmd.xMv < 0) 0 else body._2.viewOr
         //
+        //
         // apply controls
         playerCmd.cmd.btns.foreach(btn => {
           if (btn.equals("shift")) {
@@ -142,9 +142,11 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
   }
 
   def applyCommands(playerCmds: List[PlayerCmd]) {
+    resetFlags(); //reset hit flag
     playerCmds.foreach(applyCommand)
     world.step(1 / 60f, velocityIterations, positionIterations)
     applyStateChange()
+    decreaseTimers()
   }
 
   def createProjectile(playerBody: Body, playerState: PlayerState, speedX: Short, speedY: Short): (Body, Bullet) = {
@@ -227,6 +229,14 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     })
     //pool of bullets , move to an outside area, or flag as not to serialize
   }
+
+  def decreaseTimers(): Unit = {
+    players.par foreach (_.decreaseTimers)
+  }
+
+  def resetFlags() = {
+    players.par foreach (_.resetFlags)
+  }
 }
 
 abstract class GameObject {
@@ -234,6 +244,10 @@ abstract class GameObject {
   var posY: Float
 
   def collide(o: GameObject)
+
+  def decreaseTimers
+
+  def resetFlags
 }
 
 
@@ -257,17 +271,36 @@ object GameObject {
       override def collide(o: GameObject): Unit = {
 
       }
+
+      override def resetFlags: Unit = {}
+
+      override def decreaseTimers = {}
     }
   }
 }
 
 case class PlayerState(playerId: String, var posX: Float, var posY: Float, var viewOr: Byte, var currWpn: Short, var health: Int)
   extends GameObject {
-  var immune = false
+  var hitImmune = false
+  var hitImmuneTimer = 0;
+  var hit = false;
+  var powerUp = 0
+  var powerUpTimer = 30;
   val _healt = health
+  var alive = true
+
 
   def resetHealth() {
     health = _healt
+  }
+
+  override def decreaseTimers = {
+    if (hitImmuneTimer != 0) hitImmuneTimer -= 1 else this.hitImmune = false
+    if (powerUpTimer != 0) powerUpTimer -= 1 else this.powerUp = 0
+  }
+
+  override def resetFlags: Unit = {
+    this.hit = false
   }
 
   override def collide(o1: GameObject): Unit = {
@@ -276,6 +309,8 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
       case _ =>
     }
   }
+
+
 }
 
 case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int, ownerId: String)
@@ -284,14 +319,29 @@ case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int,
 
   def destroy(): Boolean = isDestroy
 
+  override def decreaseTimers = {}
+
+  override def resetFlags: Unit = {}
+
   override def collide(o: GameObject): Unit = {
+
     o match {
       case player: PlayerState if player.playerId != this.ownerId =>
         this.isDestroy = true
-        //println(s"reducing ${player.health} health by ${this.damage}")
-        player.health -= this.damage
-        //println(s"new health ${player.health}")
-        player.immune = true
+        if (!player.hitImmune) {
+          //println(s"reducing ${player.health} health by ${this.damage}")
+          player.health -= this.damage
+          //println(s"new health ${player.health}")
+          player.health match {
+            case a if a > 0 =>
+              player.hitImmune = true
+              player.hit = true
+              player.hitImmuneTimer = 4 //game simulation cycles (currently 50 millis each)
+
+            case a if a <= 0 =>
+              player.alive = false
+          }
+        }
 
       case _ =>
     }

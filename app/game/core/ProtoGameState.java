@@ -26,12 +26,12 @@ public final class ProtoGameState {
     /**
      * <code>repeated .game.core.State.Player players = 7;</code>
      */
-    java.util.List<ProtoGameState.State.Player>
+    java.util.List<game.core.ProtoGameState.State.Player> 
         getPlayersList();
     /**
      * <code>repeated .game.core.State.Player players = 7;</code>
      */
-    ProtoGameState.State.Player getPlayers(int index);
+    game.core.ProtoGameState.State.Player getPlayers(int index);
     /**
      * <code>repeated .game.core.State.Player players = 7;</code>
      */
@@ -39,23 +39,23 @@ public final class ProtoGameState {
     /**
      * <code>repeated .game.core.State.Player players = 7;</code>
      */
-    java.util.List<? extends ProtoGameState.State.PlayerOrBuilder>
+    java.util.List<? extends game.core.ProtoGameState.State.PlayerOrBuilder> 
         getPlayersOrBuilderList();
     /**
      * <code>repeated .game.core.State.Player players = 7;</code>
      */
-    ProtoGameState.State.PlayerOrBuilder getPlayersOrBuilder(
-            int index);
+    game.core.ProtoGameState.State.PlayerOrBuilder getPlayersOrBuilder(
+        int index);
 
     /**
      * <code>repeated .game.core.State.Bullet bullets = 8;</code>
      */
-    java.util.List<ProtoGameState.State.Bullet>
+    java.util.List<game.core.ProtoGameState.State.Bullet> 
         getBulletsList();
     /**
      * <code>repeated .game.core.State.Bullet bullets = 8;</code>
      */
-    ProtoGameState.State.Bullet getBullets(int index);
+    game.core.ProtoGameState.State.Bullet getBullets(int index);
     /**
      * <code>repeated .game.core.State.Bullet bullets = 8;</code>
      */
@@ -63,13 +63,13 @@ public final class ProtoGameState {
     /**
      * <code>repeated .game.core.State.Bullet bullets = 8;</code>
      */
-    java.util.List<? extends ProtoGameState.State.BulletOrBuilder>
+    java.util.List<? extends game.core.ProtoGameState.State.BulletOrBuilder> 
         getBulletsOrBuilderList();
     /**
      * <code>repeated .game.core.State.Bullet bullets = 8;</code>
      */
-    ProtoGameState.State.BulletOrBuilder getBulletsOrBuilder(
-            int index);
+    game.core.ProtoGameState.State.BulletOrBuilder getBulletsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code game.core.State}
@@ -88,7 +88,7 @@ public final class ProtoGameState {
       bullets_ = java.util.Collections.emptyList();
     }
 
-    @Override
+    @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
       return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
@@ -120,20 +120,20 @@ public final class ProtoGameState {
             }
             case 58: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
-                players_ = new java.util.ArrayList<ProtoGameState.State.Player>();
+                players_ = new java.util.ArrayList<game.core.ProtoGameState.State.Player>();
                 mutable_bitField0_ |= 0x00000002;
               }
               players_.add(
-                  input.readMessage(ProtoGameState.State.Player.parser(), extensionRegistry));
+                  input.readMessage(game.core.ProtoGameState.State.Player.parser(), extensionRegistry));
               break;
             }
             case 66: {
               if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
-                bullets_ = new java.util.ArrayList<ProtoGameState.State.Bullet>();
+                bullets_ = new java.util.ArrayList<game.core.ProtoGameState.State.Bullet>();
                 mutable_bitField0_ |= 0x00000004;
               }
               bullets_.add(
-                  input.readMessage(ProtoGameState.State.Bullet.parser(), extensionRegistry));
+                  input.readMessage(game.core.ProtoGameState.State.Bullet.parser(), extensionRegistry));
               break;
             }
           }
@@ -155,14 +155,14 @@ public final class ProtoGameState {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return ProtoGameState.internal_static_game_core_State_descriptor;
+      return game.core.ProtoGameState.internal_static_game_core_State_descriptor;
     }
 
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return ProtoGameState.internal_static_game_core_State_fieldAccessorTable
+      return game.core.ProtoGameState.internal_static_game_core_State_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              ProtoGameState.State.class, ProtoGameState.State.Builder.class);
+              game.core.ProtoGameState.State.class, game.core.ProtoGameState.State.Builder.class);
     }
 
     public interface PlayerOrBuilder extends
@@ -172,7 +172,7 @@ public final class ProtoGameState {
       /**
        * <code>optional string playerId = 1;</code>
        */
-      String getPlayerId();
+      java.lang.String getPlayerId();
       /**
        * <code>optional string playerId = 1;</code>
        */
@@ -203,6 +203,26 @@ public final class ProtoGameState {
        * <code>optional int32 health = 6;</code>
        */
       int getHealth();
+
+      /**
+       * <code>optional bool alive = 7;</code>
+       */
+      boolean getAlive();
+
+      /**
+       * <code>optional bool hit = 8;</code>
+       */
+      boolean getHit();
+
+      /**
+       * <code>optional int32 powerUp = 9;</code>
+       */
+      int getPowerUp();
+
+      /**
+       * <code>optional bool hitImmune = 10;</code>
+       */
+      boolean getHitImmune();
     }
     /**
      * Protobuf type {@code game.core.State.Player}
@@ -222,9 +242,13 @@ public final class ProtoGameState {
         viewOr_ = 0;
         currWpn_ = 0;
         health_ = 0;
+        alive_ = false;
+        hit_ = false;
+        powerUp_ = 0;
+        hitImmune_ = false;
       }
 
-      @Override
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
@@ -250,7 +274,7 @@ public final class ProtoGameState {
                 break;
               }
               case 10: {
-                String s = input.readStringRequireUtf8();
+                java.lang.String s = input.readStringRequireUtf8();
 
                 playerId_ = s;
                 break;
@@ -280,6 +304,26 @@ public final class ProtoGameState {
                 health_ = input.readInt32();
                 break;
               }
+              case 56: {
+
+                alive_ = input.readBool();
+                break;
+              }
+              case 64: {
+
+                hit_ = input.readBool();
+                break;
+              }
+              case 72: {
+
+                powerUp_ = input.readInt32();
+                break;
+              }
+              case 80: {
+
+                hitImmune_ = input.readBool();
+                break;
+              }
             }
           }
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -293,29 +337,29 @@ public final class ProtoGameState {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ProtoGameState.internal_static_game_core_State_Player_descriptor;
+        return game.core.ProtoGameState.internal_static_game_core_State_Player_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ProtoGameState.internal_static_game_core_State_Player_fieldAccessorTable
+        return game.core.ProtoGameState.internal_static_game_core_State_Player_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ProtoGameState.State.Player.class, ProtoGameState.State.Player.Builder.class);
+                game.core.ProtoGameState.State.Player.class, game.core.ProtoGameState.State.Player.Builder.class);
       }
 
       public static final int PLAYERID_FIELD_NUMBER = 1;
-      private volatile Object playerId_;
+      private volatile java.lang.Object playerId_;
       /**
        * <code>optional string playerId = 1;</code>
        */
-      public String getPlayerId() {
-        Object ref = playerId_;
-        if (ref instanceof String) {
-          return (String) ref;
+      public java.lang.String getPlayerId() {
+        java.lang.Object ref = playerId_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           playerId_ = s;
           return s;
         }
@@ -325,11 +369,11 @@ public final class ProtoGameState {
        */
       public com.google.protobuf.ByteString
           getPlayerIdBytes() {
-        Object ref = playerId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+        java.lang.Object ref = playerId_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           playerId_ = b;
           return b;
         } else {
@@ -382,6 +426,42 @@ public final class ProtoGameState {
         return health_;
       }
 
+      public static final int ALIVE_FIELD_NUMBER = 7;
+      private boolean alive_;
+      /**
+       * <code>optional bool alive = 7;</code>
+       */
+      public boolean getAlive() {
+        return alive_;
+      }
+
+      public static final int HIT_FIELD_NUMBER = 8;
+      private boolean hit_;
+      /**
+       * <code>optional bool hit = 8;</code>
+       */
+      public boolean getHit() {
+        return hit_;
+      }
+
+      public static final int POWERUP_FIELD_NUMBER = 9;
+      private int powerUp_;
+      /**
+       * <code>optional int32 powerUp = 9;</code>
+       */
+      public int getPowerUp() {
+        return powerUp_;
+      }
+
+      public static final int HITIMMUNE_FIELD_NUMBER = 10;
+      private boolean hitImmune_;
+      /**
+       * <code>optional bool hitImmune = 10;</code>
+       */
+      public boolean getHitImmune() {
+        return hitImmune_;
+      }
+
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
@@ -411,6 +491,18 @@ public final class ProtoGameState {
         }
         if (health_ != 0) {
           output.writeInt32(6, health_);
+        }
+        if (alive_ != false) {
+          output.writeBool(7, alive_);
+        }
+        if (hit_ != false) {
+          output.writeBool(8, hit_);
+        }
+        if (powerUp_ != 0) {
+          output.writeInt32(9, powerUp_);
+        }
+        if (hitImmune_ != false) {
+          output.writeBool(10, hitImmune_);
         }
       }
 
@@ -442,31 +534,47 @@ public final class ProtoGameState {
           size += com.google.protobuf.CodedOutputStream
             .computeInt32Size(6, health_);
         }
+        if (alive_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(7, alive_);
+        }
+        if (hit_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(8, hit_);
+        }
+        if (powerUp_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(9, powerUp_);
+        }
+        if (hitImmune_ != false) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeBoolSize(10, hitImmune_);
+        }
         memoizedSize = size;
         return size;
       }
 
       private static final long serialVersionUID = 0L;
-      @Override
-      public boolean equals(final Object obj) {
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof ProtoGameState.State.Player)) {
+        if (!(obj instanceof game.core.ProtoGameState.State.Player)) {
           return super.equals(obj);
         }
-        ProtoGameState.State.Player other = (ProtoGameState.State.Player) obj;
+        game.core.ProtoGameState.State.Player other = (game.core.ProtoGameState.State.Player) obj;
 
         boolean result = true;
         result = result && getPlayerId()
             .equals(other.getPlayerId());
         result = result && (
-            Float.floatToIntBits(getPosX())
-            == Float.floatToIntBits(
+            java.lang.Float.floatToIntBits(getPosX())
+            == java.lang.Float.floatToIntBits(
                 other.getPosX()));
         result = result && (
-            Float.floatToIntBits(getPosY())
-            == Float.floatToIntBits(
+            java.lang.Float.floatToIntBits(getPosY())
+            == java.lang.Float.floatToIntBits(
                 other.getPosY()));
         result = result && (getViewOr()
             == other.getViewOr());
@@ -474,10 +582,18 @@ public final class ProtoGameState {
             == other.getCurrWpn());
         result = result && (getHealth()
             == other.getHealth());
+        result = result && (getAlive()
+            == other.getAlive());
+        result = result && (getHit()
+            == other.getHit());
+        result = result && (getPowerUp()
+            == other.getPowerUp());
+        result = result && (getHitImmune()
+            == other.getHitImmune());
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public int hashCode() {
         if (memoizedHashCode != 0) {
           return memoizedHashCode;
@@ -487,10 +603,10 @@ public final class ProtoGameState {
         hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
         hash = (53 * hash) + getPlayerId().hashCode();
         hash = (37 * hash) + POSX_FIELD_NUMBER;
-        hash = (53 * hash) + Float.floatToIntBits(
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getPosX());
         hash = (37 * hash) + POSY_FIELD_NUMBER;
-        hash = (53 * hash) + Float.floatToIntBits(
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getPosY());
         hash = (37 * hash) + VIEWOR_FIELD_NUMBER;
         hash = (53 * hash) + getViewOr();
@@ -498,63 +614,74 @@ public final class ProtoGameState {
         hash = (53 * hash) + getCurrWpn();
         hash = (37 * hash) + HEALTH_FIELD_NUMBER;
         hash = (53 * hash) + getHealth();
+        hash = (37 * hash) + ALIVE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getAlive());
+        hash = (37 * hash) + HIT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getHit());
+        hash = (37 * hash) + POWERUP_FIELD_NUMBER;
+        hash = (53 * hash) + getPowerUp();
+        hash = (37 * hash) + HITIMMUNE_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getHitImmune());
         hash = (29 * hash) + unknownFields.hashCode();
         memoizedHashCode = hash;
         return hash;
       }
 
-      public static ProtoGameState.State.Player parseFrom(
+      public static game.core.ProtoGameState.State.Player parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static ProtoGameState.State.Player parseFrom(
+      public static game.core.ProtoGameState.State.Player parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static ProtoGameState.State.Player parseFrom(byte[] data)
+      public static game.core.ProtoGameState.State.Player parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static ProtoGameState.State.Player parseFrom(
+      public static game.core.ProtoGameState.State.Player parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static ProtoGameState.State.Player parseFrom(java.io.InputStream input)
+      public static game.core.ProtoGameState.State.Player parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static ProtoGameState.State.Player parseFrom(
+      public static game.core.ProtoGameState.State.Player parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static ProtoGameState.State.Player parseDelimitedFrom(java.io.InputStream input)
+      public static game.core.ProtoGameState.State.Player parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static ProtoGameState.State.Player parseDelimitedFrom(
+      public static game.core.ProtoGameState.State.Player parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static ProtoGameState.State.Player parseFrom(
+      public static game.core.ProtoGameState.State.Player parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static ProtoGameState.State.Player parseFrom(
+      public static game.core.ProtoGameState.State.Player parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -566,7 +693,7 @@ public final class ProtoGameState {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(ProtoGameState.State.Player prototype) {
+      public static Builder newBuilder(game.core.ProtoGameState.State.Player prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() {
@@ -574,9 +701,9 @@ public final class ProtoGameState {
             ? new Builder() : new Builder().mergeFrom(this);
       }
 
-      @Override
+      @java.lang.Override
       protected Builder newBuilderForType(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
@@ -586,26 +713,26 @@ public final class ProtoGameState {
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:game.core.State.Player)
-          ProtoGameState.State.PlayerOrBuilder {
+          game.core.ProtoGameState.State.PlayerOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return ProtoGameState.internal_static_game_core_State_Player_descriptor;
+          return game.core.ProtoGameState.internal_static_game_core_State_Player_descriptor;
         }
 
-        protected FieldAccessorTable
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return ProtoGameState.internal_static_game_core_State_Player_fieldAccessorTable
+          return game.core.ProtoGameState.internal_static_game_core_State_Player_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  ProtoGameState.State.Player.class, ProtoGameState.State.Player.Builder.class);
+                  game.core.ProtoGameState.State.Player.class, game.core.ProtoGameState.State.Player.Builder.class);
         }
 
-        // Construct using game.game.core.ProtoGameState.State.Player.newBuilder()
+        // Construct using game.core.ProtoGameState.State.Player.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
 
         private Builder(
-            BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
@@ -628,34 +755,46 @@ public final class ProtoGameState {
 
           health_ = 0;
 
+          alive_ = false;
+
+          hit_ = false;
+
+          powerUp_ = 0;
+
+          hitImmune_ = false;
+
           return this;
         }
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return ProtoGameState.internal_static_game_core_State_Player_descriptor;
+          return game.core.ProtoGameState.internal_static_game_core_State_Player_descriptor;
         }
 
-        public ProtoGameState.State.Player getDefaultInstanceForType() {
-          return ProtoGameState.State.Player.getDefaultInstance();
+        public game.core.ProtoGameState.State.Player getDefaultInstanceForType() {
+          return game.core.ProtoGameState.State.Player.getDefaultInstance();
         }
 
-        public ProtoGameState.State.Player build() {
-          ProtoGameState.State.Player result = buildPartial();
+        public game.core.ProtoGameState.State.Player build() {
+          game.core.ProtoGameState.State.Player result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public ProtoGameState.State.Player buildPartial() {
-          ProtoGameState.State.Player result = new ProtoGameState.State.Player(this);
+        public game.core.ProtoGameState.State.Player buildPartial() {
+          game.core.ProtoGameState.State.Player result = new game.core.ProtoGameState.State.Player(this);
           result.playerId_ = playerId_;
           result.posX_ = posX_;
           result.posY_ = posY_;
           result.viewOr_ = viewOr_;
           result.currWpn_ = currWpn_;
           result.health_ = health_;
+          result.alive_ = alive_;
+          result.hit_ = hit_;
+          result.powerUp_ = powerUp_;
+          result.hitImmune_ = hitImmune_;
           onBuilt();
           return result;
         }
@@ -687,16 +826,16 @@ public final class ProtoGameState {
           return (Builder) super.addRepeatedField(field, value);
         }
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof ProtoGameState.State.Player) {
-            return mergeFrom((ProtoGameState.State.Player)other);
+          if (other instanceof game.core.ProtoGameState.State.Player) {
+            return mergeFrom((game.core.ProtoGameState.State.Player)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(ProtoGameState.State.Player other) {
-          if (other == ProtoGameState.State.Player.getDefaultInstance()) return this;
+        public Builder mergeFrom(game.core.ProtoGameState.State.Player other) {
+          if (other == game.core.ProtoGameState.State.Player.getDefaultInstance()) return this;
           if (!other.getPlayerId().isEmpty()) {
             playerId_ = other.playerId_;
             onChanged();
@@ -716,6 +855,18 @@ public final class ProtoGameState {
           if (other.getHealth() != 0) {
             setHealth(other.getHealth());
           }
+          if (other.getAlive() != false) {
+            setAlive(other.getAlive());
+          }
+          if (other.getHit() != false) {
+            setHit(other.getHit());
+          }
+          if (other.getPowerUp() != 0) {
+            setPowerUp(other.getPowerUp());
+          }
+          if (other.getHitImmune() != false) {
+            setHitImmune(other.getHitImmune());
+          }
           onChanged();
           return this;
         }
@@ -728,11 +879,11 @@ public final class ProtoGameState {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          ProtoGameState.State.Player parsedMessage = null;
+          game.core.ProtoGameState.State.Player parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (ProtoGameState.State.Player) e.getUnfinishedMessage();
+            parsedMessage = (game.core.ProtoGameState.State.Player) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -742,20 +893,20 @@ public final class ProtoGameState {
           return this;
         }
 
-        private Object playerId_ = "";
+        private java.lang.Object playerId_ = "";
         /**
          * <code>optional string playerId = 1;</code>
          */
-        public String getPlayerId() {
-          Object ref = playerId_;
-          if (!(ref instanceof String)) {
+        public java.lang.String getPlayerId() {
+          java.lang.Object ref = playerId_;
+          if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
                 (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+            java.lang.String s = bs.toStringUtf8();
             playerId_ = s;
             return s;
           } else {
-            return (String) ref;
+            return (java.lang.String) ref;
           }
         }
         /**
@@ -763,11 +914,11 @@ public final class ProtoGameState {
          */
         public com.google.protobuf.ByteString
             getPlayerIdBytes() {
-          Object ref = playerId_;
+          java.lang.Object ref = playerId_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+                    (java.lang.String) ref);
             playerId_ = b;
             return b;
           } else {
@@ -778,11 +929,11 @@ public final class ProtoGameState {
          * <code>optional string playerId = 1;</code>
          */
         public Builder setPlayerId(
-            String value) {
+            java.lang.String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-
+  
           playerId_ = value;
           onChanged();
           return this;
@@ -791,7 +942,7 @@ public final class ProtoGameState {
          * <code>optional string playerId = 1;</code>
          */
         public Builder clearPlayerId() {
-
+          
           playerId_ = getDefaultInstance().getPlayerId();
           onChanged();
           return this;
@@ -805,7 +956,7 @@ public final class ProtoGameState {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+          
           playerId_ = value;
           onChanged();
           return this;
@@ -822,7 +973,7 @@ public final class ProtoGameState {
          * <code>optional float posX = 2;</code>
          */
         public Builder setPosX(float value) {
-
+          
           posX_ = value;
           onChanged();
           return this;
@@ -831,7 +982,7 @@ public final class ProtoGameState {
          * <code>optional float posX = 2;</code>
          */
         public Builder clearPosX() {
-
+          
           posX_ = 0F;
           onChanged();
           return this;
@@ -848,7 +999,7 @@ public final class ProtoGameState {
          * <code>optional float posY = 3;</code>
          */
         public Builder setPosY(float value) {
-
+          
           posY_ = value;
           onChanged();
           return this;
@@ -857,7 +1008,7 @@ public final class ProtoGameState {
          * <code>optional float posY = 3;</code>
          */
         public Builder clearPosY() {
-
+          
           posY_ = 0F;
           onChanged();
           return this;
@@ -874,7 +1025,7 @@ public final class ProtoGameState {
          * <code>optional int32 viewOr = 4;</code>
          */
         public Builder setViewOr(int value) {
-
+          
           viewOr_ = value;
           onChanged();
           return this;
@@ -883,7 +1034,7 @@ public final class ProtoGameState {
          * <code>optional int32 viewOr = 4;</code>
          */
         public Builder clearViewOr() {
-
+          
           viewOr_ = 0;
           onChanged();
           return this;
@@ -900,7 +1051,7 @@ public final class ProtoGameState {
          * <code>optional int32 currWpn = 5;</code>
          */
         public Builder setCurrWpn(int value) {
-
+          
           currWpn_ = value;
           onChanged();
           return this;
@@ -909,7 +1060,7 @@ public final class ProtoGameState {
          * <code>optional int32 currWpn = 5;</code>
          */
         public Builder clearCurrWpn() {
-
+          
           currWpn_ = 0;
           onChanged();
           return this;
@@ -926,7 +1077,7 @@ public final class ProtoGameState {
          * <code>optional int32 health = 6;</code>
          */
         public Builder setHealth(int value) {
-
+          
           health_ = value;
           onChanged();
           return this;
@@ -935,8 +1086,112 @@ public final class ProtoGameState {
          * <code>optional int32 health = 6;</code>
          */
         public Builder clearHealth() {
-
+          
           health_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private boolean alive_ ;
+        /**
+         * <code>optional bool alive = 7;</code>
+         */
+        public boolean getAlive() {
+          return alive_;
+        }
+        /**
+         * <code>optional bool alive = 7;</code>
+         */
+        public Builder setAlive(boolean value) {
+          
+          alive_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional bool alive = 7;</code>
+         */
+        public Builder clearAlive() {
+          
+          alive_ = false;
+          onChanged();
+          return this;
+        }
+
+        private boolean hit_ ;
+        /**
+         * <code>optional bool hit = 8;</code>
+         */
+        public boolean getHit() {
+          return hit_;
+        }
+        /**
+         * <code>optional bool hit = 8;</code>
+         */
+        public Builder setHit(boolean value) {
+          
+          hit_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional bool hit = 8;</code>
+         */
+        public Builder clearHit() {
+          
+          hit_ = false;
+          onChanged();
+          return this;
+        }
+
+        private int powerUp_ ;
+        /**
+         * <code>optional int32 powerUp = 9;</code>
+         */
+        public int getPowerUp() {
+          return powerUp_;
+        }
+        /**
+         * <code>optional int32 powerUp = 9;</code>
+         */
+        public Builder setPowerUp(int value) {
+          
+          powerUp_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional int32 powerUp = 9;</code>
+         */
+        public Builder clearPowerUp() {
+          
+          powerUp_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private boolean hitImmune_ ;
+        /**
+         * <code>optional bool hitImmune = 10;</code>
+         */
+        public boolean getHitImmune() {
+          return hitImmune_;
+        }
+        /**
+         * <code>optional bool hitImmune = 10;</code>
+         */
+        public Builder setHitImmune(boolean value) {
+          
+          hitImmune_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional bool hitImmune = 10;</code>
+         */
+        public Builder clearHitImmune() {
+          
+          hitImmune_ = false;
           onChanged();
           return this;
         }
@@ -955,12 +1210,12 @@ public final class ProtoGameState {
       }
 
       // @@protoc_insertion_point(class_scope:game.core.State.Player)
-      private static final ProtoGameState.State.Player DEFAULT_INSTANCE;
+      private static final game.core.ProtoGameState.State.Player DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new ProtoGameState.State.Player();
+        DEFAULT_INSTANCE = new game.core.ProtoGameState.State.Player();
       }
 
-      public static ProtoGameState.State.Player getDefaultInstance() {
+      public static game.core.ProtoGameState.State.Player getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -978,12 +1233,12 @@ public final class ProtoGameState {
         return PARSER;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Parser<Player> getParserForType() {
         return PARSER;
       }
 
-      public ProtoGameState.State.Player getDefaultInstanceForType() {
+      public game.core.ProtoGameState.State.Player getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
@@ -1016,7 +1271,7 @@ public final class ProtoGameState {
       /**
        * <code>optional string ownerId = 7;</code>
        */
-      String getOwnerId();
+      java.lang.String getOwnerId();
       /**
        * <code>optional string ownerId = 7;</code>
        */
@@ -1042,7 +1297,7 @@ public final class ProtoGameState {
         ownerId_ = "";
       }
 
-      @Override
+      @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
       getUnknownFields() {
         return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
@@ -1088,7 +1343,7 @@ public final class ProtoGameState {
                 break;
               }
               case 58: {
-                String s = input.readStringRequireUtf8();
+                java.lang.String s = input.readStringRequireUtf8();
 
                 ownerId_ = s;
                 break;
@@ -1106,14 +1361,14 @@ public final class ProtoGameState {
       }
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ProtoGameState.internal_static_game_core_State_Bullet_descriptor;
+        return game.core.ProtoGameState.internal_static_game_core_State_Bullet_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ProtoGameState.internal_static_game_core_State_Bullet_fieldAccessorTable
+        return game.core.ProtoGameState.internal_static_game_core_State_Bullet_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ProtoGameState.State.Bullet.class, ProtoGameState.State.Bullet.Builder.class);
+                game.core.ProtoGameState.State.Bullet.class, game.core.ProtoGameState.State.Bullet.Builder.class);
       }
 
       public static final int BULLETNUM_FIELD_NUMBER = 1;
@@ -1153,18 +1408,18 @@ public final class ProtoGameState {
       }
 
       public static final int OWNERID_FIELD_NUMBER = 7;
-      private volatile Object ownerId_;
+      private volatile java.lang.Object ownerId_;
       /**
        * <code>optional string ownerId = 7;</code>
        */
-      public String getOwnerId() {
-        Object ref = ownerId_;
-        if (ref instanceof String) {
-          return (String) ref;
+      public java.lang.String getOwnerId() {
+        java.lang.Object ref = ownerId_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
-          String s = bs.toStringUtf8();
+          java.lang.String s = bs.toStringUtf8();
           ownerId_ = s;
           return s;
         }
@@ -1174,11 +1429,11 @@ public final class ProtoGameState {
        */
       public com.google.protobuf.ByteString
           getOwnerIdBytes() {
-        Object ref = ownerId_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+        java.lang.Object ref = ownerId_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
-                  (String) ref);
+                  (java.lang.String) ref);
           ownerId_ = b;
           return b;
         } else {
@@ -1244,26 +1499,26 @@ public final class ProtoGameState {
       }
 
       private static final long serialVersionUID = 0L;
-      @Override
-      public boolean equals(final Object obj) {
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof ProtoGameState.State.Bullet)) {
+        if (!(obj instanceof game.core.ProtoGameState.State.Bullet)) {
           return super.equals(obj);
         }
-        ProtoGameState.State.Bullet other = (ProtoGameState.State.Bullet) obj;
+        game.core.ProtoGameState.State.Bullet other = (game.core.ProtoGameState.State.Bullet) obj;
 
         boolean result = true;
         result = result && (getBulletNum()
             == other.getBulletNum());
         result = result && (
-            Float.floatToIntBits(getPosX())
-            == Float.floatToIntBits(
+            java.lang.Float.floatToIntBits(getPosX())
+            == java.lang.Float.floatToIntBits(
                 other.getPosX()));
         result = result && (
-            Float.floatToIntBits(getPosY())
-            == Float.floatToIntBits(
+            java.lang.Float.floatToIntBits(getPosY())
+            == java.lang.Float.floatToIntBits(
                 other.getPosY()));
         result = result && (getDamage()
             == other.getDamage());
@@ -1272,7 +1527,7 @@ public final class ProtoGameState {
         return result;
       }
 
-      @Override
+      @java.lang.Override
       public int hashCode() {
         if (memoizedHashCode != 0) {
           return memoizedHashCode;
@@ -1282,10 +1537,10 @@ public final class ProtoGameState {
         hash = (37 * hash) + BULLETNUM_FIELD_NUMBER;
         hash = (53 * hash) + getBulletNum();
         hash = (37 * hash) + POSX_FIELD_NUMBER;
-        hash = (53 * hash) + Float.floatToIntBits(
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getPosX());
         hash = (37 * hash) + POSY_FIELD_NUMBER;
-        hash = (53 * hash) + Float.floatToIntBits(
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getPosY());
         hash = (37 * hash) + DAMAGE_FIELD_NUMBER;
         hash = (53 * hash) + getDamage();
@@ -1296,58 +1551,58 @@ public final class ProtoGameState {
         return hash;
       }
 
-      public static ProtoGameState.State.Bullet parseFrom(
+      public static game.core.ProtoGameState.State.Bullet parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static ProtoGameState.State.Bullet parseFrom(
+      public static game.core.ProtoGameState.State.Bullet parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static ProtoGameState.State.Bullet parseFrom(byte[] data)
+      public static game.core.ProtoGameState.State.Bullet parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static ProtoGameState.State.Bullet parseFrom(
+      public static game.core.ProtoGameState.State.Bullet parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static ProtoGameState.State.Bullet parseFrom(java.io.InputStream input)
+      public static game.core.ProtoGameState.State.Bullet parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static ProtoGameState.State.Bullet parseFrom(
+      public static game.core.ProtoGameState.State.Bullet parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
-      public static ProtoGameState.State.Bullet parseDelimitedFrom(java.io.InputStream input)
+      public static game.core.ProtoGameState.State.Bullet parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input);
       }
-      public static ProtoGameState.State.Bullet parseDelimitedFrom(
+      public static game.core.ProtoGameState.State.Bullet parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static ProtoGameState.State.Bullet parseFrom(
+      public static game.core.ProtoGameState.State.Bullet parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessageV3
             .parseWithIOException(PARSER, input);
       }
-      public static ProtoGameState.State.Bullet parseFrom(
+      public static game.core.ProtoGameState.State.Bullet parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -1359,7 +1614,7 @@ public final class ProtoGameState {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(ProtoGameState.State.Bullet prototype) {
+      public static Builder newBuilder(game.core.ProtoGameState.State.Bullet prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       public Builder toBuilder() {
@@ -1367,9 +1622,9 @@ public final class ProtoGameState {
             ? new Builder() : new Builder().mergeFrom(this);
       }
 
-      @Override
+      @java.lang.Override
       protected Builder newBuilderForType(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
@@ -1379,26 +1634,26 @@ public final class ProtoGameState {
       public static final class Builder extends
           com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
           // @@protoc_insertion_point(builder_implements:game.core.State.Bullet)
-          ProtoGameState.State.BulletOrBuilder {
+          game.core.ProtoGameState.State.BulletOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return ProtoGameState.internal_static_game_core_State_Bullet_descriptor;
+          return game.core.ProtoGameState.internal_static_game_core_State_Bullet_descriptor;
         }
 
-        protected FieldAccessorTable
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return ProtoGameState.internal_static_game_core_State_Bullet_fieldAccessorTable
+          return game.core.ProtoGameState.internal_static_game_core_State_Bullet_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  ProtoGameState.State.Bullet.class, ProtoGameState.State.Bullet.Builder.class);
+                  game.core.ProtoGameState.State.Bullet.class, game.core.ProtoGameState.State.Bullet.Builder.class);
         }
 
-        // Construct using game.game.core.ProtoGameState.State.Bullet.newBuilder()
+        // Construct using game.core.ProtoGameState.State.Bullet.newBuilder()
         private Builder() {
           maybeForceBuilderInitialization();
         }
 
         private Builder(
-            BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
@@ -1424,23 +1679,23 @@ public final class ProtoGameState {
 
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return ProtoGameState.internal_static_game_core_State_Bullet_descriptor;
+          return game.core.ProtoGameState.internal_static_game_core_State_Bullet_descriptor;
         }
 
-        public ProtoGameState.State.Bullet getDefaultInstanceForType() {
-          return ProtoGameState.State.Bullet.getDefaultInstance();
+        public game.core.ProtoGameState.State.Bullet getDefaultInstanceForType() {
+          return game.core.ProtoGameState.State.Bullet.getDefaultInstance();
         }
 
-        public ProtoGameState.State.Bullet build() {
-          ProtoGameState.State.Bullet result = buildPartial();
+        public game.core.ProtoGameState.State.Bullet build() {
+          game.core.ProtoGameState.State.Bullet result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
           return result;
         }
 
-        public ProtoGameState.State.Bullet buildPartial() {
-          ProtoGameState.State.Bullet result = new ProtoGameState.State.Bullet(this);
+        public game.core.ProtoGameState.State.Bullet buildPartial() {
+          game.core.ProtoGameState.State.Bullet result = new game.core.ProtoGameState.State.Bullet(this);
           result.bulletNum_ = bulletNum_;
           result.posX_ = posX_;
           result.posY_ = posY_;
@@ -1477,16 +1732,16 @@ public final class ProtoGameState {
           return (Builder) super.addRepeatedField(field, value);
         }
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof ProtoGameState.State.Bullet) {
-            return mergeFrom((ProtoGameState.State.Bullet)other);
+          if (other instanceof game.core.ProtoGameState.State.Bullet) {
+            return mergeFrom((game.core.ProtoGameState.State.Bullet)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(ProtoGameState.State.Bullet other) {
-          if (other == ProtoGameState.State.Bullet.getDefaultInstance()) return this;
+        public Builder mergeFrom(game.core.ProtoGameState.State.Bullet other) {
+          if (other == game.core.ProtoGameState.State.Bullet.getDefaultInstance()) return this;
           if (other.getBulletNum() != 0) {
             setBulletNum(other.getBulletNum());
           }
@@ -1515,11 +1770,11 @@ public final class ProtoGameState {
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws java.io.IOException {
-          ProtoGameState.State.Bullet parsedMessage = null;
+          game.core.ProtoGameState.State.Bullet parsedMessage = null;
           try {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (ProtoGameState.State.Bullet) e.getUnfinishedMessage();
+            parsedMessage = (game.core.ProtoGameState.State.Bullet) e.getUnfinishedMessage();
             throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
@@ -1540,7 +1795,7 @@ public final class ProtoGameState {
          * <code>optional int32 bulletNum = 1;</code>
          */
         public Builder setBulletNum(int value) {
-
+          
           bulletNum_ = value;
           onChanged();
           return this;
@@ -1549,7 +1804,7 @@ public final class ProtoGameState {
          * <code>optional int32 bulletNum = 1;</code>
          */
         public Builder clearBulletNum() {
-
+          
           bulletNum_ = 0;
           onChanged();
           return this;
@@ -1566,7 +1821,7 @@ public final class ProtoGameState {
          * <code>optional float posX = 2;</code>
          */
         public Builder setPosX(float value) {
-
+          
           posX_ = value;
           onChanged();
           return this;
@@ -1575,7 +1830,7 @@ public final class ProtoGameState {
          * <code>optional float posX = 2;</code>
          */
         public Builder clearPosX() {
-
+          
           posX_ = 0F;
           onChanged();
           return this;
@@ -1592,7 +1847,7 @@ public final class ProtoGameState {
          * <code>optional float posY = 3;</code>
          */
         public Builder setPosY(float value) {
-
+          
           posY_ = value;
           onChanged();
           return this;
@@ -1601,7 +1856,7 @@ public final class ProtoGameState {
          * <code>optional float posY = 3;</code>
          */
         public Builder clearPosY() {
-
+          
           posY_ = 0F;
           onChanged();
           return this;
@@ -1618,7 +1873,7 @@ public final class ProtoGameState {
          * <code>optional int32 damage = 4;</code>
          */
         public Builder setDamage(int value) {
-
+          
           damage_ = value;
           onChanged();
           return this;
@@ -1627,26 +1882,26 @@ public final class ProtoGameState {
          * <code>optional int32 damage = 4;</code>
          */
         public Builder clearDamage() {
-
+          
           damage_ = 0;
           onChanged();
           return this;
         }
 
-        private Object ownerId_ = "";
+        private java.lang.Object ownerId_ = "";
         /**
          * <code>optional string ownerId = 7;</code>
          */
-        public String getOwnerId() {
-          Object ref = ownerId_;
-          if (!(ref instanceof String)) {
+        public java.lang.String getOwnerId() {
+          java.lang.Object ref = ownerId_;
+          if (!(ref instanceof java.lang.String)) {
             com.google.protobuf.ByteString bs =
                 (com.google.protobuf.ByteString) ref;
-            String s = bs.toStringUtf8();
+            java.lang.String s = bs.toStringUtf8();
             ownerId_ = s;
             return s;
           } else {
-            return (String) ref;
+            return (java.lang.String) ref;
           }
         }
         /**
@@ -1654,11 +1909,11 @@ public final class ProtoGameState {
          */
         public com.google.protobuf.ByteString
             getOwnerIdBytes() {
-          Object ref = ownerId_;
+          java.lang.Object ref = ownerId_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
-                    (String) ref);
+                    (java.lang.String) ref);
             ownerId_ = b;
             return b;
           } else {
@@ -1669,11 +1924,11 @@ public final class ProtoGameState {
          * <code>optional string ownerId = 7;</code>
          */
         public Builder setOwnerId(
-            String value) {
+            java.lang.String value) {
           if (value == null) {
     throw new NullPointerException();
   }
-
+  
           ownerId_ = value;
           onChanged();
           return this;
@@ -1682,7 +1937,7 @@ public final class ProtoGameState {
          * <code>optional string ownerId = 7;</code>
          */
         public Builder clearOwnerId() {
-
+          
           ownerId_ = getDefaultInstance().getOwnerId();
           onChanged();
           return this;
@@ -1696,7 +1951,7 @@ public final class ProtoGameState {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-
+          
           ownerId_ = value;
           onChanged();
           return this;
@@ -1716,12 +1971,12 @@ public final class ProtoGameState {
       }
 
       // @@protoc_insertion_point(class_scope:game.core.State.Bullet)
-      private static final ProtoGameState.State.Bullet DEFAULT_INSTANCE;
+      private static final game.core.ProtoGameState.State.Bullet DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new ProtoGameState.State.Bullet();
+        DEFAULT_INSTANCE = new game.core.ProtoGameState.State.Bullet();
       }
 
-      public static ProtoGameState.State.Bullet getDefaultInstance() {
+      public static game.core.ProtoGameState.State.Bullet getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
@@ -1739,12 +1994,12 @@ public final class ProtoGameState {
         return PARSER;
       }
 
-      @Override
+      @java.lang.Override
       public com.google.protobuf.Parser<Bullet> getParserForType() {
         return PARSER;
       }
 
-      public ProtoGameState.State.Bullet getDefaultInstanceForType() {
+      public game.core.ProtoGameState.State.Bullet getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
@@ -1761,17 +2016,17 @@ public final class ProtoGameState {
     }
 
     public static final int PLAYERS_FIELD_NUMBER = 7;
-    private java.util.List<ProtoGameState.State.Player> players_;
+    private java.util.List<game.core.ProtoGameState.State.Player> players_;
     /**
      * <code>repeated .game.core.State.Player players = 7;</code>
      */
-    public java.util.List<ProtoGameState.State.Player> getPlayersList() {
+    public java.util.List<game.core.ProtoGameState.State.Player> getPlayersList() {
       return players_;
     }
     /**
      * <code>repeated .game.core.State.Player players = 7;</code>
      */
-    public java.util.List<? extends ProtoGameState.State.PlayerOrBuilder>
+    public java.util.List<? extends game.core.ProtoGameState.State.PlayerOrBuilder> 
         getPlayersOrBuilderList() {
       return players_;
     }
@@ -1784,29 +2039,29 @@ public final class ProtoGameState {
     /**
      * <code>repeated .game.core.State.Player players = 7;</code>
      */
-    public ProtoGameState.State.Player getPlayers(int index) {
+    public game.core.ProtoGameState.State.Player getPlayers(int index) {
       return players_.get(index);
     }
     /**
      * <code>repeated .game.core.State.Player players = 7;</code>
      */
-    public ProtoGameState.State.PlayerOrBuilder getPlayersOrBuilder(
+    public game.core.ProtoGameState.State.PlayerOrBuilder getPlayersOrBuilder(
         int index) {
       return players_.get(index);
     }
 
     public static final int BULLETS_FIELD_NUMBER = 8;
-    private java.util.List<ProtoGameState.State.Bullet> bullets_;
+    private java.util.List<game.core.ProtoGameState.State.Bullet> bullets_;
     /**
      * <code>repeated .game.core.State.Bullet bullets = 8;</code>
      */
-    public java.util.List<ProtoGameState.State.Bullet> getBulletsList() {
+    public java.util.List<game.core.ProtoGameState.State.Bullet> getBulletsList() {
       return bullets_;
     }
     /**
      * <code>repeated .game.core.State.Bullet bullets = 8;</code>
      */
-    public java.util.List<? extends ProtoGameState.State.BulletOrBuilder>
+    public java.util.List<? extends game.core.ProtoGameState.State.BulletOrBuilder> 
         getBulletsOrBuilderList() {
       return bullets_;
     }
@@ -1819,13 +2074,13 @@ public final class ProtoGameState {
     /**
      * <code>repeated .game.core.State.Bullet bullets = 8;</code>
      */
-    public ProtoGameState.State.Bullet getBullets(int index) {
+    public game.core.ProtoGameState.State.Bullet getBullets(int index) {
       return bullets_.get(index);
     }
     /**
      * <code>repeated .game.core.State.Bullet bullets = 8;</code>
      */
-    public ProtoGameState.State.BulletOrBuilder getBulletsOrBuilder(
+    public game.core.ProtoGameState.State.BulletOrBuilder getBulletsOrBuilder(
         int index) {
       return bullets_.get(index);
     }
@@ -1875,15 +2130,15 @@ public final class ProtoGameState {
     }
 
     private static final long serialVersionUID = 0L;
-    @Override
-    public boolean equals(final Object obj) {
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof ProtoGameState.State)) {
+      if (!(obj instanceof game.core.ProtoGameState.State)) {
         return super.equals(obj);
       }
-      ProtoGameState.State other = (ProtoGameState.State) obj;
+      game.core.ProtoGameState.State other = (game.core.ProtoGameState.State) obj;
 
       boolean result = true;
       result = result && (getStateTime()
@@ -1895,7 +2150,7 @@ public final class ProtoGameState {
       return result;
     }
 
-    @Override
+    @java.lang.Override
     public int hashCode() {
       if (memoizedHashCode != 0) {
         return memoizedHashCode;
@@ -1917,58 +2172,58 @@ public final class ProtoGameState {
       return hash;
     }
 
-    public static ProtoGameState.State parseFrom(
+    public static game.core.ProtoGameState.State parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ProtoGameState.State parseFrom(
+    public static game.core.ProtoGameState.State parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ProtoGameState.State parseFrom(byte[] data)
+    public static game.core.ProtoGameState.State parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static ProtoGameState.State parseFrom(
+    public static game.core.ProtoGameState.State parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static ProtoGameState.State parseFrom(java.io.InputStream input)
+    public static game.core.ProtoGameState.State parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ProtoGameState.State parseFrom(
+    public static game.core.ProtoGameState.State parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ProtoGameState.State parseDelimitedFrom(java.io.InputStream input)
+    public static game.core.ProtoGameState.State parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static ProtoGameState.State parseDelimitedFrom(
+    public static game.core.ProtoGameState.State parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static ProtoGameState.State parseFrom(
+    public static game.core.ProtoGameState.State parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static ProtoGameState.State parseFrom(
+    public static game.core.ProtoGameState.State parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1980,7 +2235,7 @@ public final class ProtoGameState {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(ProtoGameState.State prototype) {
+    public static Builder newBuilder(game.core.ProtoGameState.State prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() {
@@ -1988,9 +2243,9 @@ public final class ProtoGameState {
           ? new Builder() : new Builder().mergeFrom(this);
     }
 
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2000,26 +2255,26 @@ public final class ProtoGameState {
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:game.core.State)
-        ProtoGameState.StateOrBuilder {
+        game.core.ProtoGameState.StateOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return ProtoGameState.internal_static_game_core_State_descriptor;
+        return game.core.ProtoGameState.internal_static_game_core_State_descriptor;
       }
 
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return ProtoGameState.internal_static_game_core_State_fieldAccessorTable
+        return game.core.ProtoGameState.internal_static_game_core_State_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                ProtoGameState.State.class, ProtoGameState.State.Builder.class);
+                game.core.ProtoGameState.State.class, game.core.ProtoGameState.State.Builder.class);
       }
 
-      // Construct using game.game.core.ProtoGameState.State.newBuilder()
+      // Construct using game.core.ProtoGameState.State.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
 
       private Builder(
-          BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
@@ -2051,23 +2306,23 @@ public final class ProtoGameState {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ProtoGameState.internal_static_game_core_State_descriptor;
+        return game.core.ProtoGameState.internal_static_game_core_State_descriptor;
       }
 
-      public ProtoGameState.State getDefaultInstanceForType() {
-        return ProtoGameState.State.getDefaultInstance();
+      public game.core.ProtoGameState.State getDefaultInstanceForType() {
+        return game.core.ProtoGameState.State.getDefaultInstance();
       }
 
-      public ProtoGameState.State build() {
-        ProtoGameState.State result = buildPartial();
+      public game.core.ProtoGameState.State build() {
+        game.core.ProtoGameState.State result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public ProtoGameState.State buildPartial() {
-        ProtoGameState.State result = new ProtoGameState.State(this);
+      public game.core.ProtoGameState.State buildPartial() {
+        game.core.ProtoGameState.State result = new game.core.ProtoGameState.State(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.stateTime_ = stateTime_;
@@ -2121,16 +2376,16 @@ public final class ProtoGameState {
         return (Builder) super.addRepeatedField(field, value);
       }
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ProtoGameState.State) {
-          return mergeFrom((ProtoGameState.State)other);
+        if (other instanceof game.core.ProtoGameState.State) {
+          return mergeFrom((game.core.ProtoGameState.State)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(ProtoGameState.State other) {
-        if (other == ProtoGameState.State.getDefaultInstance()) return this;
+      public Builder mergeFrom(game.core.ProtoGameState.State other) {
+        if (other == game.core.ProtoGameState.State.getDefaultInstance()) return this;
         if (other.getStateTime() != 0) {
           setStateTime(other.getStateTime());
         }
@@ -2152,7 +2407,7 @@ public final class ProtoGameState {
               playersBuilder_ = null;
               players_ = other.players_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              playersBuilder_ =
+              playersBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getPlayersFieldBuilder() : null;
             } else {
@@ -2178,7 +2433,7 @@ public final class ProtoGameState {
               bulletsBuilder_ = null;
               bullets_ = other.bullets_;
               bitField0_ = (bitField0_ & ~0x00000004);
-              bulletsBuilder_ =
+              bulletsBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getBulletsFieldBuilder() : null;
             } else {
@@ -2198,11 +2453,11 @@ public final class ProtoGameState {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        ProtoGameState.State parsedMessage = null;
+        game.core.ProtoGameState.State parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (ProtoGameState.State) e.getUnfinishedMessage();
+          parsedMessage = (game.core.ProtoGameState.State) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -2224,7 +2479,7 @@ public final class ProtoGameState {
        * <code>optional int32 stateTime = 1;</code>
        */
       public Builder setStateTime(int value) {
-
+        
         stateTime_ = value;
         onChanged();
         return this;
@@ -2233,28 +2488,28 @@ public final class ProtoGameState {
        * <code>optional int32 stateTime = 1;</code>
        */
       public Builder clearStateTime() {
-
+        
         stateTime_ = 0;
         onChanged();
         return this;
       }
 
-      private java.util.List<ProtoGameState.State.Player> players_ =
+      private java.util.List<game.core.ProtoGameState.State.Player> players_ =
         java.util.Collections.emptyList();
       private void ensurePlayersIsMutable() {
         if (!((bitField0_ & 0x00000002) == 0x00000002)) {
-          players_ = new java.util.ArrayList<ProtoGameState.State.Player>(players_);
+          players_ = new java.util.ArrayList<game.core.ProtoGameState.State.Player>(players_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          ProtoGameState.State.Player, ProtoGameState.State.Player.Builder, ProtoGameState.State.PlayerOrBuilder> playersBuilder_;
+          game.core.ProtoGameState.State.Player, game.core.ProtoGameState.State.Player.Builder, game.core.ProtoGameState.State.PlayerOrBuilder> playersBuilder_;
 
       /**
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
-      public java.util.List<ProtoGameState.State.Player> getPlayersList() {
+      public java.util.List<game.core.ProtoGameState.State.Player> getPlayersList() {
         if (playersBuilder_ == null) {
           return java.util.Collections.unmodifiableList(players_);
         } else {
@@ -2274,7 +2529,7 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
-      public ProtoGameState.State.Player getPlayers(int index) {
+      public game.core.ProtoGameState.State.Player getPlayers(int index) {
         if (playersBuilder_ == null) {
           return players_.get(index);
         } else {
@@ -2285,7 +2540,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
       public Builder setPlayers(
-          int index, ProtoGameState.State.Player value) {
+          int index, game.core.ProtoGameState.State.Player value) {
         if (playersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2302,7 +2557,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
       public Builder setPlayers(
-          int index, ProtoGameState.State.Player.Builder builderForValue) {
+          int index, game.core.ProtoGameState.State.Player.Builder builderForValue) {
         if (playersBuilder_ == null) {
           ensurePlayersIsMutable();
           players_.set(index, builderForValue.build());
@@ -2315,7 +2570,7 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
-      public Builder addPlayers(ProtoGameState.State.Player value) {
+      public Builder addPlayers(game.core.ProtoGameState.State.Player value) {
         if (playersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2332,7 +2587,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
       public Builder addPlayers(
-          int index, ProtoGameState.State.Player value) {
+          int index, game.core.ProtoGameState.State.Player value) {
         if (playersBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2349,7 +2604,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
       public Builder addPlayers(
-          ProtoGameState.State.Player.Builder builderForValue) {
+          game.core.ProtoGameState.State.Player.Builder builderForValue) {
         if (playersBuilder_ == null) {
           ensurePlayersIsMutable();
           players_.add(builderForValue.build());
@@ -2363,7 +2618,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
       public Builder addPlayers(
-          int index, ProtoGameState.State.Player.Builder builderForValue) {
+          int index, game.core.ProtoGameState.State.Player.Builder builderForValue) {
         if (playersBuilder_ == null) {
           ensurePlayersIsMutable();
           players_.add(index, builderForValue.build());
@@ -2377,7 +2632,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
       public Builder addAllPlayers(
-          Iterable<? extends ProtoGameState.State.Player> values) {
+          java.lang.Iterable<? extends game.core.ProtoGameState.State.Player> values) {
         if (playersBuilder_ == null) {
           ensurePlayersIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -2417,14 +2672,14 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
-      public ProtoGameState.State.Player.Builder getPlayersBuilder(
+      public game.core.ProtoGameState.State.Player.Builder getPlayersBuilder(
           int index) {
         return getPlayersFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
-      public ProtoGameState.State.PlayerOrBuilder getPlayersOrBuilder(
+      public game.core.ProtoGameState.State.PlayerOrBuilder getPlayersOrBuilder(
           int index) {
         if (playersBuilder_ == null) {
           return players_.get(index);  } else {
@@ -2434,7 +2689,7 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
-      public java.util.List<? extends ProtoGameState.State.PlayerOrBuilder>
+      public java.util.List<? extends game.core.ProtoGameState.State.PlayerOrBuilder> 
            getPlayersOrBuilderList() {
         if (playersBuilder_ != null) {
           return playersBuilder_.getMessageOrBuilderList();
@@ -2445,31 +2700,31 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
-      public ProtoGameState.State.Player.Builder addPlayersBuilder() {
+      public game.core.ProtoGameState.State.Player.Builder addPlayersBuilder() {
         return getPlayersFieldBuilder().addBuilder(
-            ProtoGameState.State.Player.getDefaultInstance());
+            game.core.ProtoGameState.State.Player.getDefaultInstance());
       }
       /**
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
-      public ProtoGameState.State.Player.Builder addPlayersBuilder(
+      public game.core.ProtoGameState.State.Player.Builder addPlayersBuilder(
           int index) {
         return getPlayersFieldBuilder().addBuilder(
-            index, ProtoGameState.State.Player.getDefaultInstance());
+            index, game.core.ProtoGameState.State.Player.getDefaultInstance());
       }
       /**
        * <code>repeated .game.core.State.Player players = 7;</code>
        */
-      public java.util.List<ProtoGameState.State.Player.Builder>
+      public java.util.List<game.core.ProtoGameState.State.Player.Builder> 
            getPlayersBuilderList() {
         return getPlayersFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          ProtoGameState.State.Player, ProtoGameState.State.Player.Builder, ProtoGameState.State.PlayerOrBuilder>
+          game.core.ProtoGameState.State.Player, game.core.ProtoGameState.State.Player.Builder, game.core.ProtoGameState.State.PlayerOrBuilder> 
           getPlayersFieldBuilder() {
         if (playersBuilder_ == null) {
           playersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              ProtoGameState.State.Player, ProtoGameState.State.Player.Builder, ProtoGameState.State.PlayerOrBuilder>(
+              game.core.ProtoGameState.State.Player, game.core.ProtoGameState.State.Player.Builder, game.core.ProtoGameState.State.PlayerOrBuilder>(
                   players_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
@@ -2479,22 +2734,22 @@ public final class ProtoGameState {
         return playersBuilder_;
       }
 
-      private java.util.List<ProtoGameState.State.Bullet> bullets_ =
+      private java.util.List<game.core.ProtoGameState.State.Bullet> bullets_ =
         java.util.Collections.emptyList();
       private void ensureBulletsIsMutable() {
         if (!((bitField0_ & 0x00000004) == 0x00000004)) {
-          bullets_ = new java.util.ArrayList<ProtoGameState.State.Bullet>(bullets_);
+          bullets_ = new java.util.ArrayList<game.core.ProtoGameState.State.Bullet>(bullets_);
           bitField0_ |= 0x00000004;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          ProtoGameState.State.Bullet, ProtoGameState.State.Bullet.Builder, ProtoGameState.State.BulletOrBuilder> bulletsBuilder_;
+          game.core.ProtoGameState.State.Bullet, game.core.ProtoGameState.State.Bullet.Builder, game.core.ProtoGameState.State.BulletOrBuilder> bulletsBuilder_;
 
       /**
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
-      public java.util.List<ProtoGameState.State.Bullet> getBulletsList() {
+      public java.util.List<game.core.ProtoGameState.State.Bullet> getBulletsList() {
         if (bulletsBuilder_ == null) {
           return java.util.Collections.unmodifiableList(bullets_);
         } else {
@@ -2514,7 +2769,7 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
-      public ProtoGameState.State.Bullet getBullets(int index) {
+      public game.core.ProtoGameState.State.Bullet getBullets(int index) {
         if (bulletsBuilder_ == null) {
           return bullets_.get(index);
         } else {
@@ -2525,7 +2780,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
       public Builder setBullets(
-          int index, ProtoGameState.State.Bullet value) {
+          int index, game.core.ProtoGameState.State.Bullet value) {
         if (bulletsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2542,7 +2797,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
       public Builder setBullets(
-          int index, ProtoGameState.State.Bullet.Builder builderForValue) {
+          int index, game.core.ProtoGameState.State.Bullet.Builder builderForValue) {
         if (bulletsBuilder_ == null) {
           ensureBulletsIsMutable();
           bullets_.set(index, builderForValue.build());
@@ -2555,7 +2810,7 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
-      public Builder addBullets(ProtoGameState.State.Bullet value) {
+      public Builder addBullets(game.core.ProtoGameState.State.Bullet value) {
         if (bulletsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2572,7 +2827,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
       public Builder addBullets(
-          int index, ProtoGameState.State.Bullet value) {
+          int index, game.core.ProtoGameState.State.Bullet value) {
         if (bulletsBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
@@ -2589,7 +2844,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
       public Builder addBullets(
-          ProtoGameState.State.Bullet.Builder builderForValue) {
+          game.core.ProtoGameState.State.Bullet.Builder builderForValue) {
         if (bulletsBuilder_ == null) {
           ensureBulletsIsMutable();
           bullets_.add(builderForValue.build());
@@ -2603,7 +2858,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
       public Builder addBullets(
-          int index, ProtoGameState.State.Bullet.Builder builderForValue) {
+          int index, game.core.ProtoGameState.State.Bullet.Builder builderForValue) {
         if (bulletsBuilder_ == null) {
           ensureBulletsIsMutable();
           bullets_.add(index, builderForValue.build());
@@ -2617,7 +2872,7 @@ public final class ProtoGameState {
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
       public Builder addAllBullets(
-          Iterable<? extends ProtoGameState.State.Bullet> values) {
+          java.lang.Iterable<? extends game.core.ProtoGameState.State.Bullet> values) {
         if (bulletsBuilder_ == null) {
           ensureBulletsIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -2657,14 +2912,14 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
-      public ProtoGameState.State.Bullet.Builder getBulletsBuilder(
+      public game.core.ProtoGameState.State.Bullet.Builder getBulletsBuilder(
           int index) {
         return getBulletsFieldBuilder().getBuilder(index);
       }
       /**
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
-      public ProtoGameState.State.BulletOrBuilder getBulletsOrBuilder(
+      public game.core.ProtoGameState.State.BulletOrBuilder getBulletsOrBuilder(
           int index) {
         if (bulletsBuilder_ == null) {
           return bullets_.get(index);  } else {
@@ -2674,7 +2929,7 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
-      public java.util.List<? extends ProtoGameState.State.BulletOrBuilder>
+      public java.util.List<? extends game.core.ProtoGameState.State.BulletOrBuilder> 
            getBulletsOrBuilderList() {
         if (bulletsBuilder_ != null) {
           return bulletsBuilder_.getMessageOrBuilderList();
@@ -2685,31 +2940,31 @@ public final class ProtoGameState {
       /**
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
-      public ProtoGameState.State.Bullet.Builder addBulletsBuilder() {
+      public game.core.ProtoGameState.State.Bullet.Builder addBulletsBuilder() {
         return getBulletsFieldBuilder().addBuilder(
-            ProtoGameState.State.Bullet.getDefaultInstance());
+            game.core.ProtoGameState.State.Bullet.getDefaultInstance());
       }
       /**
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
-      public ProtoGameState.State.Bullet.Builder addBulletsBuilder(
+      public game.core.ProtoGameState.State.Bullet.Builder addBulletsBuilder(
           int index) {
         return getBulletsFieldBuilder().addBuilder(
-            index, ProtoGameState.State.Bullet.getDefaultInstance());
+            index, game.core.ProtoGameState.State.Bullet.getDefaultInstance());
       }
       /**
        * <code>repeated .game.core.State.Bullet bullets = 8;</code>
        */
-      public java.util.List<ProtoGameState.State.Bullet.Builder>
+      public java.util.List<game.core.ProtoGameState.State.Bullet.Builder> 
            getBulletsBuilderList() {
         return getBulletsFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          ProtoGameState.State.Bullet, ProtoGameState.State.Bullet.Builder, ProtoGameState.State.BulletOrBuilder>
+          game.core.ProtoGameState.State.Bullet, game.core.ProtoGameState.State.Bullet.Builder, game.core.ProtoGameState.State.BulletOrBuilder> 
           getBulletsFieldBuilder() {
         if (bulletsBuilder_ == null) {
           bulletsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              ProtoGameState.State.Bullet, ProtoGameState.State.Bullet.Builder, ProtoGameState.State.BulletOrBuilder>(
+              game.core.ProtoGameState.State.Bullet, game.core.ProtoGameState.State.Bullet.Builder, game.core.ProtoGameState.State.BulletOrBuilder>(
                   bullets_,
                   ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
@@ -2733,12 +2988,12 @@ public final class ProtoGameState {
     }
 
     // @@protoc_insertion_point(class_scope:game.core.State)
-    private static final ProtoGameState.State DEFAULT_INSTANCE;
+    private static final game.core.ProtoGameState.State DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new ProtoGameState.State();
+      DEFAULT_INSTANCE = new game.core.ProtoGameState.State();
     }
 
-    public static ProtoGameState.State getDefaultInstance() {
+    public static game.core.ProtoGameState.State getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2756,12 +3011,12 @@ public final class ProtoGameState {
       return PARSER;
     }
 
-    @Override
+    @java.lang.Override
     public com.google.protobuf.Parser<State> getParserForType() {
       return PARSER;
     }
 
-    public ProtoGameState.State getDefaultInstanceForType() {
+    public game.core.ProtoGameState.State getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -2769,17 +3024,17 @@ public final class ProtoGameState {
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_game_core_State_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_core_State_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_game_core_State_Player_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_core_State_Player_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_game_core_State_Bullet_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_core_State_Bullet_fieldAccessorTable;
 
@@ -2790,16 +3045,18 @@ public final class ProtoGameState {
   private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
-      "\n\013state.proto\022\tgame.core\"\261\002\n\005State\022\021\n\tst" +
+    java.lang.String[] descriptorData = {
+      "\n\013state.proto\022\tgame.core\"\362\002\n\005State\022\021\n\tst" +
       "ateTime\030\001 \001(\005\022(\n\007players\030\007 \003(\0132\027.game.co" +
       "re.State.Player\022(\n\007bullets\030\010 \003(\0132\027.game." +
-      "core.State.Bullet\032g\n\006Player\022\020\n\010playerId\030" +
-      "\001 \001(\t\022\014\n\004posX\030\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022\016\n\006vie" +
-      "wOr\030\004 \001(\005\022\017\n\007currWpn\030\005 \001(\005\022\016\n\006health\030\006 \001" +
-      "(\005\032X\n\006Bullet\022\021\n\tbulletNum\030\001 \001(\005\022\014\n\004posX\030" +
-      "\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022\016\n\006damage\030\004 \001(\005\022\017\n\007o" +
-      "wnerId\030\007 \001(\tB\020B\016ProtoGameStateb\006proto3"
+      "core.State.Bullet\032\247\001\n\006Player\022\020\n\010playerId" +
+      "\030\001 \001(\t\022\014\n\004posX\030\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022\016\n\006vi" +
+      "ewOr\030\004 \001(\005\022\017\n\007currWpn\030\005 \001(\005\022\016\n\006health\030\006 " +
+      "\001(\005\022\r\n\005alive\030\007 \001(\010\022\013\n\003hit\030\010 \001(\010\022\017\n\007power" +
+      "Up\030\t \001(\005\022\021\n\thitImmune\030\n \001(\010\032X\n\006Bullet\022\021\n" +
+      "\tbulletNum\030\001 \001(\005\022\014\n\004posX\030\002 \001(\002\022\014\n\004posY\030\003" +
+      " \001(\002\022\016\n\006damage\030\004 \001(\005\022\017\n\007ownerId\030\007 \001(\tB\020B",
+      "\016ProtoGameStateb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2818,19 +3075,19 @@ public final class ProtoGameState {
     internal_static_game_core_State_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_core_State_descriptor,
-        new String[] { "StateTime", "Players", "Bullets", });
+        new java.lang.String[] { "StateTime", "Players", "Bullets", });
     internal_static_game_core_State_Player_descriptor =
       internal_static_game_core_State_descriptor.getNestedTypes().get(0);
     internal_static_game_core_State_Player_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_core_State_Player_descriptor,
-        new String[] { "PlayerId", "PosX", "PosY", "ViewOr", "CurrWpn", "Health", });
+        new java.lang.String[] { "PlayerId", "PosX", "PosY", "ViewOr", "CurrWpn", "Health", "Alive", "Hit", "PowerUp", "HitImmune", });
     internal_static_game_core_State_Bullet_descriptor =
       internal_static_game_core_State_descriptor.getNestedTypes().get(1);
     internal_static_game_core_State_Bullet_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_core_State_Bullet_descriptor,
-        new String[] { "BulletNum", "PosX", "PosY", "Damage", "OwnerId", });
+        new java.lang.String[] { "BulletNum", "PosX", "PosY", "Damage", "OwnerId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

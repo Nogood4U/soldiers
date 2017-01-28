@@ -9,7 +9,7 @@ import scala.concurrent.duration._
 /**
   * Created by Sergio on 1/17/2017.
   */
-class GameRoom(name: String, maxPlayer: Short) extends Actor {
+class GameRoom(name: String, maxPlayer: Short, server: ActorRef) extends Actor {
   var timer: ActorRef = _
   var players: HashMap[String, ActorRef] = HashMap.empty
   var started: Boolean = false
@@ -32,6 +32,7 @@ class GameRoom(name: String, maxPlayer: Short) extends Actor {
     case e: Disconected => if (started) {
       players.remove(e.playerId)
       timer ! e
+      server ! e
     }
 
     case cmd: PlayerCmd => timer ! cmd //maybe extra processing here ? not likely

@@ -14,6 +14,10 @@ message State {
         int32 viewOr = 4;
         int32 currWpn = 5;
         int32 health = 6;
+        bool alive = 7;
+        bool hit = 8;
+        int32 powerUp = 9;
+        bool hitImmune = 10;
     }
     repeated Player players = 7;
     message Bullet {

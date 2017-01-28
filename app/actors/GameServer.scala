@@ -19,21 +19,21 @@ class GameServer extends Actor {
     case CreateGame(name: String, maxPlayer: Short) => rooms.find(room => room._1._2 == name) match {
       case Some(elm) => sender ! elm._1._1
 
-      case None => {
+      case None =>
         //create game , send id to sender
         val roomId = UUID.randomUUID().toString
-        rooms += (roomId, name) -> context.actorOf(Props(new GameRoom(name, maxPlayer)), name)
+        rooms += (roomId, name) -> context.actorOf(Props(new GameRoom(name, maxPlayer, self)), name)
         sender ! roomId
-      }
+
     }
 
     case GetPlayer(playerId) => players.get(playerId) match {
       case Some(player) => sender ! player
-      case None => {
+      case None =>
         val newPlayer = context.actorOf(Props(new Player(playerId)), playerId)
         players(playerId) = newPlayer
         sender ! newPlayer
-      }
+
     }
 
 
@@ -45,15 +45,17 @@ class GameServer extends Actor {
     }
 
     case msg@JoinGame(gameId, _, _) => rooms.find(room => room._1._1 == gameId) match {
-      case Some(elm) => {
+      case Some(elm) =>
         //send actorRef
         println(s"forwarding msg to ${elm._2}")
         elm._2 forward msg
-      }
-      case None => {
+
+      case None =>
         sender ! false
-      }
+
     }
+
+    case e: Disconected => players.remove(e.playerId)
   }
 }
 

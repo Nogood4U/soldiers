@@ -86,17 +86,6 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
 
       player ! SocketActor(actor._1)
       val in = Sink.actorRef(player, Disconected(playerId))
-      /* val in = Sink.foreach[Array[Byte]] {
-         msg =>
-           println("closed")
-           Json.parse(msg) match {
-             case cmd: JsValue => Json.fromJson[Command](cmd) match {
-               case JsSuccess(_cmd, _) => player ! PlayerCmd(playerId, _cmd)
-               case _ => println("invalid command")
-             }
-             case _ =>
-           }
-       }*/
 
       val protobuffedSource = Source.fromPublisher(actor._2).map {
         case GameState(stateTime, players) =>
@@ -114,7 +103,11 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
               .setPosY(ps.posY)
               .setViewOr(ps.viewOr)
               .setCurrWpn(ps.currWpn)
-              .setHealth(ps.health).build()
+              .setHealth(ps.health)
+              .setAlive(ps.alive)
+              .setHit(ps.hit)
+              .setHitImmune(ps.hitImmune)
+              .build()
           }).asJava)
           stateBuilder.addAllBullets(bullets.map(_.asInstanceOf[Bullet]).map(bs => {
             ProtoGameState.State.Bullet.newBuilder()

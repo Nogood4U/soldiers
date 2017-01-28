@@ -34,7 +34,7 @@ class Player(id: String) extends Actor {
 
     case e: Disconected =>
       self ! PoisonPill
-      roomActor ! e
+      if (roomActor != null) roomActor ! e
   }
 }
 
