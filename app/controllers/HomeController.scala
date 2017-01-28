@@ -1,23 +1,20 @@
 package controllers
 
-import java.io.ByteArrayInputStream
 import javax.inject._
 
 import actors._
-import akka.actor.Status.Failure
 import akka.actor.{ActorRef, ActorSystem}
 import play.api.mvc._
 
 import scala.concurrent.duration._
-import akka.pattern.{AskTimeoutException, ask}
+import akka.pattern.{ask}
 import akka.stream.{Materializer, OverflowStrategy}
 import akka.stream.scaladsl.{Flow, Keep, Sink, Source}
-import akka.util.{ByteString, Timeout}
+import akka.util.{Timeout}
 import core.{AppState, Bullet, GameState, PlayerState}
 import game.core.ProtoGameState
-import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.{ExecutionContext}
 import play.api.mvc.WebSocket.MessageFlowTransformer
 
 import scala.collection.JavaConverters._
@@ -31,7 +28,6 @@ import scala.collection.JavaConverters._
 class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializer, implicit val execContext: ExecutionContext, state: AppState) extends Controller {
 
   implicit val timeout = Timeout(2 seconds)
-  implicit val cmdReads = Json.reads[Command]
   implicit val messageFlowTransformer = MessageFlowTransformer.byteArrayMessageFlowTransformer
 
   /**
@@ -82,31 +78,31 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
 
     for {
       server <- system.actorSelection("/user/" + s"$serverId").resolveOne()
-      resp <- server ? GetPlayer(playerId)
+      player <- (server ? GetPlayer(playerId)).mapTo[ActorRef]
     } yield {
-      val player = resp.asInstanceOf[ActorRef]
       val source = Source.actorRef[GameState](100, OverflowStrategy.dropTail)
       val sink = Sink.asPublisher[GameState](false)
-
       val actor = source.toMat(sink)(Keep.both) run
 
       player ! SocketActor(actor._1)
+      val in = Sink.actorRef(player, Disconected(playerId))
+      /* val in = Sink.foreach[Array[Byte]] {
+         msg =>
+           println("closed")
+           Json.parse(msg) match {
+             case cmd: JsValue => Json.fromJson[Command](cmd) match {
+               case JsSuccess(_cmd, _) => player ! PlayerCmd(playerId, _cmd)
+               case _ => println("invalid command")
+             }
+             case _ =>
+           }
+       }*/
 
-      val in = Sink.foreach[Array[Byte]] {
-        msg =>
-          Json.parse(msg) match {
-            case cmd: JsValue => Json.fromJson[Command](cmd) match {
-              case JsSuccess(_cmd, _) => player ! PlayerCmd(playerId, _cmd)
-              case _ => println("invalid command")
-            }
-            case _ =>
-          }
-      }
       val protobuffedSource = Source.fromPublisher(actor._2).map {
-        case state@GameState(stateTime, players) =>
+        case GameState(stateTime, players) =>
           val stateBuilder = ProtoGameState.State
             .newBuilder()
-            .setStateTime(stateTime);
+            .setStateTime(stateTime)
           val (playerStates, bullets) = players.partition {
             case e: PlayerState => true
             case e: Bullet => false
@@ -131,6 +127,8 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
           }).asJava)
           stateBuilder.build().toByteArray
       }
+
+
       Either.cond(test = true, Flow.fromSinkAndSource(in, protobuffedSource), Forbidden)
     }
 

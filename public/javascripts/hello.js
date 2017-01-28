@@ -67,6 +67,7 @@ function initGame(playerId) {
                     if (!localPlayer) {
                         localPlayer = createPlayer(serverPlayer.playerId);
                     }
+                    localPlayer.updated = true;
                     game.add.tween(localPlayer).to(
                         {
                             x: mtToPx(serverPlayer.posX),
@@ -149,6 +150,14 @@ function initGame(playerId) {
                     delete bulletsMap[key];
                 } else {
                     bullet.updated = false;
+                }
+            });
+            Object.entries(players).forEach(([key, player]) => {
+                if (!player.updated) {
+                    player.destroy();
+                    delete players[player];
+                } else {
+                    player.updated = false;
                 }
             });
         }));

@@ -3,6 +3,7 @@ package actors
 import akka.actor.{Actor, ActorRef}
 import core.{GameState, PlayerState}
 
+import scala.collection.mutable.HashMap
 import scala.collection.mutable.ListBuffer
 
 /**
@@ -10,7 +11,7 @@ import scala.collection.mutable.ListBuffer
   */
 class GameTimer extends Actor {
   var lastSampledTime = 0l
-  var players: ListBuffer[(String, ActorRef)] = ListBuffer.empty
+  var players: HashMap[String, ActorRef] = HashMap.empty
   var state: GameState = _
   var commands: ListBuffer[PlayerCmd] = ListBuffer.empty
 
@@ -34,7 +35,12 @@ class GameTimer extends Actor {
     case join: JoinInProgress =>
       println("adding player in progress")
       this.players += join.playerId -> join.player
-      state.createPlayer(join.playerState, jip = true)//joined in progress
+      state.createPlayer(join.playerState, jip = true) //joined in progress
+
+    case e: Disconected =>
+      println(s"${e.playerId} disconnected removing player from game")
+      players.remove(e.playerId)
+      state.removePlayer(e.playerId)
 
   }
 }

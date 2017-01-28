@@ -103,31 +103,42 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     body -> playerState
   }
 
+  def removePlayer(playerId: String) {
+    pBodies.remove(playerId) match {
+      case Some(body) =>
+        body._1.getWorld.destroyBody(body._1)
+        players -= (body._2)
+      case _ =>
+    }
+  }
+
   def applyCommand(playerCmd: PlayerCmd) {
     //apply movement
     val vec = new Vec2(playerCmd.cmd.xMv, playerCmd.cmd.yMv)
-    val body = pBodies.get(playerCmd.playerId).get
-    body._1.applyLinearImpulse(vec, body._1.getLocalCenter)
-    //apply view orientation
-    body._2.viewOr = if (playerCmd.cmd.xMv > 0) 1 else if (playerCmd.cmd.xMv < 0) 0 else body._2.viewOr
-    //
-    // apply controls
-    playerCmd.cmd.btns.foreach(btn => {
-      if (btn.equals("shift")) {
-        body._2.currWpn = body._2.currWpn match {
-          case 1 => 2
-          case 2 => 3
-          case 3 => 1
-          case _ => 1
-        }
-      }
-      if (btn.equals("fire")) {
-        val bullet = createProjectile(body._1, body._2, 60, 0)
-        bBodies += bullet
-        players += bullet._2
-      }
-    })
-    //
+    pBodies.get(playerCmd.playerId) match {
+      case Some(body) =>
+        body._1.applyLinearImpulse(vec, body._1.getLocalCenter)
+        //apply view orientation
+        body._2.viewOr = if (playerCmd.cmd.xMv > 0) 1 else if (playerCmd.cmd.xMv < 0) 0 else body._2.viewOr
+        //
+        // apply controls
+        playerCmd.cmd.btns.foreach(btn => {
+          if (btn.equals("shift")) {
+            body._2.currWpn = body._2.currWpn match {
+              case 1 => 2
+              case 2 => 3
+              case 3 => 1
+              case _ => 1
+            }
+          }
+          if (btn.equals("fire")) {
+            val bullet = createProjectile(body._1, body._2, 60, 0)
+            bBodies += bullet
+            players += bullet._2
+          }
+        })
+      case _ =>
+    }
   }
 
   def applyCommands(playerCmds: List[PlayerCmd]) {
@@ -164,13 +175,15 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     body -> bullet
   }
 
-  def applyStateChange() {/*
-  this should return events , such as , playerA just died , playerB killed PlayerA
-  ,with some statistic data ioe:5 bullets fire by playerA, power up picked up by playerB
-  */
+  def applyStateChange() {
+    /*
+      this should return events , such as , playerA just died , playerB killed PlayerA
+      ,with some statistic data ioe:5 bullets fire by playerA, power up picked up by playerB
+      */
     players.par foreach {
       case player: PlayerState =>
-        val body = pBodies.get(player.playerId).get
+        val body = pBodies(player.playerId)
+        //i am 900% i can do this
         val posX = if ((body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0) && player.health > 0)
           body._1.getPosition.x -> false
         else {
@@ -240,6 +253,7 @@ object GameObject {
     new GameObject {
       override var posX: Float = _
       override var posY: Float = _
+
       override def collide(o: GameObject): Unit = {
 
       }

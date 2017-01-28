@@ -3,7 +3,7 @@ package actors
 import akka.actor.{Actor, ActorRef, Props}
 import core.{GameState, PlayerState}
 
-import scala.collection.mutable.ListBuffer
+import scala.collection.mutable.{HashMap, ListBuffer}
 import scala.concurrent.duration._
 
 /**
@@ -11,7 +11,7 @@ import scala.concurrent.duration._
   */
 class GameRoom(name: String, maxPlayer: Short) extends Actor {
   var timer: ActorRef = _
-  var players: ListBuffer[(String, ActorRef)] = ListBuffer.empty
+  var players: HashMap[String, ActorRef] = HashMap.empty
   var started: Boolean = false
 
   import scala.concurrent.ExecutionContext.Implicits.global
@@ -29,13 +29,16 @@ class GameRoom(name: String, maxPlayer: Short) extends Actor {
         player ! msg
         sender ! true
       }
-
+    case e: Disconected => if (started) {
+      players.remove(e.playerId)
+      timer ! e
+    }
 
     case cmd: PlayerCmd => timer ! cmd //maybe extra processing here ? not likely
 
     case StartRoom => if (!started) {
       timer = context.actorOf(Props(new GameTimer))
-      timer ! StartTimer(players.toList, 50, GameState(0, players.map(pl => PlayerState(pl._1, 0, 0, 1, 1, 100))))
+      timer ! StartTimer(players.toList, 50, GameState(0, players.to[ListBuffer].map(pl => PlayerState(pl._1, 0, 0, 1, 1, 100))))
       context.system.scheduler.schedule(4 seconds, 50 millis, timer, Update)
       started = !started
     }
