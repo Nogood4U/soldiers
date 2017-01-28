@@ -41,7 +41,7 @@ libraryDependencies ++= Seq(
 
 // https://mvnrepository.com/artifact/org.jbox2d/jbox2d-library
 libraryDependencies += "org.jbox2d" % "jbox2d-library" % "2.2.1.1"
-libraryDependencies += "com.google.protobuf" % "protobuf-java" % (version in PB.protobufConfig).value
+libraryDependencies += "com.google.protobuf" % "protobuf-java" % "3.1.0"
 
 
 
