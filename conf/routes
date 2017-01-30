@@ -12,7 +12,7 @@ GET        /message                                     controllers.AsyncControl
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file                                controllers.Assets.versioned(path="/public", file: Asset)
 
-GET        /ws/:serverId/:gameId                        controllers.HomeController.socket(serverId,gameId)
+GET        /ws/:serverId/:playerId                      controllers.HomeController.socket(serverId,playerId,gameId:Option[String])
 
 GET        /create/:serverId/:name/:maxPlayers          controllers.HomeController.createGame(serverId ,name,maxPlayers:Int)
 

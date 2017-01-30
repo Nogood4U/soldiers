@@ -10,7 +10,8 @@ function server(server, playerId) {
         new_uri = "ws:";
     }
     new_uri += "//" + loc.host;
-    var ws = new WebSocket(new_uri + "/ws/" + server + "/" + playerId);
+    let wsUrl = new_uri + "/ws/" + server + "/" + playerId + "?gameId=" + document.getElementById("gameId").value;
+    let ws = new WebSocket(wsUrl);
     ws.binaryType = 'arraybuffer';
     let obj = {};
     return protobuf.load("/assets/proto/state.proto").then(root => {
@@ -40,9 +41,9 @@ function server(server, playerId) {
     });
 }
 function str2ab(str) {
-    var buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
-    var bufView = new Uint16Array(buf);
-    for (var i = 0, strLen = str.length; i < strLen; i++) {
+    let buf = new ArrayBuffer(str.length * 2); // 2 bytes for each char
+    let bufView = new Uint16Array(buf);
+    for (let i = 0, strLen = str.length; i < strLen; i++) {
         bufView[i] = str.charCodeAt(i);
     }
     return buf;

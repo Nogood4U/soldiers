@@ -23,8 +23,8 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
   val positionIterations = 2
   var pBodies: HashMap[String, (Body, PlayerState)] = HashMap.empty
   var bBodies: ListBuffer[(Body, Bullet)] = ListBuffer.empty
-  val worldSizeX = 20
-  val worldSizeY = 15
+  val worldSizeX = 40
+  val worldSizeY = 40
   var bulletCounter = 0
 
   def init() {
@@ -106,9 +106,14 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     pBodies.remove(playerId) match {
       case Some(body) =>
         body._1.getWorld.destroyBody(body._1)
-        players -= (body._2)
       case _ =>
     }
+    players = players.filter(p => {
+      p match {
+        case e: PlayerState => e.playerId != playerId
+        case _ => true
+      }
+    })
   }
 
   def applyCommand(playerCmd: PlayerCmd) {
@@ -184,33 +189,38 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
       */
     players.par foreach {
       case player: PlayerState =>
-        val body = pBodies(player.playerId)
-        //i am 900% i can do this
-        val posX = if ((body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0) && player.health > 0)
-          body._1.getPosition.x -> false
-        else {
-          //body._1.setTransform(new Vec2(worldSizeX / 2, body._1.getPosition.y), body._1.getAngle)
-          body._1.getPosition.x -> true
-        }
-        val posY = if (body._1.getPosition.y < worldSizeY && body._1.getPosition.y > 0 && player.health > 0)
-          body._1.getPosition.y -> false
-        else {
-          body._1.setTransform(new Vec2(body._1.getPosition.x, worldSizeY / 2), body._1.getAngle)
-          body._1.getPosition.y -> true
-        }
-        //check if out of bounds or dead and reset back to middle of screen
-        if (posX._2 || posY._2) {
-          body._1.setTransform(new Vec2(worldSizeX / 2, worldSizeY / 2), body._1.getAngle)
-        } else {
-          //inbounds and alive , set position
-          player.posX = posX._1
-          player.posY = posY._1
+        pBodies.get(player.playerId) match {
+          case Some(body) =>
+            //i am 900% i can do this
+            val posX = if ((body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0) && player.health > 0)
+              body._1.getPosition.x -> false
+            else {
+              //body._1.setTransform(new Vec2(worldSizeX / 2, body._1.getPosition.y), body._1.getAngle)
+              body._1.getPosition.x -> true
+            }
+            val posY = if (body._1.getPosition.y < worldSizeY && body._1.getPosition.y > 0 && player.health > 0)
+              body._1.getPosition.y -> false
+            else {
+              body._1.setTransform(new Vec2(body._1.getPosition.x, worldSizeY / 2), body._1.getAngle)
+              body._1.getPosition.y -> true
+            }
+            //check if out of bounds or dead and reset back to middle of screen
+            if (posX._2 || posY._2) {
+              body._1.setTransform(new Vec2(worldSizeX / 2, worldSizeY / 2), body._1.getAngle)
+            } else {
+              //inbounds and alive , set position
+              player.posX = posX._1
+              player.posY = posY._1
+            }
+
+            if (player.health <= 0)
+              player.resetHealth()
+
+            body._1.setLinearVelocity(vel0)
+
+          case _ =>
         }
 
-        if (player.health <= 0)
-          player.resetHealth()
-
-        body._1.setLinearVelocity(vel0)
 
       case _ =>
     }

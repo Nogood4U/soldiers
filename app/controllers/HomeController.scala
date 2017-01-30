@@ -29,6 +29,7 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
 
   implicit val timeout = Timeout(2 seconds)
   implicit val messageFlowTransformer = MessageFlowTransformer.byteArrayMessageFlowTransformer
+  val default_server = "server"
 
   /**
     * Create an Action to render an HTML page with a welcome message.
@@ -36,12 +37,19 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
     * will be called when the application receives a `GET` request with
     * a path of `/`.
     */
-  def index = Action {
-    Ok(views.html.index("Your new application is ready."))
+  def index = Action.async {
+    (for {
+      server <- system.actorSelection("/user/" + s"$default_server").resolveOne()
+      roomList <- (server ? RoomList(null)).mapTo[RoomList]
+    } yield {
+      Ok(views.html.index(roomList.rooms, default_server))
+    }).recover {
+      case e => Ok(views.html.index(List.empty, default_server))
+    }
   }
 
-  def socket(serverId: String, gameId: String) = WebSocket.acceptOrResult[Array[Byte], Array[Byte]] { request =>
-    createSocket(serverId, gameId)
+  def socket(serverId: String, playerId: String, gameId: Option[String]) = WebSocket.acceptOrResult[Array[Byte], Array[Byte]] { request =>
+    createSocket(serverId, playerId, gameId.getOrElse(null))
   }
 
   def createGame(serverId: String, name: String, maxPlayer: Int) = Action.async {
@@ -74,12 +82,15 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
     }
   }
 
-  def createSocket(serverId: String, playerId: String) = {
+  def createSocket(serverId: String, playerId: String, gameId: String) = {
 
     for {
       server <- system.actorSelection("/user/" + s"$serverId").resolveOne()
       player <- (server ? GetPlayer(playerId)).mapTo[ActorRef]
     } yield {
+      if (gameId != null && !gameId.isEmpty)
+        server ! JoinGame(gameId, playerId, player)
+
       val source = Source.actorRef[GameState](100, OverflowStrategy.dropTail)
       val sink = Sink.asPublisher[GameState](false)
       val actor = source.toMat(sink)(Keep.both) run

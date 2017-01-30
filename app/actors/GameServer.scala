@@ -4,8 +4,7 @@ import java.util.UUID
 
 import akka.actor.{Actor, ActorRef, Props}
 
-import scala.None
-import scala.collection.mutable._
+import scala.collection.mutable.HashMap
 
 /**
   * Created by Sergio on 1/17/2017.
@@ -54,6 +53,9 @@ class GameServer extends Actor {
         sender ! false
 
     }
+    case msg: RoomList => {
+      sender ! RoomList(rooms.keySet.toList)
+    }
 
     case e: Disconected => players.remove(e.playerId)
   }
@@ -68,5 +70,7 @@ case class EndGame(gameID: String)
 case class GetPlayer(playerId: String)
 
 case class PlayerList(gameID: String)
+
+case class RoomList(rooms: List[(String, String)])
 
 case class JoinGame(gameId: String, playerId: String, player: ActorRef)

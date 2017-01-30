@@ -1,19 +1,41 @@
 @*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
-
+* This template takes a single argument, a String containing a
+* message to display.
+*@
+@(rooms:List[(String,String)],serverId:String)
 @*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
-<div id="gameCanvas"></div>
- <div id="gameForm">
-  <input id="playerId" type="text">
-  <button onclick="initGame(document.getElementById('playerId').value);">Init Game</button>
+* Call the `main` template with two arguments. The first
+* argument is a `String` with the title of the page, the second
+* argument is an `Html` object containing the body of the page.
+*@
+@main("Soldiers.IO") {
+    <div id="formLogo" style="display: block;
+        float: left;
+        white-space: pre;
+        font-family: Monospace;
+        font-size: 10pt;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-weight: bolder;">
+         _____       _    _                    _____  ___
+        /  ___|     | |  | | _                |_   _/ __  \
+        | (___  ___ | | _| |(_) ___ _ __ ___    | || |  | |
+        \___  \/ _ \| |/ _` | |/ _ \ '__/ __|   | || |  | |
+        ____) | (_) | | (_| | |  __/ |  \__ \_ _| || |__| |
+       |_____/ \___/|_|\__,_|_|\___|_|  |___(_)____\ ____ /
+        <span style="margin-top: 25px;
+                 display: inline-flex;">
+                 <select id="gameId" style="width: 85px">
+                 @for(room <- rooms){
+                     <option value="@room._1">@room._2</option>
+                 }
 
- </div>
+                 </select>
+                 <input id="playerId" type="text" style="margin-right: 15px;margin-left: 15px">
+                 <button onclick="initGame(document.getElementById('playerId').value);">Start Game</button>
+        </span>
+    </div>
+    <div id="gameCanvas"></div>
 }
