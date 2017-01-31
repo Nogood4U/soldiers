@@ -156,7 +156,7 @@ function initGame(playerId) {
                                 x: mtToPx(serverPlayer.posX),
                                 y: mtToPx(serverPlayer.posY)
                             },
-                            60,
+                            30,
                             Phaser.Easing.LINEAR,
                             true
                         );
@@ -165,7 +165,7 @@ function initGame(playerId) {
                                 x: mtToPx(serverPlayer.posX),
                                 y: mtToPx(serverPlayer.posY) - localPlayer.height / 2
                             },
-                            60,
+                            30,
                             Phaser.Easing.LINEAR,
                             true
                         );
@@ -174,7 +174,7 @@ function initGame(playerId) {
                                 x: mtToPx(serverPlayer.posX),
                                 y: mtToPx(serverPlayer.posY) - localPlayer.height / 2 - 15
                             },
-                            60,
+                            30,
                             Phaser.Easing.LINEAR,
                             true
                         );
@@ -186,7 +186,7 @@ function initGame(playerId) {
                                 x: mtToPx(serverPlayer.posX) - (localPlayer.width / 2) * (localPlayer.scale.x / Math.abs(localPlayer.scale.x)),
                                 y: mtToPx(serverPlayer.posY) - localPlayer.height / 2 - 5
                             },
-                            60,
+                            30,
                             Phaser.Easing.LINEAR,
                             true
                         );

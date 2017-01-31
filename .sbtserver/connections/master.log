@@ -236,3 +236,10 @@ Taking next connection to: 50718
 Checking to see if clients are empty...
 We have 1 non-daemon clients, continuing serving connections.
 Taking next connection to: 50718
+Checking to see if clients are empty...
+No non-daemon clients connected after 3 min. Shutting down.
+1 daemon clients are connected.
+Server socket thread exiting.
+1 clients open, will close them...
+All client sockets have been closed.
+Closing the 2760@DESKTOP-EUGFD9N logs at Tue Jan 31 13:50:32 COT 2017, goodbye.
