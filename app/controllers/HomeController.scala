@@ -86,8 +86,8 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
       server <- system.actorSelection("/user/" + s"$serverId").resolveOne()
       player <- (server ? GetPlayer(playerId, false)).mapTo[ActorRef]
     } yield {
-      if (gameId != null && !gameId.isEmpty)
-        server ! JoinGame(gameId, playerId, player)
+     /* if (gameId != null && !gameId.isEmpty)
+        server ! JoinGame(gameId, playerId, player)*/
 
       val source = Source.actorRef[GameState](100, OverflowStrategy.dropTail)
       val sink = Sink.asPublisher[GameState](false)

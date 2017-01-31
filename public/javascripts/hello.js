@@ -3,6 +3,7 @@ let players = {};
 let bg;
 let bulletsMap = {};
 let hitEffects = [];
+let dieEffects = [];
 let worldSizeX = 2000;
 let worldSizeY = 2000;
 let sWorldSizeX = mtToPx(40);
@@ -31,6 +32,10 @@ function createPlayer(_playerId, health, self) {
     let soldier = self ? game.add.sprite(0, 0, 'soldierSelf') : game.add.sprite(0, 0, 'soldierEnemy')
     soldier.scale.setTo(3.125, 3.125);
     soldier.anchor.setTo(0.5, 0.5);
+    let dedAnim = soldier.animations.add("ded", [13, 13, 0, 13, 13, 0, 13, 13, 0, 13, 13, 0], 15, false);
+    dedAnim.onStart.add(() => {
+        dieEffects[Math.floor(Math.random() * 2)].play();
+    });
     soldier.animations.add("r", [17, 18, 19, 20, 21, 22]);
     soldier.animations.play('r', 9, true);
     soldier.nameTag = game.add.text(0, 0, _playerId, {font: "15px Arial", fill: "#ffffff"});
@@ -66,6 +71,7 @@ function createPlayer(_playerId, health, self) {
             }
         }
     };
+    soldier.animDedPlayed = false;
     //soldier.addChild(soldier.health)
     players[_playerId] = soldier;
     return soldier;
@@ -73,6 +79,7 @@ function createPlayer(_playerId, health, self) {
 
 function initGame(playerId) {
     document.getElementById("formLogo").style.display = "none";
+    document.getElementById("titleAudio").pause();
     let preload = function () {
         /////
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -85,11 +92,14 @@ function initGame(playerId) {
         game.load.spritesheet('weapons', '/assets/images/sprites/weapons.png', 24, 24);
         game.load.spritesheet('bullet', '/assets/images/sprites/bullet.png', 19, 19);
         game.load.image('background', '/assets/images/background/back_3.png');
-        game.load.audio('map', ['assets/music/Mercury.mp3', 'assets/audio/Mercury.ogg']);
+        game.load.audio('mapLoop', ['assets/music/level1.ogg']);
         game.load.audio('fire', ['assets/sounds/guns/laser.mp3', 'assets/sounds/guns/laser.ogg']);
 
         for (var i = 1; i < 7; i++) {
-            game.load.audio('hit' + i, ['assets/sounds/hit/pain' + i + '.mp3', 'assets/sounds/hit/pain0' + i + '.ogg']);
+            game.load.audio('hit' + i, ['assets/sounds/hit/pain' + i + '.mp3', 'assets/sounds/hit/pain' + i + '.ogg']);
+        }
+        for (var i = 1; i < 4; i++) {
+            game.load.audio('die' + i, ['assets/sounds/hit/die' + i + '.mp3', 'assets/sounds/hit/die' + i + '.ogg']);
         }
 
         _server = server("server", playerId);
@@ -117,69 +127,94 @@ function initGame(playerId) {
                         localPlayer = createPlayer(serverPlayer.playerId, serverPlayer.health, false);
                     }
                     localPlayer.updated = true;
-                    game.add.tween(localPlayer).to(
-                        {
-                            x: mtToPx(serverPlayer.posX),
-                            y: mtToPx(serverPlayer.posY)
-                        },
-                        80,
-                        Phaser.Easing.LINEAR,
-                        true
-                    );
-                    game.add.tween(localPlayer.health).to(
-                        {
-                            x: mtToPx(serverPlayer.posX),
-                            y: mtToPx(serverPlayer.posY) - localPlayer.height / 2
-                        },
-                        80,
-                        Phaser.Easing.LINEAR,
-                        true
-                    );
-                    game.add.tween(localPlayer.nameTag).to(
-                        {
-                            x: mtToPx(serverPlayer.posX),
-                            y: mtToPx(serverPlayer.posY) - localPlayer.height / 2 - 15
-                        },
-                        80,
-                        Phaser.Easing.LINEAR,
-                        true
-                    );
-                    //healthbar redrwa ... performance hit ????
-                    localPlayer.healthBar = drawHealthBar(game, localPlayer, serverPlayer.health, localPlayer.healthBar);
-                    //localPlayer.healthBar.bar.dirty = true;
-                    game.add.tween(localPlayer.healthBar.sprite).to(
-                        {
-                            x: mtToPx(serverPlayer.posX) - (localPlayer.width / 2) * (localPlayer.scale.x / Math.abs(localPlayer.scale.x)),
-                            y: mtToPx(serverPlayer.posY) - localPlayer.height / 2 - 5
-                        },
-                        80,
-                        Phaser.Easing.LINEAR,
-                        true
-                    );
-                    //
-                    //setPlayerorientation
-                    if (!serverPlayer.viewOr && localPlayer.scale.x > 0)
-                        localPlayer.scale.x *= -1;
-                    else if (serverPlayer.viewOr && localPlayer.scale.x < 0)
-                        localPlayer.scale.x *= -1;
-                    //Set Player Weapon
-                    if (serverPlayer.playerId === playerId) {
-                        score.text = serverPlayer.health + "%";
-                        switch (serverPlayer.currWpn) {
-                            case 1:
-                                weapon.frame = 0;
-                                break;
-                            case 2:
-                                weapon.frame = 20;
-                                break;
-                            case 3:
-                                weapon.frame = 9;
-                                break;
+                    if (!serverPlayer.alive) {
+                        //draw healthbar cuz he ded
+                        localPlayer.healthBar = drawHealthBar(game, localPlayer, serverPlayer.health, localPlayer.healthBar);
+                        if (!localPlayer.animDedPlayed) {
+
+                            let anim = localPlayer.animations.play('ded', 15, false);
+                            anim.onComplete.add(() => {
+                                if (!localPlayer.animDedPlayed) {
+                                    localPlayer.animDedPlayed = true;
+
+                                    localPlayer.kill();
+                                }
+
+                            });
                         }
+                        return;
+                    } else if (localPlayer.animDedPlayed) {
+                        localPlayer.animDedPlayed = false;
+                        localPlayer.revive();
+                        localPlayer.animations.stop('ded');
+                        localPlayer.animations.play('r', 9, true);
                     }
 
-                    //Set Player visual and sound if hit
-                    localPlayer.hitEffect(serverPlayer.hit, serverPlayer.hitImmune);
+                    if (serverPlayer.alive) {
+                        game.add.tween(localPlayer).to(
+                            {
+                                x: mtToPx(serverPlayer.posX),
+                                y: mtToPx(serverPlayer.posY)
+                            },
+                            60,
+                            Phaser.Easing.LINEAR,
+                            true
+                        );
+                        game.add.tween(localPlayer.health).to(
+                            {
+                                x: mtToPx(serverPlayer.posX),
+                                y: mtToPx(serverPlayer.posY) - localPlayer.height / 2
+                            },
+                            60,
+                            Phaser.Easing.LINEAR,
+                            true
+                        );
+                        game.add.tween(localPlayer.nameTag).to(
+                            {
+                                x: mtToPx(serverPlayer.posX),
+                                y: mtToPx(serverPlayer.posY) - localPlayer.height / 2 - 15
+                            },
+                            60,
+                            Phaser.Easing.LINEAR,
+                            true
+                        );
+                        //healthbar redrwa ... performance hit ????
+                        localPlayer.healthBar = drawHealthBar(game, localPlayer, serverPlayer.health, localPlayer.healthBar);
+                        //localPlayer.healthBar.bar.dirty = true;
+                        game.add.tween(localPlayer.healthBar.sprite).to(
+                            {
+                                x: mtToPx(serverPlayer.posX) - (localPlayer.width / 2) * (localPlayer.scale.x / Math.abs(localPlayer.scale.x)),
+                                y: mtToPx(serverPlayer.posY) - localPlayer.height / 2 - 5
+                            },
+                            60,
+                            Phaser.Easing.LINEAR,
+                            true
+                        );
+                        //
+                        //setPlayerorientation
+                        if (!serverPlayer.viewOr && localPlayer.scale.x > 0)
+                            localPlayer.scale.x *= -1;
+                        else if (serverPlayer.viewOr && localPlayer.scale.x < 0)
+                            localPlayer.scale.x *= -1;
+                        //Set Player Weapon
+                        if (serverPlayer.playerId === playerId) {
+                            score.text = serverPlayer.health + "%";
+                            switch (serverPlayer.currWpn) {
+                                case 1:
+                                    weapon.frame = 0;
+                                    break;
+                                case 2:
+                                    weapon.frame = 20;
+                                    break;
+                                case 3:
+                                    weapon.frame = 9;
+                                    break;
+                            }
+                        }
+
+                        //Set Player visual and sound if hit
+                        localPlayer.hitEffect(serverPlayer.hit, serverPlayer.hitImmune);
+                    }
                 }
             });
             val.bullets.forEach((serverPlayer) => {
@@ -190,7 +225,7 @@ function initGame(playerId) {
                                 x: mtToPx(serverPlayer.posX),
                                 y: mtToPx(serverPlayer.posY)
                             },
-                            60,
+                            80,
                             Phaser.Easing.LINEAR,
                             true
                         );
@@ -274,12 +309,19 @@ function initGame(playerId) {
         bullets.createMultiple(100, 'bullet');
         bullets.setAll('anchor.x', 0.5);
         bullets.setAll('anchor.y', 0.5);
-        music = game.add.audio('map');
+        music = game.add.audio('mapLoop');
         gunFire = game.add.audio('fire');
-        gunFire.volume = 0.3;
+        gunFire.volume = 0.1;
         music.loopFull(0.1);
         for (var i = 1; i < 7; i++) {
-            hitEffects.push(game.add.audio('hit' + i));
+            let hitef = game.add.audio('hit' + i);
+            hitef.volume = 0.1;
+            hitEffects.push(hitef);
+        }
+        for (var i = 1; i < 4; i++) {
+            let dieEff = game.add.audio('die' + i);
+            dieEff.volume = 0.1;
+            dieEffects.push(dieEff);
         }
     };
 
@@ -316,7 +358,7 @@ function initGame(playerId) {
                 obj.ws.sendX(JSON.stringify(commands));
         });
         // game.debug.cameraInfo(game.camera, 32, 32);
-        game.debug.spriteInfo(players[playerId], 32, 32);
+        //game.debug.spriteInfo(players[playerId], 32, 32);
         game.debug.text(game.time.fps || '--', 13, 200, "#00ff00");
     };
     game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.AUTO, 'gameCanvas', {

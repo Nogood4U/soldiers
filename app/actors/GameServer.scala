@@ -33,6 +33,7 @@ class GameServer extends Actor {
       case None if create =>
         val newPlayer = context.actorOf(Props(new Player(playerId)), playerId)
         players(playerId) = newPlayer
+        println(s"creating player ${playerId}")
         sender ! newPlayer
       case _ =>
 
@@ -43,6 +44,7 @@ class GameServer extends Actor {
       case None =>
         val newPlayer = context.actorOf(Props(new Player(playerId)), playerId)
         players(playerId) = newPlayer
+        println(s"creating player ${playerId}")
         sender ! CreateSuccess(newPlayer)
       case _ =>
 

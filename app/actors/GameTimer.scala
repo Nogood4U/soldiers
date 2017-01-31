@@ -17,7 +17,7 @@ class GameTimer extends Actor {
 
   override def receive = {
     case StartTimer(_players, _, _state) =>
-      this.players ++= _players
+      //this.players ++= _players
       state = _state
       state.init()
     //execute game Logic , resend message , wait for time-span the re-execute logic ?

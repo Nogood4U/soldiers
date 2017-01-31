@@ -214,30 +214,28 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
         pBodies.get(player.playerId) match {
           case Some(body) =>
             //i am 900% i can do this
-            val posX = if ((body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0) && player.health > 0)
+            val posX = if ((body._1.getPosition.x < worldSizeX && body._1.getPosition.x > 0))
               body._1.getPosition.x -> false
             else {
               //body._1.setTransform(new Vec2(worldSizeX / 2, body._1.getPosition.y), body._1.getAngle)
               body._1.getPosition.x -> true
             }
-            val posY = if (body._1.getPosition.y < worldSizeY && body._1.getPosition.y > 0 && player.health > 0)
+            val posY = if (body._1.getPosition.y < worldSizeY && body._1.getPosition.y > 0)
               body._1.getPosition.y -> false
             else {
               body._1.setTransform(new Vec2(body._1.getPosition.x, worldSizeY / 2), body._1.getAngle)
               body._1.getPosition.y -> true
             }
             //check if out of bounds or dead and reset back to middle of screen
-            if (posX._2 || posY._2) {
+            if ((posX._2 || posY._2) && player.alive) {
               body._1.setTransform(new Vec2(worldSizeX / 2, worldSizeY / 2), body._1.getAngle)
+            } else if (!player.alive) {
+              body._1.setTransform(new Vec2(-15, -15), body._1.getAngle)
             } else {
               //inbounds and alive , set position
               player.posX = posX._1
               player.posY = posY._1
             }
-
-            if (player.health <= 0)
-              player.resetHealth()
-
             body._1.setLinearVelocity(vel0)
 
           case _ =>
@@ -319,12 +317,13 @@ object GameObject {
 case class PlayerState(playerId: String, var posX: Float, var posY: Float, var viewOr: Byte, var currWpn: Short, var health: Int)
   extends GameObject {
   var hitImmune = false
-  var hitImmuneTimer = 0;
-  var hit = false;
+  var hitImmuneTimer = 0
+  var hit = false
   var powerUp = 0
-  var powerUpTimer = 30;
+  var powerUpTimer = 30
   val _healt = health
   var alive = true
+  var deadTimer = 0
 
 
   def resetHealth() {
@@ -334,6 +333,10 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
   override def decreaseTimers = {
     if (hitImmuneTimer != 0) hitImmuneTimer -= 1 else this.hitImmune = false
     if (powerUpTimer != 0) powerUpTimer -= 1 else this.powerUp = 0
+    if (deadTimer != 0) deadTimer -= 1 else if (!this.alive) {
+      this.alive = true
+      this.resetHealth()
+    }
   }
 
   override def resetFlags: Unit = {
@@ -364,7 +367,7 @@ case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int,
     o match {
       case player: PlayerState if player.playerId != this.ownerId =>
         this.isDestroy = true
-        if (!player.hitImmune) {
+        if (!player.hitImmune && player.alive) {
           //println(s"reducing ${player.health} health by ${this.damage}")
           player.health -= this.damage
           //println(s"new health ${player.health}")
@@ -376,6 +379,7 @@ case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int,
               None
             case a if a <= 0 =>
               player.alive = false
+              player.deadTimer = 30
               Some(PlayerKilledEvent(player = player.playerId, killedBy = ownerId))
             case _ => None
           }
