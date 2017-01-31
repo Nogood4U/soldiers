@@ -123,6 +123,11 @@ function initGame(playerId) {
             val.players.forEach((serverPlayer) => {
                 if (serverPlayer.playerId) {
                     let localPlayer = players[serverPlayer.playerId];
+                    if (localPlayer.moveTween) {
+                        localPlayer.moveTween.stop();
+                        localPlayer.healthTween.stop();
+                        localPlayer.nameTween.stop();
+                    }
                     if (!localPlayer) {
                         localPlayer = createPlayer(serverPlayer.playerId, serverPlayer.health, false);
                     }
@@ -151,7 +156,7 @@ function initGame(playerId) {
                     }
 
                     if (serverPlayer.alive) {
-                        game.add.tween(localPlayer).to(
+                        localPlayer.moveTween = game.add.tween(localPlayer).to(
                             {
                                 x: mtToPx(serverPlayer.posX),
                                 y: mtToPx(serverPlayer.posY)
@@ -160,16 +165,16 @@ function initGame(playerId) {
                             Phaser.Easing.LINEAR,
                             true
                         );
-                        game.add.tween(localPlayer.health).to(
-                            {
-                                x: mtToPx(serverPlayer.posX),
-                                y: mtToPx(serverPlayer.posY) - localPlayer.height / 2
-                            },
-                            50,
-                            Phaser.Easing.LINEAR,
-                            true
-                        );
-                        game.add.tween(localPlayer.nameTag).to(
+                        /*localPlayer.healthTween = game.add.tween(localPlayer.health).to(
+                         {
+                         x: mtToPx(serverPlayer.posX),
+                         y: mtToPx(serverPlayer.posY) - localPlayer.height / 2
+                         },
+                         50,
+                         Phaser.Easing.LINEAR,
+                         true
+                         );*/
+                        localPlayer.nameTween = game.add.tween(localPlayer.nameTag).to(
                             {
                                 x: mtToPx(serverPlayer.posX),
                                 y: mtToPx(serverPlayer.posY) - localPlayer.height / 2 - 15
@@ -181,7 +186,7 @@ function initGame(playerId) {
                         //healthbar redrwa ... performance hit ????
                         localPlayer.healthBar = drawHealthBar(game, localPlayer, serverPlayer.health, localPlayer.healthBar);
                         //localPlayer.healthBar.bar.dirty = true;
-                        game.add.tween(localPlayer.healthBar.sprite).to(
+                        localPlayer.healthTween = game.add.tween(localPlayer.healthBar.sprite).to(
                             {
                                 x: mtToPx(serverPlayer.posX) - (localPlayer.width / 2) * (localPlayer.scale.x / Math.abs(localPlayer.scale.x)),
                                 y: mtToPx(serverPlayer.posY) - localPlayer.height / 2 - 5
@@ -220,7 +225,10 @@ function initGame(playerId) {
             val.bullets.forEach((serverPlayer) => {
                 if (serverPlayer.ownerId) {
                     if (bulletsMap[serverPlayer.bulletNum]) {
-                        game.add.tween(bulletsMap[serverPlayer.bulletNum]).to(
+                        if (bulletsMap[serverPlayer.bulletNum].bulletTween) {
+                            bulletsMap[serverPlayer.bulletNum].bulletTween.stop();
+                        }
+                        bulletsMap[serverPlayer.bulletNum].bulletTween = game.add.tween(bulletsMap[serverPlayer.bulletNum]).to(
                             {
                                 x: mtToPx(serverPlayer.posX),
                                 y: mtToPx(serverPlayer.posY)
