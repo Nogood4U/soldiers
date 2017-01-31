@@ -26,6 +26,8 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
   val worldSizeX = 40
   val worldSizeY = 40
   var bulletCounter = 0
+  var score: HashMap[String, Int] = HashMap.empty[String, Int]
+  var events: ListBuffer[GameEvent] = ListBuffer.empty
 
   def init() {
     world.setContactListener(new ContactListener() {
@@ -36,7 +38,10 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
       override def beginContact(contact: Contact): Unit = {
         val object1 = exctractGameObject(contact.getFixtureA.getBody.getUserData)
         val object2 = exctractGameObject(contact.getFixtureB.getBody.getUserData)
-        object1.collide(object2)
+        object1.collide(object2) match {
+          case Some(e) => events += e
+          case _ => None
+        }
       }
 
       def exctractGameObject(value: AnyRef): GameObject = {
@@ -137,28 +142,45 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
             }
           }
           if (btn.equals("fire")) {
-            val bullet = createProjectile(body._1, body._2, 60, 0)
-            bBodies += bullet
-            players += bullet._2
+            body._2.currWpn match {
+              case 1 =>
+                val bullet = createProjectile(body._1, body._2, 70, 0, 20)
+                bBodies += bullet
+                players += bullet._2
+              case 2 =>
+                val bullet1 = createProjectile(body._1, body._2, 60, 8, 10)
+                val bullet2 = createProjectile(body._1, body._2, 60, -8, 10)
+                bBodies += bullet1 += bullet2
+                players += bullet1._2 += bullet2._2
+              case 3 =>
+                val bullet1 = createProjectile(body._1, body._2, 50, 15, 5)
+                val bullet2 = createProjectile(body._1, body._2, 60, 0, 5)
+                val bullet3 = createProjectile(body._1, body._2, 50, -15, 5)
+                bBodies += bullet1 += bullet2 += bullet3
+                players += bullet1._2 += bullet2._2 += bullet3._2
+              case _ =>
+            }
+
           }
         })
       case _ =>
     }
   }
 
-  def applyCommands(playerCmds: List[PlayerCmd]) {
+  def applyCommands(playerCmds: List[PlayerCmd]) = {
     resetFlags(); //reset hit flag
     playerCmds.foreach(applyCommand)
     world.step(1 / 60f, velocityIterations, positionIterations)
     applyStateChange()
     decreaseTimers()
+    events
   }
 
-  def createProjectile(playerBody: Body, playerState: PlayerState, speedX: Short, speedY: Short): (Body, Bullet) = {
+  def createProjectile(playerBody: Body, playerState: PlayerState, speedX: Short, speedY: Short, damage: Short): (Body, Bullet) = {
     val bd = new BodyDef()
     val (x, y) = playerState.viewOr match {
-      case 1 => (playerBody.getPosition.x + 0.5f, playerBody.getPosition.y)
-      case _ => (playerBody.getPosition.x - 0.5f, playerBody.getPosition.y)
+      case 1 => (playerBody.getPosition.x + 0.15f, playerBody.getPosition.y)
+      case _ => (playerBody.getPosition.x - 0.15f, playerBody.getPosition.y)
     }
     bd.position.set(x, y)
     bd.`type` = BodyType.KINEMATIC
@@ -169,14 +191,14 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     fd.density = 0.0f
     fd.friction = 0.0f
     fd.restitution = 0.0f
-    val bullet = Bullet(bulletCounter, playerBody.getPosition.x, playerBody.getPosition.y, 10 * playerState.currWpn, playerState.playerId)
+    val bullet = Bullet(bulletCounter, playerBody.getPosition.x, playerBody.getPosition.y, damage, playerState.playerId)
     bd.userData = (bulletCounter, bullet)
     val body = world.createBody(bd)
     body.createFixture(fd)
 
     body.setLinearVelocity(playerState.viewOr match {
-      case 1 => new Vec2(speedX, 0)
-      case _ => new Vec2(-speedX, 0)
+      case 1 => new Vec2(speedX, speedY)
+      case _ => new Vec2(-speedX, -speedY)
     })
     bulletCounter += 1
     body -> bullet
@@ -187,7 +209,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
       this should return events , such as , playerA just died , playerB killed PlayerA
       ,with some statistic data ioe:5 bullets fire by playerA, power up picked up by playerB
       */
-    players.par foreach {
+    players foreach {
       case player: PlayerState =>
         pBodies.get(player.playerId) match {
           case Some(body) =>
@@ -253,13 +275,18 @@ abstract class GameObject {
   var posX: Float
   var posY: Float
 
-  def collide(o: GameObject)
+  def collide(o: GameObject): Option[GameEvent]
 
   def decreaseTimers
 
   def resetFlags
 }
 
+abstract class GameEvent {
+  var eventId: Int
+}
+
+case class PlayerKilledEvent(override var eventId: Int = 1, player: String, killedBy: String) extends GameEvent
 
 object GameObject {
 
@@ -278,8 +305,8 @@ object GameObject {
       override var posX: Float = _
       override var posY: Float = _
 
-      override def collide(o: GameObject): Unit = {
-
+      override def collide(o: GameObject) = {
+        None
       }
 
       override def resetFlags: Unit = {}
@@ -313,10 +340,10 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
     this.hit = false
   }
 
-  override def collide(o1: GameObject): Unit = {
+  override def collide(o1: GameObject): Option[GameEvent] = {
     o1 match {
-      case bullet: Bullet => bullet.collide(this)
-      case _ =>
+      case bullet: Bullet => bullet collide this
+      case _ => None
     }
   }
 
@@ -333,8 +360,7 @@ case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int,
 
   override def resetFlags: Unit = {}
 
-  override def collide(o: GameObject): Unit = {
-
+  override def collide(o: GameObject): Option[GameEvent] = {
     o match {
       case player: PlayerState if player.playerId != this.ownerId =>
         this.isDestroy = true
@@ -347,13 +373,17 @@ case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int,
               player.hitImmune = true
               player.hit = true
               player.hitImmuneTimer = 4 //game simulation cycles (currently 50 millis each)
-
+              None
             case a if a <= 0 =>
               player.alive = false
+              Some(PlayerKilledEvent(player = player.playerId, killedBy = ownerId))
+            case _ => None
           }
+        } else {
+          None
         }
 
-      case _ =>
+      case _ => None
     }
   }
 }

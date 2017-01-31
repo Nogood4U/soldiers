@@ -7,6 +7,7 @@ let worldSizeX = 2000;
 let worldSizeY = 2000;
 let sWorldSizeX = mtToPx(40);
 let sWorldSizeY = mtToPx(40);
+let scores = [];
 /*xMeters = 0.02f * xPixels;
  yMeters = 0.02f * yPixels;
 
@@ -26,8 +27,8 @@ function mtToPx(unitMeters) {
 
 let game = {};
 
-function createPlayer(_playerId, health) {
-    let soldier = game.add.sprite(0, 0, 'soldierSelf');
+function createPlayer(_playerId, health, self) {
+    let soldier = self ? game.add.sprite(0, 0, 'soldierSelf') : game.add.sprite(0, 0, 'soldierEnemy')
     soldier.scale.setTo(3.125, 3.125);
     soldier.anchor.setTo(0.5, 0.5);
     soldier.animations.add("r", [17, 18, 19, 20, 21, 22]);
@@ -80,6 +81,7 @@ function initGame(playerId) {
         //this.scale.pageAlignVertically = true;
         /////
         game.load.spritesheet('soldierSelf', '/assets/images/sprites/soldierGun.png', 16, 16);
+        game.load.spritesheet('soldierEnemy', '/assets/images/sprites/SoldierHelmet.png', 16, 16);
         game.load.spritesheet('weapons', '/assets/images/sprites/weapons.png', 24, 24);
         game.load.spritesheet('bullet', '/assets/images/sprites/bullet.png', 19, 19);
         game.load.image('background', '/assets/images/background/back_3.png');
@@ -102,16 +104,17 @@ function initGame(playerId) {
         weapon.fixedToCamera = true;
         score = game.add.text(game.width - 200, 0, "100%", {font: "32px Arial", fill: "#ffffff"});
         score.fixedToCamera = true;
-        let soldierself = createPlayer(playerId, 100);
+        let soldierself = createPlayer(playerId, 100, true);
         cursors = game.input.keyboard.createCursorKeys();
         fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         shift = game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
         _server.then(obj => obj.stream.subscribe((val) => {
+            scores = val.scores;
             val.players.forEach((serverPlayer) => {
                 if (serverPlayer.playerId) {
                     let localPlayer = players[serverPlayer.playerId];
                     if (!localPlayer) {
-                        localPlayer = createPlayer(serverPlayer.playerId, serverPlayer.health);
+                        localPlayer = createPlayer(serverPlayer.playerId, serverPlayer.health, false);
                     }
                     localPlayer.updated = true;
                     game.add.tween(localPlayer).to(
@@ -167,7 +170,7 @@ function initGame(playerId) {
                                 weapon.frame = 0;
                                 break;
                             case 2:
-                                weapon.frame = 6;
+                                weapon.frame = 20;
                                 break;
                             case 3:
                                 weapon.frame = 9;
@@ -239,6 +242,8 @@ function initGame(playerId) {
             let send = false;
             let btns = [];
             if (game.input.keyboard.event.keyCode == Phaser.Keyboard.SHIFT) {
+                game.input.keyboard.event.preventDefault();
+                game.input.keyboard.event.stopPropagation();
                 btns.push("shift");
                 send = true;
             }
@@ -246,6 +251,17 @@ function initGame(playerId) {
                 btns.push("fire");
                 send = true;
                 gunFire.play();
+            }
+            if (game.input.keyboard.event.keyCode == Phaser.Keyboard.TAB) {
+                game.input.keyboard.event.preventDefault();
+                game.input.keyboard.event.stopPropagation();
+                if (!game.scoreboard) {
+                    game.scoreboard = drawOverlayScoreBoard(game, scores);
+                } else {
+                    game.scoreboard.destroy();
+                    delete game.scoreboard;
+                }
+
             }
             commands.btns = btns;
             _server.then(obj => {
@@ -343,7 +359,6 @@ function drawHealthBar(game, sprite, health, healthBar) {
     }
     hBarMask.ctx.beginPath();
     if (healthBar && health !== healthBar.currHealth) {
-        console.log("redraw...", barX - (barX * (health / 100)));
         hBarMask.clear();
         hBarMask.ctx.rect(0, 0, (barX * (health / 100)), barY);
         hBarMask.ctx.fillStyle = '#18a607';
@@ -375,5 +390,38 @@ function drawHealthBar(game, sprite, health, healthBar) {
         stroke: hBarStroke,
         currHealth: health
     };
+}
+
+function drawOverlayScoreBoard(game, scores) {
+    let scoreBoardGroup = game.add.group();
+    let x = window.innerWidth * window.devicePixelRatio, y = window.innerHeight * window.devicePixelRatio;
+    let overlay = game.add.bitmapData(x - x * 0.6, y - y * 0.6);
+    overlay.clear();
+    overlay.ctx.rect(0, 0, x - x * 0.6, y - y * 0.6);
+    overlay.ctx.fillStyle = '#000000';
+    overlay.ctx.fill();
+    let text = game.add.text(0, -y / 4, "Score", {font: "50px Arial", fill: "#ffffff"});
+    text.anchor.set(0.5);
+    text.fixedToCamera = true;
+    let overLaySprite = game.add.sprite(0, 0, overlay);
+    overLaySprite.anchor.set(0.5);
+    overLaySprite.fixedToCamera = true;
+    overLaySprite.alpha = 0.5;
+    //overLaySprite.addChild(text);
+    scoreBoardGroup.add(overLaySprite);
+    scoreBoardGroup.add(text);
+    scores.forEach((score, i) => {
+        let _textId = game.add.text(-x / 6, -y / (6 + i), score.playerId, {font: "15px Arial", fill: "#ffffff"});
+        let _textCount = game.add.text(-x / 8, -y / (6 + i), score.count, {font: "15px Arial", fill: "#ffffff"});
+        _textId.anchor.set(0.5);
+        _textCount.anchor.set(0.5);
+        _textId.fixedToCamera = true;
+        _textCount.fixedToCamera = true;
+        scoreBoardGroup.add(_textId);
+        scoreBoardGroup.add(_textCount);
+    });
+    scoreBoardGroup.x = x / 2;
+    scoreBoardGroup.y = y / 2;
+    return scoreBoardGroup;
 }
 

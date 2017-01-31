@@ -70,6 +70,30 @@ public final class ProtoGameState {
      */
     game.core.ProtoGameState.State.BulletOrBuilder getBulletsOrBuilder(
         int index);
+
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    java.util.List<game.core.ProtoGameState.State.ScoreBoard> 
+        getScoresList();
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    game.core.ProtoGameState.State.ScoreBoard getScores(int index);
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    int getScoresCount();
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    java.util.List<? extends game.core.ProtoGameState.State.ScoreBoardOrBuilder> 
+        getScoresOrBuilderList();
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    game.core.ProtoGameState.State.ScoreBoardOrBuilder getScoresOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code game.core.State}
@@ -86,6 +110,7 @@ public final class ProtoGameState {
       stateTime_ = 0;
       players_ = java.util.Collections.emptyList();
       bullets_ = java.util.Collections.emptyList();
+      scores_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -136,6 +161,15 @@ public final class ProtoGameState {
                   input.readMessage(game.core.ProtoGameState.State.Bullet.parser(), extensionRegistry));
               break;
             }
+            case 74: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                scores_ = new java.util.ArrayList<game.core.ProtoGameState.State.ScoreBoard>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              scores_.add(
+                  input.readMessage(game.core.ProtoGameState.State.ScoreBoard.parser(), extensionRegistry));
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -149,6 +183,9 @@ public final class ProtoGameState {
         }
         if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           bullets_ = java.util.Collections.unmodifiableList(bullets_);
+        }
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          scores_ = java.util.Collections.unmodifiableList(scores_);
         }
         makeExtensionsImmutable();
       }
@@ -2005,6 +2042,572 @@ public final class ProtoGameState {
 
     }
 
+    public interface ScoreBoardOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:game.core.State.ScoreBoard)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>optional string playerId = 1;</code>
+       */
+      java.lang.String getPlayerId();
+      /**
+       * <code>optional string playerId = 1;</code>
+       */
+      com.google.protobuf.ByteString
+          getPlayerIdBytes();
+
+      /**
+       * <code>optional int32 count = 2;</code>
+       */
+      int getCount();
+    }
+    /**
+     * Protobuf type {@code game.core.State.ScoreBoard}
+     */
+    public  static final class ScoreBoard extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:game.core.State.ScoreBoard)
+        ScoreBoardOrBuilder {
+      // Use ScoreBoard.newBuilder() to construct.
+      private ScoreBoard(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private ScoreBoard() {
+        playerId_ = "";
+        count_ = 0;
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+      }
+      private ScoreBoard(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        int mutable_bitField0_ = 0;
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              default: {
+                if (!input.skipField(tag)) {
+                  done = true;
+                }
+                break;
+              }
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                playerId_ = s;
+                break;
+              }
+              case 16: {
+
+                count_ = input.readInt32();
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return game.core.ProtoGameState.internal_static_game_core_State_ScoreBoard_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return game.core.ProtoGameState.internal_static_game_core_State_ScoreBoard_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                game.core.ProtoGameState.State.ScoreBoard.class, game.core.ProtoGameState.State.ScoreBoard.Builder.class);
+      }
+
+      public static final int PLAYERID_FIELD_NUMBER = 1;
+      private volatile java.lang.Object playerId_;
+      /**
+       * <code>optional string playerId = 1;</code>
+       */
+      public java.lang.String getPlayerId() {
+        java.lang.Object ref = playerId_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          playerId_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>optional string playerId = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPlayerIdBytes() {
+        java.lang.Object ref = playerId_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          playerId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int COUNT_FIELD_NUMBER = 2;
+      private int count_;
+      /**
+       * <code>optional int32 count = 2;</code>
+       */
+      public int getCount() {
+        return count_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (!getPlayerIdBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, playerId_);
+        }
+        if (count_ != 0) {
+          output.writeInt32(2, count_);
+        }
+      }
+
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (!getPlayerIdBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, playerId_);
+        }
+        if (count_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(2, count_);
+        }
+        memoizedSize = size;
+        return size;
+      }
+
+      private static final long serialVersionUID = 0L;
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof game.core.ProtoGameState.State.ScoreBoard)) {
+          return super.equals(obj);
+        }
+        game.core.ProtoGameState.State.ScoreBoard other = (game.core.ProtoGameState.State.ScoreBoard) obj;
+
+        boolean result = true;
+        result = result && getPlayerId()
+            .equals(other.getPlayerId());
+        result = result && (getCount()
+            == other.getCount());
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptorForType().hashCode();
+        hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
+        hash = (53 * hash) + getPlayerId().hashCode();
+        hash = (37 * hash) + COUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getCount();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static game.core.ProtoGameState.State.ScoreBoard parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static game.core.ProtoGameState.State.ScoreBoard parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static game.core.ProtoGameState.State.ScoreBoard parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static game.core.ProtoGameState.State.ScoreBoard parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static game.core.ProtoGameState.State.ScoreBoard parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static game.core.ProtoGameState.State.ScoreBoard parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static game.core.ProtoGameState.State.ScoreBoard parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static game.core.ProtoGameState.State.ScoreBoard parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static game.core.ProtoGameState.State.ScoreBoard parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static game.core.ProtoGameState.State.ScoreBoard parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(game.core.ProtoGameState.State.ScoreBoard prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code game.core.State.ScoreBoard}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:game.core.State.ScoreBoard)
+          game.core.ProtoGameState.State.ScoreBoardOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return game.core.ProtoGameState.internal_static_game_core_State_ScoreBoard_descriptor;
+        }
+
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return game.core.ProtoGameState.internal_static_game_core_State_ScoreBoard_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  game.core.ProtoGameState.State.ScoreBoard.class, game.core.ProtoGameState.State.ScoreBoard.Builder.class);
+        }
+
+        // Construct using game.core.ProtoGameState.State.ScoreBoard.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        public Builder clear() {
+          super.clear();
+          playerId_ = "";
+
+          count_ = 0;
+
+          return this;
+        }
+
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return game.core.ProtoGameState.internal_static_game_core_State_ScoreBoard_descriptor;
+        }
+
+        public game.core.ProtoGameState.State.ScoreBoard getDefaultInstanceForType() {
+          return game.core.ProtoGameState.State.ScoreBoard.getDefaultInstance();
+        }
+
+        public game.core.ProtoGameState.State.ScoreBoard build() {
+          game.core.ProtoGameState.State.ScoreBoard result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        public game.core.ProtoGameState.State.ScoreBoard buildPartial() {
+          game.core.ProtoGameState.State.ScoreBoard result = new game.core.ProtoGameState.State.ScoreBoard(this);
+          result.playerId_ = playerId_;
+          result.count_ = count_;
+          onBuilt();
+          return result;
+        }
+
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof game.core.ProtoGameState.State.ScoreBoard) {
+            return mergeFrom((game.core.ProtoGameState.State.ScoreBoard)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(game.core.ProtoGameState.State.ScoreBoard other) {
+          if (other == game.core.ProtoGameState.State.ScoreBoard.getDefaultInstance()) return this;
+          if (!other.getPlayerId().isEmpty()) {
+            playerId_ = other.playerId_;
+            onChanged();
+          }
+          if (other.getCount() != 0) {
+            setCount(other.getCount());
+          }
+          onChanged();
+          return this;
+        }
+
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          game.core.ProtoGameState.State.ScoreBoard parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (game.core.ProtoGameState.State.ScoreBoard) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private java.lang.Object playerId_ = "";
+        /**
+         * <code>optional string playerId = 1;</code>
+         */
+        public java.lang.String getPlayerId() {
+          java.lang.Object ref = playerId_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            playerId_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>optional string playerId = 1;</code>
+         */
+        public com.google.protobuf.ByteString
+            getPlayerIdBytes() {
+          java.lang.Object ref = playerId_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            playerId_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>optional string playerId = 1;</code>
+         */
+        public Builder setPlayerId(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          playerId_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string playerId = 1;</code>
+         */
+        public Builder clearPlayerId() {
+          
+          playerId_ = getDefaultInstance().getPlayerId();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string playerId = 1;</code>
+         */
+        public Builder setPlayerIdBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          playerId_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int count_ ;
+        /**
+         * <code>optional int32 count = 2;</code>
+         */
+        public int getCount() {
+          return count_;
+        }
+        /**
+         * <code>optional int32 count = 2;</code>
+         */
+        public Builder setCount(int value) {
+          
+          count_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional int32 count = 2;</code>
+         */
+        public Builder clearCount() {
+          
+          count_ = 0;
+          onChanged();
+          return this;
+        }
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return this;
+        }
+
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return this;
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:game.core.State.ScoreBoard)
+      }
+
+      // @@protoc_insertion_point(class_scope:game.core.State.ScoreBoard)
+      private static final game.core.ProtoGameState.State.ScoreBoard DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new game.core.ProtoGameState.State.ScoreBoard();
+      }
+
+      public static game.core.ProtoGameState.State.ScoreBoard getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<ScoreBoard>
+          PARSER = new com.google.protobuf.AbstractParser<ScoreBoard>() {
+        public ScoreBoard parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return new ScoreBoard(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<ScoreBoard> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<ScoreBoard> getParserForType() {
+        return PARSER;
+      }
+
+      public game.core.ProtoGameState.State.ScoreBoard getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
     private int bitField0_;
     public static final int STATETIME_FIELD_NUMBER = 1;
     private int stateTime_;
@@ -2085,6 +2688,41 @@ public final class ProtoGameState {
       return bullets_.get(index);
     }
 
+    public static final int SCORES_FIELD_NUMBER = 9;
+    private java.util.List<game.core.ProtoGameState.State.ScoreBoard> scores_;
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    public java.util.List<game.core.ProtoGameState.State.ScoreBoard> getScoresList() {
+      return scores_;
+    }
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    public java.util.List<? extends game.core.ProtoGameState.State.ScoreBoardOrBuilder> 
+        getScoresOrBuilderList() {
+      return scores_;
+    }
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    public int getScoresCount() {
+      return scores_.size();
+    }
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    public game.core.ProtoGameState.State.ScoreBoard getScores(int index) {
+      return scores_.get(index);
+    }
+    /**
+     * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+     */
+    public game.core.ProtoGameState.State.ScoreBoardOrBuilder getScoresOrBuilder(
+        int index) {
+      return scores_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2106,6 +2744,9 @@ public final class ProtoGameState {
       for (int i = 0; i < bullets_.size(); i++) {
         output.writeMessage(8, bullets_.get(i));
       }
+      for (int i = 0; i < scores_.size(); i++) {
+        output.writeMessage(9, scores_.get(i));
+      }
     }
 
     public int getSerializedSize() {
@@ -2124,6 +2765,10 @@ public final class ProtoGameState {
       for (int i = 0; i < bullets_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, bullets_.get(i));
+      }
+      for (int i = 0; i < scores_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, scores_.get(i));
       }
       memoizedSize = size;
       return size;
@@ -2147,6 +2792,8 @@ public final class ProtoGameState {
           .equals(other.getPlayersList());
       result = result && getBulletsList()
           .equals(other.getBulletsList());
+      result = result && getScoresList()
+          .equals(other.getScoresList());
       return result;
     }
 
@@ -2166,6 +2813,10 @@ public final class ProtoGameState {
       if (getBulletsCount() > 0) {
         hash = (37 * hash) + BULLETS_FIELD_NUMBER;
         hash = (53 * hash) + getBulletsList().hashCode();
+      }
+      if (getScoresCount() > 0) {
+        hash = (37 * hash) + SCORES_FIELD_NUMBER;
+        hash = (53 * hash) + getScoresList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2283,6 +2934,7 @@ public final class ProtoGameState {
                 .alwaysUseFieldBuilders) {
           getPlayersFieldBuilder();
           getBulletsFieldBuilder();
+          getScoresFieldBuilder();
         }
       }
       public Builder clear() {
@@ -2300,6 +2952,12 @@ public final class ProtoGameState {
           bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           bulletsBuilder_.clear();
+        }
+        if (scoresBuilder_ == null) {
+          scores_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          scoresBuilder_.clear();
         }
         return this;
       }
@@ -2343,6 +3001,15 @@ public final class ProtoGameState {
           result.bullets_ = bullets_;
         } else {
           result.bullets_ = bulletsBuilder_.build();
+        }
+        if (scoresBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            scores_ = java.util.Collections.unmodifiableList(scores_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.scores_ = scores_;
+        } else {
+          result.scores_ = scoresBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -2438,6 +3105,32 @@ public final class ProtoGameState {
                    getBulletsFieldBuilder() : null;
             } else {
               bulletsBuilder_.addAllMessages(other.bullets_);
+            }
+          }
+        }
+        if (scoresBuilder_ == null) {
+          if (!other.scores_.isEmpty()) {
+            if (scores_.isEmpty()) {
+              scores_ = other.scores_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureScoresIsMutable();
+              scores_.addAll(other.scores_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.scores_.isEmpty()) {
+            if (scoresBuilder_.isEmpty()) {
+              scoresBuilder_.dispose();
+              scoresBuilder_ = null;
+              scores_ = other.scores_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              scoresBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getScoresFieldBuilder() : null;
+            } else {
+              scoresBuilder_.addAllMessages(other.scores_);
             }
           }
         }
@@ -2973,6 +3666,246 @@ public final class ProtoGameState {
         }
         return bulletsBuilder_;
       }
+
+      private java.util.List<game.core.ProtoGameState.State.ScoreBoard> scores_ =
+        java.util.Collections.emptyList();
+      private void ensureScoresIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          scores_ = new java.util.ArrayList<game.core.ProtoGameState.State.ScoreBoard>(scores_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          game.core.ProtoGameState.State.ScoreBoard, game.core.ProtoGameState.State.ScoreBoard.Builder, game.core.ProtoGameState.State.ScoreBoardOrBuilder> scoresBuilder_;
+
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public java.util.List<game.core.ProtoGameState.State.ScoreBoard> getScoresList() {
+        if (scoresBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(scores_);
+        } else {
+          return scoresBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public int getScoresCount() {
+        if (scoresBuilder_ == null) {
+          return scores_.size();
+        } else {
+          return scoresBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public game.core.ProtoGameState.State.ScoreBoard getScores(int index) {
+        if (scoresBuilder_ == null) {
+          return scores_.get(index);
+        } else {
+          return scoresBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public Builder setScores(
+          int index, game.core.ProtoGameState.State.ScoreBoard value) {
+        if (scoresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScoresIsMutable();
+          scores_.set(index, value);
+          onChanged();
+        } else {
+          scoresBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public Builder setScores(
+          int index, game.core.ProtoGameState.State.ScoreBoard.Builder builderForValue) {
+        if (scoresBuilder_ == null) {
+          ensureScoresIsMutable();
+          scores_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          scoresBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public Builder addScores(game.core.ProtoGameState.State.ScoreBoard value) {
+        if (scoresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScoresIsMutable();
+          scores_.add(value);
+          onChanged();
+        } else {
+          scoresBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public Builder addScores(
+          int index, game.core.ProtoGameState.State.ScoreBoard value) {
+        if (scoresBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureScoresIsMutable();
+          scores_.add(index, value);
+          onChanged();
+        } else {
+          scoresBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public Builder addScores(
+          game.core.ProtoGameState.State.ScoreBoard.Builder builderForValue) {
+        if (scoresBuilder_ == null) {
+          ensureScoresIsMutable();
+          scores_.add(builderForValue.build());
+          onChanged();
+        } else {
+          scoresBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public Builder addScores(
+          int index, game.core.ProtoGameState.State.ScoreBoard.Builder builderForValue) {
+        if (scoresBuilder_ == null) {
+          ensureScoresIsMutable();
+          scores_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          scoresBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public Builder addAllScores(
+          java.lang.Iterable<? extends game.core.ProtoGameState.State.ScoreBoard> values) {
+        if (scoresBuilder_ == null) {
+          ensureScoresIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, scores_);
+          onChanged();
+        } else {
+          scoresBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public Builder clearScores() {
+        if (scoresBuilder_ == null) {
+          scores_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          scoresBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public Builder removeScores(int index) {
+        if (scoresBuilder_ == null) {
+          ensureScoresIsMutable();
+          scores_.remove(index);
+          onChanged();
+        } else {
+          scoresBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public game.core.ProtoGameState.State.ScoreBoard.Builder getScoresBuilder(
+          int index) {
+        return getScoresFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public game.core.ProtoGameState.State.ScoreBoardOrBuilder getScoresOrBuilder(
+          int index) {
+        if (scoresBuilder_ == null) {
+          return scores_.get(index);  } else {
+          return scoresBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public java.util.List<? extends game.core.ProtoGameState.State.ScoreBoardOrBuilder> 
+           getScoresOrBuilderList() {
+        if (scoresBuilder_ != null) {
+          return scoresBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(scores_);
+        }
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public game.core.ProtoGameState.State.ScoreBoard.Builder addScoresBuilder() {
+        return getScoresFieldBuilder().addBuilder(
+            game.core.ProtoGameState.State.ScoreBoard.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public game.core.ProtoGameState.State.ScoreBoard.Builder addScoresBuilder(
+          int index) {
+        return getScoresFieldBuilder().addBuilder(
+            index, game.core.ProtoGameState.State.ScoreBoard.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .game.core.State.ScoreBoard scores = 9;</code>
+       */
+      public java.util.List<game.core.ProtoGameState.State.ScoreBoard.Builder> 
+           getScoresBuilderList() {
+        return getScoresFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          game.core.ProtoGameState.State.ScoreBoard, game.core.ProtoGameState.State.ScoreBoard.Builder, game.core.ProtoGameState.State.ScoreBoardOrBuilder> 
+          getScoresFieldBuilder() {
+        if (scoresBuilder_ == null) {
+          scoresBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              game.core.ProtoGameState.State.ScoreBoard, game.core.ProtoGameState.State.ScoreBoard.Builder, game.core.ProtoGameState.State.ScoreBoardOrBuilder>(
+                  scores_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          scores_ = null;
+        }
+        return scoresBuilder_;
+      }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
         return this;
@@ -3037,6 +3970,11 @@ public final class ProtoGameState {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_core_State_Bullet_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_core_State_ScoreBoard_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_core_State_ScoreBoard_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3046,17 +3984,19 @@ public final class ProtoGameState {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013state.proto\022\tgame.core\"\362\002\n\005State\022\021\n\tst" +
+      "\n\013state.proto\022\tgame.core\"\316\003\n\005State\022\021\n\tst" +
       "ateTime\030\001 \001(\005\022(\n\007players\030\007 \003(\0132\027.game.co" +
       "re.State.Player\022(\n\007bullets\030\010 \003(\0132\027.game." +
-      "core.State.Bullet\032\247\001\n\006Player\022\020\n\010playerId" +
-      "\030\001 \001(\t\022\014\n\004posX\030\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022\016\n\006vi" +
-      "ewOr\030\004 \001(\005\022\017\n\007currWpn\030\005 \001(\005\022\016\n\006health\030\006 " +
-      "\001(\005\022\r\n\005alive\030\007 \001(\010\022\013\n\003hit\030\010 \001(\010\022\017\n\007power" +
-      "Up\030\t \001(\005\022\021\n\thitImmune\030\n \001(\010\032X\n\006Bullet\022\021\n" +
-      "\tbulletNum\030\001 \001(\005\022\014\n\004posX\030\002 \001(\002\022\014\n\004posY\030\003" +
-      " \001(\002\022\016\n\006damage\030\004 \001(\005\022\017\n\007ownerId\030\007 \001(\tB\020B",
-      "\016ProtoGameStateb\006proto3"
+      "core.State.Bullet\022+\n\006scores\030\t \003(\0132\033.game" +
+      ".core.State.ScoreBoard\032\247\001\n\006Player\022\020\n\010pla" +
+      "yerId\030\001 \001(\t\022\014\n\004posX\030\002 \001(\002\022\014\n\004posY\030\003 \001(\002\022" +
+      "\016\n\006viewOr\030\004 \001(\005\022\017\n\007currWpn\030\005 \001(\005\022\016\n\006heal" +
+      "th\030\006 \001(\005\022\r\n\005alive\030\007 \001(\010\022\013\n\003hit\030\010 \001(\010\022\017\n\007" +
+      "powerUp\030\t \001(\005\022\021\n\thitImmune\030\n \001(\010\032X\n\006Bull" +
+      "et\022\021\n\tbulletNum\030\001 \001(\005\022\014\n\004posX\030\002 \001(\002\022\014\n\004p",
+      "osY\030\003 \001(\002\022\016\n\006damage\030\004 \001(\005\022\017\n\007ownerId\030\007 \001" +
+      "(\t\032-\n\nScoreBoard\022\020\n\010playerId\030\001 \001(\t\022\r\n\005co" +
+      "unt\030\002 \001(\005B\020B\016ProtoGameStateb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3075,7 +4015,7 @@ public final class ProtoGameState {
     internal_static_game_core_State_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_core_State_descriptor,
-        new java.lang.String[] { "StateTime", "Players", "Bullets", });
+        new java.lang.String[] { "StateTime", "Players", "Bullets", "Scores", });
     internal_static_game_core_State_Player_descriptor =
       internal_static_game_core_State_descriptor.getNestedTypes().get(0);
     internal_static_game_core_State_Player_fieldAccessorTable = new
@@ -3088,6 +4028,12 @@ public final class ProtoGameState {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_core_State_Bullet_descriptor,
         new java.lang.String[] { "BulletNum", "PosX", "PosY", "Damage", "OwnerId", });
+    internal_static_game_core_State_ScoreBoard_descriptor =
+      internal_static_game_core_State_descriptor.getNestedTypes().get(2);
+    internal_static_game_core_State_ScoreBoard_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_core_State_ScoreBoard_descriptor,
+        new java.lang.String[] { "PlayerId", "Count", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -21,17 +21,30 @@ class GameServer extends Actor {
       case None =>
         //create game , send id to sender
         val roomId = UUID.randomUUID().toString
-        rooms += (roomId, name) -> context.actorOf(Props(new GameRoom(name, maxPlayer, self)), name)
+        val (id, room) = (roomId, name) -> context.actorOf(Props(new GameRoom(name, maxPlayer, self)), name)
+        rooms += (id -> room)
         sender ! roomId
+        room ! StartRoom //auto start any game
 
     }
 
-    case GetPlayer(playerId) => players.get(playerId) match {
-      case Some(player) => sender ! player
-      case None =>
+    case GetPlayer(playerId, create) => players.get(playerId) match {
+      case Some(player) if !create => sender ! player
+      case None if create =>
         val newPlayer = context.actorOf(Props(new Player(playerId)), playerId)
         players(playerId) = newPlayer
         sender ! newPlayer
+      case _ =>
+
+    }
+
+    case CreatePlayer(playerId) => players.get(playerId) match {
+      case Some(_) => sender ! CreateFailure
+      case None =>
+        val newPlayer = context.actorOf(Props(new Player(playerId)), playerId)
+        players(playerId) = newPlayer
+        sender ! CreateSuccess(newPlayer)
+      case _ =>
 
     }
 
@@ -67,7 +80,13 @@ case class CreateGame(name: String, maxPlayer: Short)
 
 case class EndGame(gameID: String)
 
-case class GetPlayer(playerId: String)
+case class GetPlayer(playerId: String, create: Boolean)
+
+case class CreatePlayer(playerId: String)
+
+case class CreateSuccess(player: ActorRef)
+
+case class CreateFailure()
 
 case class PlayerList(gameID: String)
 

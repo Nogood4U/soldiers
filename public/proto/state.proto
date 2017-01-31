@@ -28,4 +28,9 @@ message State {
         string ownerId = 7;
     }
     repeated Bullet bullets = 8;
+    message ScoreBoard {
+        string playerId = 1;
+        int32 count = 2;
+    }
+    repeated ScoreBoard scores = 9;
 }

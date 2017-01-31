@@ -1,7 +1,7 @@
 package actors
 
 import akka.actor.{Actor, ActorRef}
-import core.{GameState, PlayerState}
+import core.{GameState, PlayerKilledEvent, PlayerState}
 
 import scala.collection.mutable.HashMap
 import scala.collection.mutable.ListBuffer
@@ -23,7 +23,13 @@ class GameTimer extends Actor {
     //execute game Logic , resend message , wait for time-span the re-execute logic ?
     case Update =>
       state.stateTime += 1
-      state.applyCommands(commands.toList)
+      state.applyCommands(commands.toList) foreach {
+        case e: PlayerKilledEvent => {
+          //process scoreboard Here
+          state.score(e.killedBy) = state.score.getOrElse(e.killedBy, 0) + 1
+        }
+      }
+      state.events = ListBuffer.empty //reset all events , events already dispatched to some event handler
       commands = ListBuffer.empty
       players.foreach(player => player._2 ! GameUpdate(state))
 

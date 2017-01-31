@@ -62,14 +62,12 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
   def joinGame(serverId: String, playerId: String, gameId: String) = Action.async {
     (for {
       server <- system.actorSelection("/user/" + s"$serverId").resolveOne()
-      player <- (server ? GetPlayer(playerId)).mapTo[ActorRef]
-      resp <- server ? JoinGame(gameId, playerId, player)
+      created <- (server ? CreatePlayer(playerId)).mapTo[CreateSuccess]
+      joined <- (server ? JoinGame(gameId, playerId, created.player)).mapTo[Boolean]
     } yield {
-      resp match {
-        case e: Boolean => Ok(e.toString)
-      }
+      Ok(joined.toString)
     }) recover {
-      case e => Ok("false err")
+      case e => Forbidden("false")
     }
   }
 
@@ -86,7 +84,7 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
 
     for {
       server <- system.actorSelection("/user/" + s"$serverId").resolveOne()
-      player <- (server ? GetPlayer(playerId)).mapTo[ActorRef]
+      player <- (server ? GetPlayer(playerId, false)).mapTo[ActorRef]
     } yield {
       if (gameId != null && !gameId.isEmpty)
         server ! JoinGame(gameId, playerId, player)
@@ -98,42 +96,48 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
       player ! SocketActor(actor._1)
       val in = Sink.actorRef(player, Disconected(playerId))
 
-      val protobuffedSource = Source.fromPublisher(actor._2).map {
-        case GameState(stateTime, players) =>
-          val stateBuilder = ProtoGameState.State
-            .newBuilder()
-            .setStateTime(stateTime)
+      val protoBuffedSource = Source.fromPublisher(actor._2).map {
+        case e@GameState(stateTime, players) =>
           val (playerStates, bullets) = players.partition {
             case e: PlayerState => true
             case e: Bullet => false
           }
-          stateBuilder.addAllPlayers(playerStates.map(_.asInstanceOf[PlayerState]).map(ps => {
-            ProtoGameState.State.Player.newBuilder()
-              .setPlayerId(ps.playerId)
-              .setPosX(ps.posX)
-              .setPosY(ps.posY)
-              .setViewOr(ps.viewOr)
-              .setCurrWpn(ps.currWpn)
-              .setHealth(ps.health)
-              .setAlive(ps.alive)
-              .setHit(ps.hit)
-              .setHitImmune(ps.hitImmune)
-              .build()
-          }).asJava)
-          stateBuilder.addAllBullets(bullets.map(_.asInstanceOf[Bullet]).map(bs => {
-            ProtoGameState.State.Bullet.newBuilder()
-              .setOwnerId(bs.ownerId)
-              .setPosX(bs.posX)
-              .setPosY(bs.posY)
-              .setDamage(bs.damage)
-              .setBulletNum(bs.bulletNum)
-              .build()
-          }).asJava)
-          stateBuilder.build().toByteArray
+          ProtoGameState.State
+            .newBuilder()
+            .setStateTime(stateTime)
+            .addAllPlayers(playerStates.map(_.asInstanceOf[PlayerState]).map(ps => {
+              ProtoGameState.State.Player.newBuilder()
+                .setPlayerId(ps.playerId)
+                .setPosX(ps.posX)
+                .setPosY(ps.posY)
+                .setViewOr(ps.viewOr)
+                .setCurrWpn(ps.currWpn)
+                .setHealth(ps.health)
+                .setAlive(ps.alive)
+                .setHit(ps.hit)
+                .setHitImmune(ps.hitImmune)
+                .build()
+            }).asJava)
+            .addAllBullets(bullets.map(_.asInstanceOf[Bullet]).map(bs => {
+              ProtoGameState.State.Bullet.newBuilder()
+                .setOwnerId(bs.ownerId)
+                .setPosX(bs.posX)
+                .setPosY(bs.posY)
+                .setDamage(bs.damage)
+                .setBulletNum(bs.bulletNum)
+                .build()
+            }).asJava)
+            .addAllScores(e.score.map(scores => {
+              ProtoGameState.State.ScoreBoard.newBuilder()
+                .setPlayerId(scores._1)
+                .setCount(scores._2)
+                .build()
+            }).asJava)
+            .build().toByteArray
       }
 
 
-      Either.cond(test = true, Flow.fromSinkAndSource(in, protobuffedSource), Forbidden)
+      Either.cond(test = true, Flow.fromSinkAndSource(in, protoBuffedSource), Forbidden)
     }
 
 

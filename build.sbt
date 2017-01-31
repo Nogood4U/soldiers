@@ -1,5 +1,6 @@
 import play.sbt.{PlayCommands, PlayScala}
 import sbtprotobuf.{ProtobufPlugin => PB}
+
 /*
 PB.protobufSettings
 
@@ -52,17 +53,5 @@ libraryDependencies ++= Seq(
 // https://mvnrepository.com/artifact/org.jbox2d/jbox2d-library
 libraryDependencies += "org.jbox2d" % "jbox2d-library" % "2.2.1.1"
 libraryDependencies += "com.google.protobuf" % "protobuf-java" % "3.1.0"
-
-
-
-fork in run := true
-
-
-
-
-
-fork in run := true
-
-fork in run := true
 
 fork in run := true

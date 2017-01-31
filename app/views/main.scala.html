@@ -14,13 +14,17 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/ico" href="@routes.Assets.versioned("images/favicon.ico")">
+        <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.1.0/rx.all.js" type="text/javascript" ></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/2.6.2/phaser.min.js" type="text/javascript"></script>
         <script src="//cdn.rawgit.com/dcodeIO/protobuf.js/6.5.0/dist/protobuf.min.js"></script>
         <script src="@routes.Assets.versioned("javascripts/server.js")" type="text/javascript"></script>
         <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
     </head>
-    <body>
+    <body onload='document.getElementById("playerId").focus();'>
         @* And here's where we render the `Html` object containing
         * the page content. *@
         @content
