@@ -1,0 +1,160 @@
+@()
+
+@main("Soldiers.IO") {
+
+
+    <script>
+
+            $(() => {
+                let mediaConstraints = {
+                    audio: true, // We want an audio track
+                    video: true // ...and we want a video track
+                };
+                let createPeerConnection = () => {
+                    return new RTCPeerConnection({
+                        iceServers: [     // Information about ICE servers - Use your own!
+                            {
+                                urls: "turn:" + window.location.hostname,  // A TURN server
+                                username: "webrtc",
+                                credential: "turnserver"
+                            }
+                        ]
+                    });
+                };
+
+                let sendOffer = (peerCon, evt) => {
+                    navigator.mediaDevices.getUserMedia(mediaConstraints)
+                            .then(function (localStream) {
+                                document.getElementById("local_video").srcObject = localStream;
+                                peerCon.addStream(localStream);
+                            })
+                            .catch((e) => {
+                                switch (e.name) {
+                                    case "NotFoundError":
+                                        alert("Unable to open your call because no camera and/or microphone" +
+                                                "were found.");
+                                        break;
+                                    case "SecurityError":
+                                    case "PermissionDeniedError":
+                                        // Do nothing; this is the same as the user canceling the call.
+                                        break;
+                                    default:
+                                        alert("Error opening your camera and/or microphone: " + e.message);
+                                        break;
+                                }
+                                //close connection here
+                            });
+                };
+
+                let handleOffer = (peerConn, msg, wsConn) => {
+                    //var localStream = null;
+                    let targetUsername = msg.enemyId;
+                    //createPeerConnection();
+                    let desc = new RTCSessionDescription(msg.sdp);
+                    peerConn.setRemoteDescription(desc).then(function () {
+                        return navigator.mediaDevices.getUserMedia(mediaConstraints);
+                    }).then(function (stream) {
+                        // localStream = stream;
+                        document.getElementById("local_video").srcObject = stream;
+                        return peerConn.addStream(stream);
+                    }).then(function () {
+                        return peerConn.createAnswer();
+                    }).then(function (answer) {
+                        return peerConn.setLocalDescription(answer);
+                    }).then(function () {
+                        let msg = {
+                            target: targetUsername,
+                            messageType: "answer",
+                            sdp: peerConn.localDescription
+                        };
+                        wsConn.send(Json.stringify(msg));
+                    }).catch(console.log);
+                };
+
+                let handleAnswer = (peerConn, msg) => {
+                    log("Call recipient has accepted our call");
+                    // Configure the remote description, which is the SDP payload
+                    // in our "video-answer" message.
+                    let desc = new RTCSessionDescription(msg.sdp);
+                    peerConn.setRemoteDescription(desc).catch(console.log);
+                }
+
+                let handleIce = (peerConn, msg) => {
+                    let candidate = new RTCIceCandidate(msg.candidate);
+
+                    log("Adding received ICE candidate: " + JSON.stringify(candidate));
+                    peerConn.addIceCandidate(candidate)
+                            .catch(console.log);
+                };
+
+                let new_uri;
+                if (location.protocol === "https:") {
+                    new_uri = "wss:";
+                } else {
+                    new_uri = "ws:";
+                }
+
+                let connections = {};
+
+                let MyPeerCon = createPeerConnection(); //active client peerConnection if i ask them..
+                new_uri += "//" + loc.host;
+                let wsUrl = new_uri + "/p2p/" + playerId;
+                let ws = new WebSocket(wsUrl);
+                ws.onmessage = function (evt) {
+
+                    let data = Json.parse(evt.data);
+                    let peerCon ;
+
+                    if (!connections[data.enemyId]) {
+                        peerCon = createPeerConnection(); //passive peerConnection ,if they ask me..
+                        connections[data.enemyId] = peerCon;
+                        addConnectionEventHandlers(peerCon, ws, data.enemyId);
+                    } else {
+                        peerCon = connections[data.enemyId];
+                    }
+
+                    switch (data.messageType) {
+                        case "answer":
+                            handleAnswer(MyPeerCon, data);
+                            break;
+                        case "offer":
+                            handleOffer(peerCon, data, ws);
+                            break;
+                        case "ice":
+                            handleIce(peerCon, data);
+                            break;
+                    }
+                };
+            });
+
+            function addConnectionEventHandlers(peerConn, wsConn, target) {
+                peerConn.onnegotiationneeded = () => {
+                    peerConn.createOffer().then(function (offer) {
+                        log("---> Creating new description object to send to remote peer");
+                        return peerConn.setLocalDescription(offer);
+                    }).then(function () {
+                        log("---> Sending offer to remote peer");
+                        wsConn.send(Json.stringify({
+                            messageType: "offer",
+                            enemyId: target,
+                            sdp: peerConn.localDescription
+                        }));
+                    }).catch(console.log);
+                };
+
+                peerConn.onicecandidate = (event) => {
+                    if (event.candidate) {
+                        wsConn.send(Json.stringify({
+                            messageType: "ice",
+                            enemyId: target,
+                            candidate: event.candidate
+                        }));
+                    }
+                }
+            }
+    </script>
+
+
+    <video id="received_video" autoplay></video>
+    <video id="local_video" autoplay muted></video>
+}
