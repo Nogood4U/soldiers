@@ -1809,3 +1809,10 @@ Copy resource mappings:
 Total time: 1 s, completed Jan 31, 2017 10:12:42 PM
 > server-post-command-cleanup
 > server-handle-next-server-request
+Done executing sbt server engine, result Right(Exit(0))
+Closing listening server socket
+Waiting for socket thread
+Waiting for request processor thread
+Waiting for command engine result
+Returning control to sbt launcher with result Exit(0)
+Closing the 11268@DESKTOP-EUGFD9N logs at Tue Jan 31 22:22:02 COT 2017, goodbye.
