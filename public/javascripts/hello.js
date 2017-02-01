@@ -127,13 +127,13 @@ function initGame(playerId) {
             val.players.forEach((serverPlayer) => {
                 if (serverPlayer.playerId) {
                     let localPlayer = players[serverPlayer.playerId];
+                    if (!localPlayer) {
+                        localPlayer = createPlayer(serverPlayer.playerId, serverPlayer.health, false);
+                    }
                     if (localPlayer.moveTween) {
                         localPlayer.moveTween.stop();
                         localPlayer.healthTween.stop();
                         localPlayer.nameTween.stop();
-                    }
-                    if (!localPlayer) {
-                        localPlayer = createPlayer(serverPlayer.playerId, serverPlayer.health, false);
                     }
                     localPlayer.updated = true;
                     if (!serverPlayer.alive) {

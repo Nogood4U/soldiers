@@ -50,7 +50,7 @@ $(() => {
         let desc = new RTCSessionDescription(msg.sdp);
         peerConn.setRemoteDescription(desc).then(function () {
             peerConn.remoteSet = true;
-            return navigator.mediaDevices.getUserMedia(mediaConstraints);
+            return navigator.mediaDevices.getUserMedia(mediaConstraints);//connection established , getting the channels
         }).then(function (stream) {
             // localStream = stream;
             document.getElementById("local_video").srcObject = stream;
@@ -61,14 +61,14 @@ $(() => {
             return peerConn.setLocalDescription(answer);
         }).then(function () {
             let msg = {
-                target: targetUsername,
                 messageType: "answer",
+                enemyId: targetUsername,
                 sdp: peerConn.localDescription,
                 candidate: ""
             };
             wsConn.send(JSON.stringify(msg));
 
-        }).catch(console.log);
+        }).catch((w) => console.log("error handleOfer", w, msg.enemyId));
     };
 
     let handleAnswer = (peerConn, msg) => {
@@ -78,7 +78,7 @@ $(() => {
         let desc = new RTCSessionDescription(msg.sdp);
         peerConn.setRemoteDescription(desc).then(() => {
             peerConn.remoteSet = true;
-        }).catch(console.log);
+        }).catch((w) => console.log("error Answer", w, msg.enemyId));
     };
 
     let handleIce = (peerConn, msg) => {
@@ -87,7 +87,7 @@ $(() => {
         console.log("Remote Set", peerConn.remoteSet);
         console.log("Adding received ICE candidate: " + JSON.stringify(candidate), msg.enemyId);
         peerConn.addIceCandidate(candidate)
-            .catch(console.log);
+            .catch((w) => console.log(w, "error handleIce", msg.enemyId));
         //  }
     };
 
@@ -99,8 +99,8 @@ $(() => {
     }
 /////////////////////////////////////////
     let connections = {};
-    let offering = false;
-    let MyPeerCon = createPeerConnection(); //active client peerConnection if i ask them..
+    let connectionsIn = {};
+    //let MyPeerCon = createPeerConnection(); //active client peerConnection if i ask them..
     new_uri += "//" + location.host;
     let wsUrl = new_uri + "/p2p/ws/" + playerId;
     let ws = new WebSocket(wsUrl);
@@ -119,23 +119,33 @@ $(() => {
 
         switch (data.messageType) {
             case "answer":
-                handleAnswer(MyPeerCon, data);
+                /*if (!connectionsIn[data.enemyId]) {
+                 connectionsIn[data.enemyId] = createPeerConnection();
+                 }*/
+                handleAnswer(connectionsIn[data.enemyId], data);
                 break;
             case "offer":
                 handleOffer(peerCon, data, ws);
                 break;
             case "ice":
-                handleIce(peerCon, data);//can be both
-                if (offering /*&& MyPeerCon.remoteSet*/)
-                    handleIce(MyPeerCon, data);//can be both
+                if (connectionsIn[data.enemyId])
+                    handleIce(connectionsIn[data.enemyId], data);//can be both*/
+                else if (connections[data.enemyId])
+                    handleIce(connections[data.enemyId], data);//can be both*/
+
                 break;
         }
     };
     $("#call").click(() => {
-        offering = true;
-        sendOffer(MyPeerCon).then(() => {
-            addConnectionEventHandlers(MyPeerCon, ws, "", false);// added event handlers
+        let clients = ["jac4", "jac5"];
+        clients.forEach((client) => {
+            let _peer = createPeerConnection();
+            connectionsIn[client] = _peer;
+            sendOffer(_peer).then(() => {
+                addConnectionEventHandlers(_peer, ws, client, false);// added event handlers
+            });
         });
+
     });
 
 });
@@ -154,7 +164,7 @@ function addConnectionEventHandlers(peerConn, wsConn, target, client) {
                     sdp: peerConn.localDescription,
                     candidate: ""
                 }));
-            }).catch(console.log);
+            }).catch((w) => console.log("error onnegotiaiton", w));
         };
 
     peerConn.onicecandidate = (event) => {

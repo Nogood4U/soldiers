@@ -14,12 +14,12 @@ class P2PPlayer(playerId: String, out: ActorRef, server: ActorRef) extends Actor
   override def receive: Receive = {
     case e: JsValue => Json.fromJson[P2PMessage](e) match {
       case JsSuccess(msg, _) => server ! P2PServerMessage(playerId, msg)
-        println(s"Got message: ${msg}")
+      // println(s"Got message: ${msg}")
       case f => println(s"unsupported...got message ${e}")
-        println(s"unsupported...got error ${f}")
+      //  println(s"unsupported...got error ${f}")
     }
     case e: P2PMessage => out ! Json.toJson[P2PMessage](e)
-      println(s"Sending message: ${e}")
+    //  println(s"Sending message: ${e}")
 
     case e: P2PDced => server ! e
   }
