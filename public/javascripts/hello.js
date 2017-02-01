@@ -318,7 +318,7 @@ function initGame(playerId) {
         };
         //  Our bullet group
         bullets = game.add.group();
-        bullets.createMultiple(100, 'bullet');
+        bullets.createMultiple(10000, 'bullet');
         bullets.setAll('anchor.x', 0.5);
         bullets.setAll('anchor.y', 0.5);
         music = game.add.audio('mapLoop');
