@@ -141,7 +141,8 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
               case _ => 1
             }
           }
-          if (btn.equals("fire")) {
+          if (btn.equals("fire") && body._2.bulletTimer == 0) {
+            body._2.bulletTimer = 5
             body._2.currWpn match {
               case 1 =>
                 val bullet = createProjectile(body._1, body._2, 70, 0, 20)
@@ -318,6 +319,7 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
   extends GameObject {
   var hitImmune = false
   var hitImmuneTimer = 0
+  var bulletTimer = 0
   var hit = false
   var powerUp = 0
   var powerUpTimer = 30
@@ -333,6 +335,7 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
   override def decreaseTimers = {
     if (hitImmuneTimer != 0) hitImmuneTimer -= 1 else this.hitImmune = false
     if (powerUpTimer != 0) powerUpTimer -= 1 else this.powerUp = 0
+    if (bulletTimer != 0) bulletTimer -= 1 else this.bulletTimer = 0
     if (deadTimer != 0) deadTimer -= 1 else if (!this.alive) {
       this.alive = true
       this.resetHealth()
