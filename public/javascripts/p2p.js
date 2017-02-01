@@ -17,6 +17,7 @@ $(() => {
         });
     };
 
+
     let sendOffer = (peerCon) => {
         return navigator.mediaDevices.getUserMedia(mediaConstraints)
             .then(function (localStream) {
