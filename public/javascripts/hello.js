@@ -9,6 +9,10 @@ let worldSizeY = 2000;
 let sWorldSizeX = mtToPx(40);
 let sWorldSizeY = mtToPx(40);
 let scores = [];
+$(() => {
+    document.getElementById("playerId").focus();
+    document.getElementById("titleAudio").volume = 0.05;
+});
 /*xMeters = 0.02f * xPixels;
  yMeters = 0.02f * yPixels;
 

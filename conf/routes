@@ -21,6 +21,6 @@ GET        /startGame/:serverId/:gameId                 controllers.HomeControll
 GET        /joinGame/:serverId/:playerId/:gameId        controllers.HomeController.joinGame(serverId,playerId,gameId)
 
 
-GET        /p2p                                         controllers.P2PController.index
+GET        /p2p/:playerId                               controllers.P2PController.index(playerId )
 
-GET        /p2p/:playerId                               controllers.P2PController.socket(playerId)
+GET        /p2p/ws/:playerId                            controllers.P2PController.socket(playerId)
