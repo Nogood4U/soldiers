@@ -149,14 +149,14 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
                 bBodies += bullet
                 players += bullet._2
               case 2 =>
-                val bullet1 = createProjectile(body._1, body._2, 60, 8, 10)
-                val bullet2 = createProjectile(body._1, body._2, 60, -8, 10)
+                val bullet1 = createProjectile(body._1, body._2, 70, 8, 10)
+                val bullet2 = createProjectile(body._1, body._2, 70, -8, 10)
                 bBodies += bullet1 += bullet2
                 players += bullet1._2 += bullet2._2
               case 3 =>
-                val bullet1 = createProjectile(body._1, body._2, 50, 15, 5)
-                val bullet2 = createProjectile(body._1, body._2, 60, 0, 5)
-                val bullet3 = createProjectile(body._1, body._2, 50, -15, 5)
+                val bullet1 = createProjectile(body._1, body._2, 70, 15, 5)
+                val bullet2 = createProjectile(body._1, body._2, 70, 0, 5)
+                val bullet3 = createProjectile(body._1, body._2, 70, -15, 5)
                 bBodies += bullet1 += bullet2 += bullet3
                 players += bullet1._2 += bullet2._2 += bullet3._2
               case _ =>

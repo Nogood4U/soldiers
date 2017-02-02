@@ -87,6 +87,7 @@ function initGame(playerId) {
     let preload = function () {
         /////
         game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        game.world.scale.setTo(1.5, 1.5);
         game.scale.refresh();
         //this.scale.pageAlignHorizontally = true;
         //this.scale.pageAlignVertically = true;
@@ -244,6 +245,7 @@ function initGame(playerId) {
                         /* bulletsMap[serverPlayer.bulletNum].x = mtToPx(serverPlayer.posX);
                          bulletsMap[serverPlayer.bulletNum].y = mtToPx(serverPlayer.posY);*/
                     } else {
+                        gunFire.play();
                         let bullet = bullets.getFirstExists(false);
                         if (bullet) {
                             //  Grab the first bullet we can from the pool
@@ -297,7 +299,6 @@ function initGame(playerId) {
             if (game.input.keyboard.event.keyCode == Phaser.Keyboard.SPACEBAR) {
                 btns.push("fire");
                 send = true;
-                gunFire.play();
             }
             if (game.input.keyboard.event.keyCode == Phaser.Keyboard.TAB) {
                 game.input.keyboard.event.preventDefault();
@@ -369,6 +370,10 @@ function initGame(playerId) {
             _server.then(obj => {
                 if (obj.ws.readyState === 1 && send)
                     obj.ws.sendX(JSON.stringify(commands));
+            });
+            _server.then(obj => {
+                if (obj.ws.readyState === 1 && send)
+                    obj.ws.sendX(JSON.stringify({"ping": true}));
             });
             frames = 0;
         }
@@ -452,7 +457,8 @@ function drawHealthBar(game, sprite, health, healthBar) {
 
 function drawOverlayScoreBoard(game, scores) {
     let scoreBoardGroup = game.add.group();
-    let x = window.innerWidth * window.devicePixelRatio, y = window.innerHeight * window.devicePixelRatio;
+    let x = (window.innerWidth * window.devicePixelRatio) / 1.5,
+        y = (window.innerHeight * window.devicePixelRatio) / 1.5;
     let overlay = game.add.bitmapData(x - x * 0.6, y - y * 0.6);
     overlay.clear();
     overlay.ctx.rect(0, 0, x - x * 0.6, y - y * 0.6);
