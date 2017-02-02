@@ -336,7 +336,7 @@ function initGame(playerId) {
             dieEffects.push(dieEff);
         }
     };
-
+    let frames = 0;
     let update = function () {
         /* bg.tilePosition.x += 0.5;
          bg.tilePosition.y += 0.5;*/
@@ -349,29 +349,33 @@ function initGame(playerId) {
         };
         let send = false;
         if (cursors.up.isDown) {
-            commands.yMv = -10;
+            commands.yMv = -20;
             send = true;
         }
         else if (cursors.down.isDown) {
-            commands.yMv = 10;
+            commands.yMv = 20;
             send = true;
         }
         if (cursors.left.isDown) {
-            commands.xMv = -10;
+            commands.xMv = -20;
             send = true;
         }
         else if (cursors.right.isDown) {
-            commands.xMv = 10;
+            commands.xMv = 20;
             send = true;
         }
         commands.btns = btns;
-        _server.then(obj => {
-            if (obj.ws.readyState === 1 && send)
-                obj.ws.sendX(JSON.stringify(commands));
-        });
+        if (frames == 2) {
+            _server.then(obj => {
+                if (obj.ws.readyState === 1 && send)
+                    obj.ws.sendX(JSON.stringify(commands));
+            });
+            frames = 0;
+        }
         // game.debug.cameraInfo(game.camera, 32, 32);
         //game.debug.spriteInfo(players[playerId], 32, 32);
         game.debug.text(game.time.fps || '--', 13, 200, "#00ff00");
+        frames += 1;
     };
     game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.AUTO, 'gameCanvas', {
         preload: preload,

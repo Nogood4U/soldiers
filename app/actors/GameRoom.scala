@@ -40,7 +40,7 @@ class GameRoom(name: String, maxPlayer: Short, server: ActorRef) extends Actor {
     case StartRoom => if (!started) {
       timer = context.actorOf(Props(new GameTimer))
       timer ! StartTimer(players.toList, 50, GameState(0, players.to[ListBuffer].map(pl => PlayerState(pl._1, 0, 0, 1, 1, 100))))
-      context.system.scheduler.schedule(4 seconds, 50 millis, timer, Update)
+      context.system.scheduler.schedule(1 seconds, 50 millis, timer, Update)
       started = !started
     }
   }
