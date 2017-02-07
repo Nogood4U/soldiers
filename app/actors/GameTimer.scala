@@ -26,7 +26,7 @@ class GameTimer extends Actor {
       state.applyCommands(commands.toList) foreach {
         case e: PlayerKilledEvent => {
           //process scoreboard Here
-          state.score(e.killedBy) = state.score.getOrElse(e.killedBy, 0) + 1
+          state.score(e.killedBy.playerId) = state.score.getOrElse(e.killedBy.playerId, 0) + 1
         }
       }
       state.events = ListBuffer.empty //reset all events , events already dispatched to some event handler

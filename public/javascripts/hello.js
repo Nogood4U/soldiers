@@ -2,6 +2,7 @@ let _server = {};
 let players = {};
 let bg;
 let bulletsMap = {};
+let powerUpMap = {};
 let hitEffects = [];
 let dieEffects = [];
 let worldSizeX = 2000;
@@ -33,10 +34,20 @@ function mtToPx(unitMeters) {
 let game = {};
 
 function createPlayer(_playerId, health, self) {
+    playerGroup = game.add.group();
     let soldier = self ? game.add.sprite(0, 0, 'soldierSelf') : game.add.sprite(0, 0, 'soldierEnemy')
     soldier.scale.setTo(3.125, 3.125);
     soldier.anchor.setTo(0.5, 0.5);
+    soldier.powerUp = game.add.sprite(15, 15, 'fire');
+    //soldier.addChild(soldier.powerUp);
+    soldier.powerUp.anchor.setTo(0.5, 0.6);
+    soldier.powerUp.scale.setTo(1.5, 1.8);
+    playerGroup.add(soldier.powerUp);
+    playerGroup.add(soldier);
+    playerGroup.player = soldier;
     let dedAnim = soldier.animations.add("ded", [13, 13, 0, 13, 13, 0, 13, 13, 0, 13, 13, 0], 15, false);
+    soldier.powerUp.animations.add("flames", false);
+    soldier.powerUp.animations.play("flames", 20, true);
     dedAnim.onStart.add(() => {
         dieEffects[Math.floor(Math.random() * 2)].play();
     });
@@ -96,8 +107,9 @@ function initGame(playerId) {
         game.load.spritesheet('soldierEnemy', '/assets/images/sprites/SoldierHelmet.png', 16, 16);
         game.load.spritesheet('weapons', '/assets/images/sprites/weapons.png', 24, 24);
         game.load.spritesheet('bullet', '/assets/images/sprites/bullet.png', 19, 19);
+        game.load.spritesheet('fire', '/assets/images/sprites/campFire.png', 64, 30);
         game.load.image('background', '/assets/images/background/back_3.png');
-        game.load.audio('mapLoop', ['assets/music/level1.ogg']);
+        game.load.audio('mapLoop', ['assets/music/level2.ogg', 'assets/music/level2.,p3']);
         game.load.audio('fire', ['assets/sounds/guns/laser.mp3', 'assets/sounds/guns/laser.ogg']);
 
         for (var i = 1; i < 7; i++) {
@@ -135,6 +147,7 @@ function initGame(playerId) {
                         localPlayer.moveTween.stop();
                         localPlayer.healthTween.stop();
                         localPlayer.nameTween.stop();
+                        localPlayer.powerUpTween.stop();
                     }
                     localPlayer.updated = true;
                     if (!serverPlayer.alive) {
@@ -161,6 +174,19 @@ function initGame(playerId) {
                     }
 
                     if (serverPlayer.alive) {
+                        if (serverPlayer.powerUp === 0) {
+                            localPlayer.powerUp.kill();
+                        } else {
+                            localPlayer.powerUp.revive();
+                            switch (serverPlayer.powerUp) {
+                                case 1 :
+                                    localPlayer.powerUp.tint = 0xffffff;
+                                    break;
+                                case 2 :
+                                    localPlayer.powerUp.tint = 0x00FFFF;
+                                    break;
+                            }
+                        }
                         localPlayer.moveTween = game.add.tween(localPlayer).to(
                             {
                                 x: mtToPx(serverPlayer.posX),
@@ -170,15 +196,15 @@ function initGame(playerId) {
                             Phaser.Easing.LINEAR,
                             true
                         );
-                        /*localPlayer.healthTween = game.add.tween(localPlayer.health).to(
-                         {
-                         x: mtToPx(serverPlayer.posX),
-                         y: mtToPx(serverPlayer.posY) - localPlayer.height / 2
-                         },
-                         50,
-                         Phaser.Easing.LINEAR,
-                         true
-                         );*/
+                        localPlayer.powerUpTween = game.add.tween(localPlayer.powerUp).to(
+                            {
+                                x: mtToPx(serverPlayer.posX),
+                                y: mtToPx(serverPlayer.posY)
+                            },
+                            50,
+                            Phaser.Easing.LINEAR,
+                            true
+                        );
                         localPlayer.nameTween = game.add.tween(localPlayer.nameTag).to(
                             {
                                 x: mtToPx(serverPlayer.posX),
@@ -188,7 +214,7 @@ function initGame(playerId) {
                             Phaser.Easing.LINEAR,
                             true
                         );
-                        //healthbar redrwa ... performance hit ????
+                        //healthbar redraw ... performance hit ????
                         localPlayer.healthBar = drawHealthBar(game, localPlayer, serverPlayer.health, localPlayer.healthBar);
                         //localPlayer.healthBar.bar.dirty = true;
                         localPlayer.healthTween = game.add.tween(localPlayer.healthBar.sprite).to(
@@ -200,7 +226,6 @@ function initGame(playerId) {
                             Phaser.Easing.LINEAR,
                             true
                         );
-                        //
                         //setPlayerorientation
                         if (!serverPlayer.viewOr && localPlayer.scale.x > 0)
                             localPlayer.scale.x *= -1;
@@ -258,6 +283,25 @@ function initGame(playerId) {
                     bulletsMap[serverPlayer.bulletNum].updated = true;
                 }
             });
+            val.powerUps.forEach((powerUp) => {
+                if (powerUpMap[powerUp.powerUpId]) {
+                    // do nothing ?
+                } else {
+                    //create sprite
+                    powerUpMap[powerUp.powerUpId] = game.add.sprite(mtToPx(powerUp.posX), mtToPx(powerUp.posY), 'weapons');
+                    switch (powerUp.effect) {
+                        case 1 :
+                            powerUpMap[powerUp.powerUpId].frame = 15;
+                            break;
+                        case 2 :
+                            powerUpMap[powerUp.powerUpId].frame = 33;
+                            break;
+                    }
+                    powerUpMap[powerUp.powerUpId].scale.setTo(2, 2);
+                    powerUpMap[powerUp.powerUpId].anchor.set(0.5);
+                }
+                powerUpMap[powerUp.powerUpId].updated = true;
+            });
             Object.entries(bulletsMap).forEach(([key, bullet]) => {
                 if (!bullet.updated) {
                     bullet.kill();
@@ -270,10 +314,18 @@ function initGame(playerId) {
                 if (!player.updated) {
                     player.destroy();
                     player.healthBar.sprite.destroy();
-                    delete players[player];
+                    delete players[key];
                     player.nameTag.destroy();
                 } else {
                     player.updated = false;
+                }
+            });
+            Object.entries(powerUpMap).forEach(([key, powerUp]) => {
+                if (!powerUp.updated) {
+                    powerUp.destroy();
+                    delete powerUpMap[key];
+                } else {
+                    powerUp.updated = false;
                 }
             });
         }));
@@ -350,30 +402,26 @@ function initGame(playerId) {
         };
         let send = false;
         if (cursors.up.isDown) {
-            commands.yMv = -20;
+            commands.yMv = -25;
             send = true;
         }
         else if (cursors.down.isDown) {
-            commands.yMv = 20;
+            commands.yMv = 25;
             send = true;
         }
         if (cursors.left.isDown) {
-            commands.xMv = -20;
+            commands.xMv = -25;
             send = true;
         }
         else if (cursors.right.isDown) {
-            commands.xMv = 20;
+            commands.xMv = 25;
             send = true;
         }
         commands.btns = btns;
-        if (frames == 2) {
+        if (frames == 3) {
             _server.then(obj => {
                 if (obj.ws.readyState === 1 && send)
                     obj.ws.sendX(JSON.stringify(commands));
-            });
-            _server.then(obj => {
-                if (obj.ws.readyState === 1 && send)
-                    obj.ws.sendX(JSON.stringify({"ping": true}));
             });
             frames = 0;
         }

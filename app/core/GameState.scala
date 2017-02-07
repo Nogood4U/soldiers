@@ -23,11 +23,13 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
   val positionIterations = 2
   var pBodies: HashMap[String, (Body, PlayerState)] = HashMap.empty
   var bBodies: ListBuffer[(Body, Bullet)] = ListBuffer.empty
+  var pwBodies: ListBuffer[(Body, PowerUp)] = ListBuffer.empty
   val worldSizeX = 40
   val worldSizeY = 40
   var bulletCounter = 0
   var score: HashMap[String, Int] = HashMap.empty[String, Int]
   var events: ListBuffer[GameEvent] = ListBuffer.empty
+  val random = scala.util.Random
 
   def init() {
     world.setContactListener(new ContactListener() {
@@ -46,7 +48,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
 
       def exctractGameObject(value: AnyRef): GameObject = {
         value match {
-          case (_, player: GameObject) => player
+          case (_, gameObject: GameObject) => gameObject
           // case (_, bullet: Bullet) => bullet
           case _ => GameObject.getDummyObject
         }
@@ -123,10 +125,9 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
 
   def applyCommand(playerCmd: PlayerCmd) {
     //apply movement
-    val vec = new Vec2(playerCmd.cmd.xMv, playerCmd.cmd.yMv)
     pBodies.get(playerCmd.playerId) match {
       case Some(body) =>
-        body._1.applyLinearImpulse(vec, body._1.getLocalCenter)
+        body._1.applyLinearImpulse(new Vec2(playerCmd.cmd.xMv * body._2.speedModifier, playerCmd.cmd.yMv * body._2.speedModifier), body._1.getLocalCenter)
         //apply view orientation
         body._2.viewOr = if (playerCmd.cmd.xMv > 0) 1 else if (playerCmd.cmd.xMv < 0) 0 else body._2.viewOr
         //
@@ -171,6 +172,7 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
   def applyCommands(playerCmds: List[PlayerCmd]) = {
     resetFlags(); //reset hit flag
     playerCmds.foreach(applyCommand)
+    spawnPowerUp
     world.step(1 / 60f, velocityIterations, positionIterations)
     applyStateChange()
     decreaseTimers()
@@ -192,17 +194,42 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
     fd.density = 0.0f
     fd.friction = 0.0f
     fd.restitution = 0.0f
-    val bullet = Bullet(bulletCounter, playerBody.getPosition.x, playerBody.getPosition.y, damage, playerState.playerId)
+    val bullet = Bullet(bulletCounter, playerBody.getPosition.x, playerBody.getPosition.y, damage, playerState)
     bd.userData = (bulletCounter, bullet)
     val body = world.createBody(bd)
     body.createFixture(fd)
 
     body.setLinearVelocity(playerState.viewOr match {
-      case 1 => new Vec2(speedX, speedY)
-      case _ => new Vec2(-speedX, -speedY)
+      case 1 => new Vec2(speedX * playerState.speedModifier, speedY * playerState.speedModifier)
+      case _ => new Vec2(-speedX * playerState.speedModifier, -speedY * playerState.speedModifier)
     })
     bulletCounter += 1
     body -> bullet
+  }
+
+  def spawnPowerUp = {
+    if (stateTime % 600 == 0) {
+      val effect = random.nextInt(2) + 1
+
+      val bd = new BodyDef()
+      val (x, y) = (random.nextInt(worldSizeX - 1), random.nextInt(worldSizeY - 1))
+      bd.position.set(x, y)
+      bd.`type` = BodyType.STATIC
+      val ps = new PolygonShape()
+      ps.setAsBox(0.5f, 0.5f)
+      val fd = new FixtureDef()
+      fd.shape = ps
+      fd.density = 0.0f
+      fd.friction = 0.0f
+      fd.restitution = 0.0f
+      val powerUp = PowerUp(bulletCounter, x, y, effect)
+      bd.userData = (bulletCounter, powerUp)
+      val body = world.createBody(bd)
+      body.createFixture(fd)
+      bulletCounter += 1
+      pwBodies += (body -> powerUp)
+    }
+
   }
 
   def applyStateChange() {
@@ -259,6 +286,12 @@ case class GameState(var stateTime: Int, var players: ListBuffer[GameObject]) {
       players remove (players indexOf body._2)
     })
     //pool of bullets , move to an outside area, or flag as not to serialize
+    //delete power up if marked to destroy
+    val (pwDelete, _) = pwBodies.partition(body => body._2.destroy)
+    pwDelete foreach (body => {
+      body._1.m_world.destroyBody(body._1)
+      pwBodies remove (pwBodies indexOf body)
+    })
   }
 
   def decreaseTimers(): Unit = {
@@ -279,13 +312,15 @@ abstract class GameObject {
   def decreaseTimers
 
   def resetFlags
+
+  def destroy: Boolean
 }
 
 abstract class GameEvent {
   var eventId: Int
 }
 
-case class PlayerKilledEvent(override var eventId: Int = 1, player: String, killedBy: String) extends GameEvent
+case class PlayerKilledEvent(override var eventId: Int = 1, player: PlayerState, killedBy: PlayerState) extends GameEvent
 
 object GameObject {
 
@@ -311,6 +346,8 @@ object GameObject {
       override def resetFlags: Unit = {}
 
       override def decreaseTimers = {}
+
+      override def destroy: Boolean = false
     }
   }
 }
@@ -322,11 +359,13 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
   var bulletTimer = 0
   var hit = false
   var powerUp = 0
-  var powerUpTimer = 30
+  var powerUpTimer = 0
   val _healt = health
   var alive = true
   var deadTimer = 0
-
+  var damageModifier = 1
+  var speedModifier = 1
+  var isDestroy = false
 
   def resetHealth() {
     health = _healt
@@ -334,7 +373,11 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
 
   override def decreaseTimers = {
     if (hitImmuneTimer != 0) hitImmuneTimer -= 1 else this.hitImmune = false
-    if (powerUpTimer != 0) powerUpTimer -= 1 else this.powerUp = 0
+    if (powerUpTimer != 0) powerUpTimer -= 50 else {
+      this.powerUp = 0
+      damageModifier = 1
+      speedModifier = 1
+    }
     if (bulletTimer != 0) bulletTimer -= 1 else this.bulletTimer = 0
     if (deadTimer != 0) deadTimer -= 1 else if (!this.alive) {
       this.alive = true
@@ -349,18 +392,19 @@ case class PlayerState(playerId: String, var posX: Float, var posY: Float, var v
   override def collide(o1: GameObject): Option[GameEvent] = {
     o1 match {
       case bullet: Bullet => bullet collide this
+      case pw: PowerUp => pw collide this
       case _ => None
     }
   }
 
-
+  override def destroy: Boolean = isDestroy
 }
 
-case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int, ownerId: String)
+case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int, owner: PlayerState)
   extends GameObject {
   private var isDestroy = false
 
-  def destroy(): Boolean = isDestroy
+  override def destroy(): Boolean = isDestroy
 
   override def decreaseTimers = {}
 
@@ -368,11 +412,11 @@ case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int,
 
   override def collide(o: GameObject): Option[GameEvent] = {
     o match {
-      case player: PlayerState if player.playerId != this.ownerId =>
+      case player: PlayerState if player.playerId != this.owner.playerId =>
         this.isDestroy = true
         if (!player.hitImmune && player.alive) {
           //println(s"reducing ${player.health} health by ${this.damage}")
-          player.health -= this.damage
+          player.health -= this.damage * this.owner.damageModifier
           //println(s"new health ${player.health}")
           player.health match {
             case a if a > 0 =>
@@ -383,7 +427,7 @@ case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int,
             case a if a <= 0 =>
               player.alive = false
               player.deadTimer = 30
-              Some(PlayerKilledEvent(player = player.playerId, killedBy = ownerId))
+              Some(PlayerKilledEvent(player = player, killedBy = owner))
             case _ => None
           }
         } else {
@@ -393,4 +437,35 @@ case class Bullet(bulletNum: Int, var posX: Float, var posY: Float, damage: Int,
       case _ => None
     }
   }
+}
+
+
+case class PowerUp(powerUpId: Int, var posX: Float, var posY: Float, effect: Int) extends GameObject {
+
+  var isDestroy = false
+
+  override def collide(o: GameObject): Option[GameEvent] = {
+    o match {
+      case p: PlayerState => p.powerUp = this.effect
+        p.powerUpTimer = 40000
+        isDestroy = true
+        //modify player stats
+        p.damageModifier = 1
+        p.speedModifier = 1
+        effect match {
+          case 1 => p.damageModifier = 2
+          case 2 => p.speedModifier = 2
+          case _ =>
+        }
+        None
+      case _ => None
+    }
+  }
+
+  override def decreaseTimers: Unit = {
+  }
+
+  override def resetFlags: Unit = {}
+
+  override def destroy: Boolean = isDestroy
 }

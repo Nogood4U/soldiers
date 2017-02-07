@@ -86,8 +86,8 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
       server <- system.actorSelection("/user/" + s"$serverId").resolveOne()
       player <- (server ? GetPlayer(playerId, false)).mapTo[ActorRef]
     } yield {
-     /* if (gameId != null && !gameId.isEmpty)
-        server ! JoinGame(gameId, playerId, player)*/
+      /* if (gameId != null && !gameId.isEmpty)
+         server ! JoinGame(gameId, playerId, player)*/
 
       val source = Source.actorRef[GameState](100, OverflowStrategy.dropTail)
       val sink = Sink.asPublisher[GameState](false)
@@ -116,11 +116,12 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
                 .setAlive(ps.alive)
                 .setHit(ps.hit)
                 .setHitImmune(ps.hitImmune)
+                .setPowerUp(ps.powerUp)
                 .build()
             }).asJava)
             .addAllBullets(bullets.map(_.asInstanceOf[Bullet]).map(bs => {
               ProtoGameState.State.Bullet.newBuilder()
-                .setOwnerId(bs.ownerId)
+                .setOwnerId(bs.owner.playerId)
                 .setPosX(bs.posX)
                 .setPosY(bs.posY)
                 .setDamage(bs.damage)
@@ -131,6 +132,14 @@ class HomeController @Inject()(system: ActorSystem, implicit val mat: Materializ
               ProtoGameState.State.ScoreBoard.newBuilder()
                 .setPlayerId(scores._1)
                 .setCount(scores._2)
+                .build()
+            }).asJava)
+            .addAllPowerUps(e.pwBodies.map(_._2).map(pw => {
+              ProtoGameState.State.PowerUp.newBuilder()
+                .setPowerUpId(pw.powerUpId)
+                .setPosX(pw.posX)
+                .setPosY(pw.posY)
+                .setEffect(pw.effect)
                 .build()
             }).asJava)
             .build().toByteArray
