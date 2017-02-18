@@ -30,9 +30,10 @@ class GameTimer extends Actor {
         }
       }
       state.events = ListBuffer.empty //reset all events , events already dispatched to some event handler
-      commands = ListBuffer.empty
-      players.foreach(player => player._2 ! GameUpdate(state))
-
+      if (!commands.isEmpty) {
+        commands = ListBuffer.empty
+        players.foreach(player => player._2 ! GameUpdate(state))
+      }
 
     case cmd: PlayerCmd =>
       commands += cmd
